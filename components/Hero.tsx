@@ -120,55 +120,51 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="mt-8 mb-8 w-full flex justify-center"
+              className="mt-10 mb-4 w-full flex flex-col items-center" 
             >
-              <AnimatedTooltip items={teamMembers} />
-              <div className="ml-8 flex items-center">
-                <div className="flex mr-4">
-                  {[...Array(5)].map((_, index) => (
-                    <Star
-                      key={index}
-                      className="w-6 h-6 text-yellow-400 fill-yellow-400 mr-1"
-                    />
-                  ))}
+              <button className="relative inline-flex h-14 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 mb-8">
+                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-6 py-1 text-sm font-medium text-white backdrop-blur-3xl transition-all duration-300 ease-in-out hover:bg-[linear-gradient(90deg,#8B5CF6,#3B82F6)]">
+                  Worauf wartest du denn noch?
+                </span>
+              </button>
+              <div className="flex items-center justify-center w-full">
+                <AnimatedTooltip items={teamMembers} />
+                <div className="ml-8 flex items-center">
+                  <div className="flex mr-4">
+                    {[...Array(5)].map((_, index) => (
+                      <Star
+                        key={index}
+                        className="w-6 h-6 text-yellow-400 fill-yellow-400 mr-1"
+                      />
+                    ))}
+                  </div>
+                  <p className="text-white text-lg font-semibold">
+                    Bereits +100 zufriedene Partner
+                  </p>
                 </div>
-                <p className="text-white text-lg font-semibold">
-                  Bereits +100 zufriedene Partner
-                </p>
               </div>
             </motion.div>
           )}
-          {currentLine >= 4 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1 }}
-              className="mt-2 flex justify-center w-full" // Update: mt-4 changed to mt-2
-            >
-              <button className="relative inline-flex h-14 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-6 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-                  Lass dich kostenlos beraten!
-                </span>
-              </button>
-            </motion.div>
-          )}
         </motion.div>
-        <div className="h-24 mb-4 text-3xl sm:text-4xl md:text-5xl font-bold flex justify-center">
-          {' '}
-          {/* Update: mb-6 changed to mb-4 */}
-          <div className="flex items-center">
-            <span className="text-white mr-2">Mehr</span>
-            <FlipWords
-              words={flipWords}
-              duration={3000}
-              className="inline-flex items-center justify-start w-64"
-            />
-          </div>
-        </div>
-        <div className="flex flex-wrap justify-center items-center mb-4 max-w-4xl mx-auto gap-8">
-          {' '}
-          {/* Update: mb-6 changed to mb-4 */}
+        {currentLine >= 4 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.5 }}
+            className="h-16 mb-2 text-3xl sm:text-4xl md:text-5xl font-bold flex justify-center" 
+          >
+            <div className="flex items-center">
+              <span className="text-white mr-2">Mehr</span>
+              <FlipWords
+                words={flipWords}
+                duration={3000}
+                className="inline-flex items-center justify-start w-64"
+              />
+            </div>
+          </motion.div>
+        )}
+        <div className="flex flex-wrap justify-center items-center mt-2 mb-2 max-w-4xl mx-auto gap-4"> 
           <Image
             src="/google5.svg"
             alt="Google Partners"
@@ -203,7 +199,7 @@ export default function Hero() {
           Immobilienbranche
         </p>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-blue-900"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-purple-900"></div>
     </HeroHighlight>
   );
 }
