@@ -78,7 +78,7 @@ export const FlipWords = ({
           position: 'absolute',
         }}
         className={cn(
-          'z-10 inline-flex items-center justify-between relative text-left px-2 text-purple-400 w-full',
+          'z-10 inline-flex items-center justify-between relative text-left px-2 text-orange-500 w-full font-normal',
           className
         )}
         key={currentWord}
@@ -113,9 +113,6 @@ export const FlipWords = ({
             </motion.span>
           ))}
         </div>
-        {IconComponent && (
-          <IconComponent className="ml-4 h-12 w-12 text-purple-400 flex-shrink-0" />
-        )}
       </motion.div>
     </AnimatePresence>
   );
