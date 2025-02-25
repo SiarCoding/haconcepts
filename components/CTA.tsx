@@ -1,11 +1,42 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from 'lucide-react';
+import { useState } from 'react';
 
 export default function CTA() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
   return (
-    <section className="py-24 bg-gradient-to-br from-[#ff5500] to-[#ff8040]">
-      <div className="container mx-auto px-4 text-center">
+    <section className="relative py-24 overflow-hidden">
+      {/* Hintergrundbild oder Farbverlauf als Fallback */}
+      <div className="absolute inset-0 w-full h-full">
+        {!imageError ? (
+          <>
+            {/* Versuche das Bild zu laden */}
+            <img 
+              src="/CTA.png" 
+              alt="Call to Action Hintergrund" 
+              className="absolute inset-0 w-full h-full object-cover"
+              onLoad={() => setImageLoaded(true)}
+              onError={() => setImageError(true)}
+            />
+            {/* Zeige Ladeindikator, während das Bild lädt */}
+            {!imageLoaded && (
+              <div className="absolute inset-0 bg-gradient-to-br from-[#ff5500] to-[#ff8040] animate-pulse"></div>
+            )}
+          </>
+        ) : (
+          /* Fallback-Farbverlauf, wenn das Bild nicht geladen werden kann */
+          <div className="absolute inset-0 bg-gradient-to-br from-[#ff5500] to-[#ff8040]"></div>
+        )}
+        
+        {/* Dunkle Overlay für bessere Lesbarkeit */}
+        <div className="absolute inset-0 bg-black/50"></div>
+      </div>
+      
+      {/* Content */}
+      <div className="container mx-auto px-4 text-center relative z-10">
         <h2 className="text-4xl font-bold tracking-tighter text-white sm:text-5xl mb-6">
           Worauf wartest du noch?
         </h2>

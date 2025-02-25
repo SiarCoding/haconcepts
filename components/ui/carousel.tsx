@@ -145,10 +145,32 @@ const CarouselControl = ({
 };
 
 interface CarouselProps {
-  slides: SlideData[];
+  slides?: SlideData[];
 }
 
-export function Carousel({ slides }: CarouselProps) {
+export function Carousel({ slides: customSlides }: CarouselProps) {
+  // Standard-Slides mit den drei Bildern
+  const defaultSlides: SlideData[] = [
+    {
+      title: "Immobilien-Marketing",
+      button: "Mehr erfahren",
+      src: "/Bild1.jpg"
+    },
+    {
+      title: "Digitale Leadgenerierung",
+      button: "Mehr erfahren",
+      src: "/Bild2.jpg"
+    },
+    {
+      title: "KI-gestützte Vertriebsstrategien",
+      button: "Mehr erfahren",
+      src: "/Bild3.jpg"
+    }
+  ];
+
+  // Verwende die übergebenen Slides oder die Standard-Slides
+  const slides = customSlides || defaultSlides;
+  
   const [current, setCurrent] = useState(0);
 
   const handlePreviousClick = () => {

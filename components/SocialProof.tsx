@@ -2,26 +2,22 @@
 
 import { Carousel } from '@/components/ui/carousel';
 
+// Aktualisierte Slides mit den neuen Bildpfaden
 const slides = [
   {
-    title: "Gerade in Berlin: 520.000€ MFH-Anfrage",
-    button: "Details ansehen",
-    src: "/leads/berlin-lead.jpg"
-  },
-  {
-    title: "⭐️ 4.98/5 auf Trustpilot",
-    button: "Bewertungen ansehen",
-    src: "/social/trustpilot.jpg"
-  },
-  {
-    title: "11:32h täglich eingesparte Bearbeitungszeit",
+    title: "Immobilien-Marketing",
     button: "Mehr erfahren",
-    src: "/stats/time-saved.jpg"
+    src: "/Bild1.jpg"
   },
   {
-    title: "Kundenstimme: 'Beste Entscheidung 2024'",
-    button: "Video abspielen",
-    src: "/social/linkedin-review.jpg"
+    title: "Digitale Leadgenerierung",
+    button: "Mehr erfahren",
+    src: "/Bild2.jpg"
+  },
+  {
+    title: "KI-gestützte Vertriebsstrategien",
+    button: "Mehr erfahren",
+    src: "/Bild3.jpg"
   }
 ];
 
@@ -46,7 +42,7 @@ export default function SocialProof() {
           </h2>
         </div>
 
-        {/* 3D Carousel */}
+        {/* 3D Carousel mit den aktualisierten Bildern */}
         <div className="max-w-6xl mx-auto">
           <Carousel slides={slides} />
         </div>

@@ -30,12 +30,12 @@ const timelineData = [
     ),
   },
   {
-    title: "Konzeptentwicklung",
+    title: "Strategieentwicklung",
     content: (
       <div className="relative overflow-hidden rounded-2xl border border-white/[0.2] bg-black p-6 flex flex-col h-full">
         <div className="relative w-full h-[400px] md:h-[500px] rounded-lg overflow-hidden -mt-4">
           <Image
-            src="/timeline/strategy.jpg"
+            src="/Strategie.svg"
             alt="Konzeptentwicklung"
             fill
             className="object-contain"
@@ -56,7 +56,7 @@ const timelineData = [
       <div className="relative overflow-hidden rounded-2xl border border-white/[0.2] bg-black p-6 flex flex-col h-full">
         <div className="relative w-full h-[400px] md:h-[500px] rounded-lg overflow-hidden">
           <Image
-            src="/timeline/optimization.jpg"
+            src="/Optimierung.svg"
             alt="Performance Optimierung"
             fill
             className="object-contain"
@@ -77,7 +77,7 @@ const timelineData = [
       <div className="relative overflow-hidden rounded-2xl border border-white/[0.2] bg-black p-6 flex flex-col h-full">
         <div className="relative w-full h-[400px] md:h-[500px] rounded-lg overflow-hidden">
           <Image
-            src="/timeline/scaling.jpg"
+            src="/skalierung.svg"
             alt="Geschäftswachstum"
             fill
             className="object-contain"

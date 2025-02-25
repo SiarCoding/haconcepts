@@ -1,45 +1,39 @@
+"use client";
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BsGraphDownArrow, BsCashStack, BsPeople, BsBarChartLine, BsBuilding, BsGlobe } from 'react-icons/bs';
-import Image from 'next/image';
 
 const PainPoints = () => {
   const painPoints = [
     {
       title: "Veraltete Vertriebs-Methoden",
       description: "Während andere digital skalieren, verlieren Sie täglich potenzielle Kunden durch ineffiziente Offline-Strategien",
-      icon: BsBuilding,
-      image: "/veraltetemethoden.jpg"
+      icon: BsBuilding
     },
     {
       title: "Hohe Streuverluste",
       description: "Ihr Budget verpufft in erfolglosen Werbekampagnen, die nicht Ihre idealen Kunden erreichen",
-      icon: BsCashStack,
-      image: "/streuverluste.jpg"
+      icon: BsCashStack
     },
     {
       title: "Zeitverschwendung",
       description: "Sie verschwenden wertvolle Zeit mit unqualifizierten Leads statt sich auf echte Kaufinteressenten zu konzentrieren",
-      icon: BsGraphDownArrow,
-      image: "/wastetime.svg"
+      icon: BsGraphDownArrow
     },
     {
       title: "Mangelnde Skalierbarkeit",
       description: "Ihr Geschäft wächst nicht, weil Sie zu sehr im operativen Tagesgeschäft gefangen sind",
-      icon: BsBarChartLine,
-      image: "/sichtbar.jpg"
+      icon: BsBarChartLine
     },
     {
       title: "Phantom-Leads",
       description: "85% Ihrer Anfragen haben keine Finanzierungszusage",
-      icon: BsPeople,
-      image: "/Macbook-Device3.svg"
+      icon: BsPeople
     },
     {
       title: "Fehlende Marktpräsenz",
       description: "In der digitalen Welt sind Sie für potenzielle Kunden praktisch unsichtbar",
-      icon: BsGlobe,
-      image: "/MetaBusinessPartner.svg"
+      icon: BsGlobe
     }
   ];
 
@@ -140,16 +134,7 @@ const PainPoints = () => {
                     </h3>
                   </div>
                   
-                  <div className="relative w-full h-48 my-4 rounded-lg overflow-hidden">
-                    <Image
-                      src={point.image}
-                      alt={point.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-
-                  <p className="text-white/70 text-base/relaxed">
+                  <p className="text-white/70 text-base/relaxed mt-4">
                     {point.description}
                   </p>
                 </div>

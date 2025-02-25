@@ -16,6 +16,8 @@ import Solutions from '@/components/Solutions';
 import { MovingLogos } from '@/components/ui/moving-cards'
 import SocialProof from '@/components/SocialProof';
 import Questions from '@/components/Questions';
+import LampTransition from '@/components/LampTransition';
+import FailureReasons from '@/components/FailureReasons';
 
 export default function Home() {
   return (
@@ -27,56 +29,12 @@ export default function Home() {
       </div>
       <MovingLogos />
       <PainPoints />
+      <LampTransition />
       <Solutions />
       <SocialProof />
+      <FailureReasons />
       <Timeline />
       <Testimonials />
-      <section className="py-20 bg-black">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center">
-            Ihr Weg zum digitalen Vertriebserfolg
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                1
-              </div>
-              <h3 className="text-xl font-bold mb-2">Analyse</h3>
-              <p>
-                Wir analysieren Ihre aktuelle Situation und definieren klare
-                Ziele.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                2
-              </div>
-              <h3 className="text-xl font-bold mb-2">Strategie</h3>
-              <p>
-                Wir entwickeln eine maßgeschneiderte Strategie für Ihren
-                Erfolg.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                3
-              </div>
-              <h3 className="text-xl font-bold mb-2">Umsetzung</h3>
-              <p>
-                Wir setzen die Strategie mit modernsten Tools und Techniken
-                um.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                4
-              </div>
-              <h3 className="text-xl font-bold mb-2">Optimierung</h3>
-              <p>Wir optimieren kontinuierlich für maximale Performance.</p>
-            </div>
-          </div>
-        </div>
-      </section>
       <WhyUs />
       <CTA />
       <Questions />

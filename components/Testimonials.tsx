@@ -44,16 +44,16 @@ export default function Testimonials() {
 
                     <blockquote className="flex-1 mt-8">
                       <p className="text-lg leading-relaxed text-gray-600">
-                        "HAConcepts hat meine Erwartungen bei der Facebook-Werbung mehr als erfüllt! Innerhalb der ersten 6 Wochen ihrer Dienstleistung habe ich dank ihrer professionellen Strategien und ihrem tiefgreifenden Verständnis für das Targeting 2 neue Aufträge mit einem Gesamtwert von knapp 1,5 Millionen Euro generiert."
+                        "Wir generieren täglich qualifizierte Leads mit der Zusammenarbeit von Nextmove Consulting. Ihr Team hat uns geholfen, unsere Vertriebsprozesse zu optimieren und unsere Conversion-Rate deutlich zu steigern. Die Ergebnisse sprechen für sich - mehr Termine, mehr Abschlüsse und ein signifikantes Wachstum unseres Geschäfts."
                       </p>
                     </blockquote>
                   </div>
 
                   <div className="flex items-center mt-8">
-                    <div className="flex-shrink-0 w-11 h-11 rounded-full bg-gradient-to-r from-[#ff8040] to-[#ff5500]" />
+                    <img src="/nico.jpg" alt="Nico Fries" className="flex-shrink-0 w-11 h-11 rounded-full object-cover" />
                     <div className="ml-4">
-                      <p className="text-base font-bold text-gray-900">Willem Blankwater</p>
-                      <p className="mt-0.5 text-sm text-gray-500">Blankwater Immobilien</p>
+                      <p className="text-base font-bold text-gray-900">Nico Fries</p>
+                      <p className="mt-0.5 text-sm text-gray-500">Kapitalanlage-Experte</p>
                     </div>
                   </div>
                 </div>
@@ -70,13 +70,13 @@ export default function Testimonials() {
 
                     <blockquote className="flex-1 mt-8">
                       <p className="text-lg leading-relaxed text-gray-600">
-                        "Wir haben in den ersten Wochen, nach Start der Kampagne, mehr als 40 Anfragen erhalten. Daraus ergaben sich 16 neue Besichtigungstermine und eine Reichweite von über 160.000 erreichten Konten innerhalb der Zielgruppe. Und das im November 2023, in einer sehr schwierigen Phase im Immobiliengeschäft!"
+                        "Wir haben in den ersten Wochen, nach Start der Kampagne mit Nextmove Consulting, mehr als 40 Anfragen erhalten. Daraus ergaben sich 16 neue Besichtigungstermine und eine Reichweite von über 160.000 erreichten Konten innerhalb der Zielgruppe. Und das im November 2023, in einer sehr schwierigen Phase im Immobiliengeschäft!"
                       </p>
                     </blockquote>
                   </div>
 
                   <div className="flex items-center mt-8">
-                    <div className="flex-shrink-0 w-11 h-11 rounded-full bg-gradient-to-r from-[#ff8040] to-[#ff5500]" />
+                    <img src="/kekelidis.jpeg" alt="Michaelis Kekelidis" className="flex-shrink-0 w-11 h-11 rounded-full object-cover" />
                     <div className="ml-4">
                       <p className="text-base font-bold text-gray-900">Michaelis Kekelidis</p>
                       <p className="mt-0.5 text-sm text-gray-500">Michaelis Immobilien</p>
@@ -96,16 +96,16 @@ export default function Testimonials() {
 
                     <blockquote className="flex-1 mt-8">
                       <p className="text-lg leading-relaxed text-gray-600">
-                        "Die Zusammenarbeit mit HAConcepts war eine absolute Bereicherung für unser Geschäft. Die innovative Herangehensweise und das tiefe Verständnis für digitales Marketing haben unsere Online-Präsenz auf ein neues Level gehoben."
+                        "Nextmove Consulting hat meine Erwartungen bei der Facebook-Werbung mehr als erfüllt! Innerhalb der ersten 6 Wochen ihrer Dienstleistung habe ich dank ihrer professionellen Strategien und ihrem tiefgreifenden Verständnis für das Targeting 2 neue Aufträge mit einem Gesamtwert von knapp 1,5 Millionen Euro generiert."
                       </p>
                     </blockquote>
                   </div>
 
                   <div className="flex items-center mt-8">
-                    <div className="flex-shrink-0 w-11 h-11 rounded-full bg-gradient-to-r from-[#ff8040] to-[#ff5500]" />
+                    <img src="/blankwater.jpeg" alt="Willem Blankwater" className="flex-shrink-0 w-11 h-11 rounded-full object-cover" />
                     <div className="ml-4">
-                      <p className="text-base font-bold text-gray-900">Alexander Weber</p>
-                      <p className="mt-0.5 text-sm text-gray-500">Weber & Partner Immobilien</p>
+                      <p className="text-base font-bold text-gray-900">Willem Blankwater</p>
+                      <p className="mt-0.5 text-sm text-gray-500">Blankwater Immobilien</p>
                     </div>
                   </div>
                 </div>

@@ -5,11 +5,11 @@ import { Marquee } from "@/components/magicui/marquee";
 import Image from "next/image";
 
 const techLogos = [
-  "/tech/meta.svg",
-  "/tech/google.svg",
-  "/tech/linkedin.svg",
-  "/tech/openai.svg",
-  "/tech/aws.svg",
+  "/tech/logo.png",
+  "/tech/logo1.png",
+  "/tech/logo2.png",
+  "/tech/logo3.png",
+  "/tech/logo4.png",
 ];
 
 const firstRow = techLogos;

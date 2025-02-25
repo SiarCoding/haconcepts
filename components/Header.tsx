@@ -25,11 +25,21 @@ const Header = () => {
     { title: 'Kontakt', href: '#kontakt' },
   ];
 
+  const handleCtaClick = () => {
+    // Hier die gewünschte Aktion ausführen
+    console.log('CTA Button geklickt!');
+    // z.B. Scrolle zum Kontaktformular oder öffne das Modal
+    const contactSection = document.getElementById('kontakt');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <header className="py-4 bg-black sm:py-6">
+    <header className="py-4 bg-black sm:py-6 relative z-50">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo - extreme Größe */}
+          {/* Logo - noch größere Größe */}
           <div className="shrink-0">
             <Link href="/" className="flex">
               <Image
@@ -37,13 +47,13 @@ const Header = () => {
                 alt="NextMove Logo"
                 width={1000}
                 height={400}
-                className="w-auto h-20 sm:h-24 md:h-32 lg:h-40"
+                className="w-auto h-24 sm:h-28 md:h-36 lg:h-44"
               />
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex md:hidden">
+          <div className="flex md:hidden relative z-50">
             <button
               type="button"
               className="text-white"
@@ -62,22 +72,26 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden ml-10 mr-auto space-x-10 lg:ml-20 lg:space-x-12 md:flex md:items-center md:justify-start">
+          {/* Desktop Navigation mit Hover-Unterstrich-Effekt */}
+          <nav className="hidden ml-10 mr-auto space-x-10 lg:ml-20 lg:space-x-12 md:flex md:items-center md:justify-start relative z-50">
             {menuItems.map((item) => (
               <Link
                 key={item.title}
                 href={item.href}
-                className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"
+                className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white relative group px-2"
               >
-                {item.title}
+                <span>{item.title}</span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#ff8040] to-[#ff5500] transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
           </nav>
 
           {/* CTA Button mit originalem Design */}
-          <div className="relative hidden md:inline-flex">
-            <button className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+          <div className="relative hidden md:inline-flex z-50">
+            <button 
+              onClick={handleCtaClick}
+              className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 cursor-pointer"
+            >
               <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#ff8040_0%,#ff5500_50%,#ff8040_100%)]" />
               <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-6 py-2 text-sm font-medium text-white backdrop-blur-3xl transition-all duration-300 ease-in-out hover:bg-[#cc4400]">
                 Lass dich kostenlos beraten!
@@ -86,23 +100,27 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu mit Hover-Unterstrich-Effekt */}
         {expanded && (
-          <nav className="md:hidden">
+          <nav className="md:hidden relative z-40">
             <div className="flex flex-col pt-8 pb-4 space-y-6">
               {menuItems.map((item) => (
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"
+                  className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white relative group px-2"
                   onClick={() => setExpanded(false)}
                 >
-                  {item.title}
+                  <span>{item.title}</span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#ff8040] to-[#ff5500] transition-all duration-300 group-hover:w-full"></span>
                 </Link>
               ))}
               
               {/* Mobile CTA Button */}
-              <button className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+              <button 
+                onClick={handleCtaClick}
+                className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 cursor-pointer"
+              >
                 <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#ff8040_0%,#ff5500_50%,#ff8040_100%)]" />
                 <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-6 py-2 text-sm font-medium text-white backdrop-blur-3xl transition-all duration-300 ease-in-out hover:bg-[#cc4400]">
                   Lass dich kostenlos beraten!

@@ -39,14 +39,13 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     >
       <div className="max-w-4xl mx-auto text-center mb-16">
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-normal text-white">
-          Vom Algorithmus zum Notar -
+          So arbeiten wir
           <div className="inline-block relative mx-2">
-            <span className="relative z-10">So entsteht</span>
+            <span className="relative z-10">zusammen</span>
             <span className="absolute -bottom-1 left-0 right-0 h-4 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-lg opacity-50"></span>
             <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span>
           </div>
-          Ihr Dealflow
-        </h2>
+         </h2>
       </div>
 
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
