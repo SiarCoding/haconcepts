@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { FlipWords } from '@/components/ui/flip-word';
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip';
 import { Star } from 'lucide-react';
+import Spline from '@splinetool/react-spline';
 
 const Hero = () => {
   const flipWords = ['Umsatz', 'Reichweite', 'Mitarbeiter'];
@@ -47,6 +48,15 @@ const Hero = () => {
       image: '/hofmann.png',
     },
   ];
+
+  const onLoad = (spline: any) => {
+    // Zugriff auf die Spline-Scene
+    if (spline) {
+      const scene = spline.getScene();
+      // Hintergrund auf schwarz setzen
+      scene.background.visible = false;
+    }
+  };
 
   return (
     <section className="relative py-8 sm:py-10 lg:py-12 overflow-hidden bg-black sm:pb-16 lg:pb-20 xl:pb-24">
@@ -140,8 +150,9 @@ const Hero = () => {
 
           {/* Right Side Illustration/Image */}
           <div className="relative">
-            <div className="absolute inset-0">
-              <svg className="blur-3xl filter opacity-70" style={{ filter: 'blur(64px)' }} width="444" height="536" viewBox="0 0 444 536" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Orangener Blur-Effekt - nach oben verschoben */}
+            <div className="absolute inset-0 -translate-y-48">
+              <svg className="blur-3xl filter opacity-30" style={{ filter: 'blur(64px)' }} width="444" height="536" viewBox="0 0 444 536" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M225.919 112.719C343.98 64.6648 389.388 -70.487 437.442 47.574C485.496 165.635 253.266 481.381 135.205 529.435C17.1445 577.488 57.9596 339.654 9.9057 221.593C-38.1482 103.532 107.858 160.773 225.919 112.719Z" fill="url(#c)" />
                 <defs>
                   <linearGradient id="c" x1="82.7339" y1="550.792" x2="-39.945" y2="118.965" gradientUnits="userSpaceOnUse">
@@ -150,15 +161,6 @@ const Hero = () => {
                   </linearGradient>
                 </defs>
               </svg>
-            </div>
-            <div className="relative">
-              <Image
-                src="/blankwater.jpeg" // Ersetzen Sie dies mit Ihrem tatsächlichen Hero-Bild
-                alt="Hero Illustration"
-                width={500}
-                height={500}
-                className="w-full h-auto"
-              />
             </div>
           </div>
         </div>

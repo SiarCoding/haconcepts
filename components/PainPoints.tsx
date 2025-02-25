@@ -1,53 +1,45 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  SiGooglemybusiness, 
-  SiGoogleads, 
-  SiClockify, 
-  SiMeta, 
-  SiConvertio, 
-  SiGoogleanalytics 
-} from 'react-icons/si';
-import { 
-  BsGraphDownArrow, 
-  BsCashStack, 
-  BsPeople, 
-  BsBarChartLine, 
-  BsBuilding, 
-  BsGlobe 
-} from 'react-icons/bs';
+import { BsGraphDownArrow, BsCashStack, BsPeople, BsBarChartLine, BsBuilding, BsGlobe } from 'react-icons/bs';
+import Image from 'next/image';
 
 const PainPoints = () => {
   const painPoints = [
     {
       title: "Veraltete Vertriebs-Methoden",
       description: "Während andere digital skalieren, verlieren Sie täglich potenzielle Kunden durch ineffiziente Offline-Strategien",
-      icon: BsBuilding
+      icon: BsBuilding,
+      image: "/veraltetemethoden.jpg"
     },
     {
       title: "Hohe Streuverluste",
       description: "Ihr Budget verpufft in erfolglosen Werbekampagnen, die nicht Ihre idealen Kunden erreichen",
-      icon: BsCashStack
+      icon: BsCashStack,
+      image: "/streuverluste.jpg"
     },
     {
       title: "Zeitverschwendung",
       description: "Sie verschwenden wertvolle Zeit mit unqualifizierten Leads statt sich auf echte Kaufinteressenten zu konzentrieren",
-      icon: BsGraphDownArrow
+      icon: BsGraphDownArrow,
+      image: "/wastetime.svg"
     },
     {
       title: "Mangelnde Skalierbarkeit",
       description: "Ihr Geschäft wächst nicht, weil Sie zu sehr im operativen Tagesgeschäft gefangen sind",
-      icon: BsBarChartLine
+      icon: BsBarChartLine,
+      image: "/sichtbar.jpg"
     },
     {
-      title: "Niedrige Conversion Rate",
-      description: "Trotz vieler Interessenten schließen Sie zu wenige Deals ab, weil die Lead-Qualifizierung fehlt",
-      icon: BsPeople
+      title: "Phantom-Leads",
+      description: "85% Ihrer Anfragen haben keine Finanzierungszusage",
+      icon: BsPeople,
+      image: "/Macbook-Device3.svg"
     },
     {
       title: "Fehlende Marktpräsenz",
       description: "In der digitalen Welt sind Sie für potenzielle Kunden praktisch unsichtbar",
-      icon: BsGlobe
+      icon: BsGlobe,
+      image: "/MetaBusinessPartner.svg"
     }
   ];
 
@@ -77,8 +69,8 @@ const PainPoints = () => {
   };
 
   return (
-    <section className="relative py-20 bg-black overflow-hidden">
-      {/* Gradient Background Effect - leuchtender */}
+    <section className="relative bg-black overflow-hidden">
+      {/* Gradient Background Effect */}
       <div className="absolute inset-0">
         <svg 
           className="blur-3xl filter opacity-50" 
@@ -109,7 +101,7 @@ const PainPoints = () => {
         </svg>
       </div>
       
-      <div className="container mx-auto px-4 relative">
+      <div className="container mx-auto px-4 relative py-20">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-normal text-white">
             Verlieren Sie noch
@@ -138,7 +130,7 @@ const PainPoints = () => {
               <motion.div
                 key={index}
                 variants={cardVariants}
-                className="relative rounded-xl p-6 ring-2 ring-[#ff5500] bg-white/10 backdrop-blur-sm hover:scale-105 transition-transform duration-300"
+                className="relative rounded-xl p-6 bg-white/10 backdrop-blur-sm hover:scale-105 transition-transform duration-300"
               >
                 <div className="flex flex-col h-full">
                   <div className="flex items-center gap-4 mb-4">
@@ -147,6 +139,16 @@ const PainPoints = () => {
                       {point.title}
                     </h3>
                   </div>
+                  
+                  <div className="relative w-full h-48 my-4 rounded-lg overflow-hidden">
+                    <Image
+                      src={point.image}
+                      alt={point.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
                   <p className="text-white/70 text-base/relaxed">
                     {point.description}
                   </p>
