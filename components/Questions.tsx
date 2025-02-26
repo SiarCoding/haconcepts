@@ -13,20 +13,28 @@ export default function Questions() {
 
   const faqItems: FAQItem[] = [
     {
-      question: "Wie schnell kann ich mit ersten Leads rechnen?",
-      answer: "Ehrlich gesagt? Es kommt drauf an. Bei gut vorbereiteten Kampagnen sehen wir oft schon nach 2-3 Wochen die ersten qualifizierten Leads. Der richtige Boost kommt aber meist nach 4-6 Wochen, wenn wir genug Daten haben, um die Kampagnen zu optimieren. Wir versprechen keine Wunder über Nacht, aber einen nachhaltigen Aufbau deines Lead-Flusses."
+      question: "Wie generiere ich als Immobilienmakler effektiv neue Leads?",
+      answer: "Erfolgreiche Leadgenerierung für Immobilienmakler basiert heute auf mehreren Säulen: Erstens, nutzen Sie Social Media-Plattformen wie Facebook und Instagram für zielgerichtete Anzeigen. Zweitens, optimieren Sie Ihre Online-Präsenz mit einer professionellen Website und SEO. Drittens, setzen Sie auf Content-Marketing mit Mehrwert für potenzielle Kunden. Bei professioneller Umsetzung sehen unsere Kunden oft schon nach 2-3 Wochen die ersten qualifizierten Leads, mit deutlicher Steigerung nach 4-6 Wochen dank kontinuierlicher Datenoptimierung."
     },
     {
-      question: "Was unterscheidet euch von anderen Marketing-Agenturen?",
-      answer: "Wir sind keine 08/15-Agentur, die jedem Kunden die gleiche Strategie verkauft. Wir haben uns komplett auf Finanzberater und Immobilien-Profis spezialisiert und kennen die Schmerzpunkte der Branche. Unsere Kampagnen sind auf hochwertige Leads ausgerichtet, nicht auf Masse. Außerdem arbeiten wir mit einem transparenten Reporting-System, bei dem du jederzeit siehst, was dein Investment bringt."
+      question: "Wie verkaufe ich meine Immobilien schneller und zu besseren Preisen?",
+      answer: "Für schnellere Immobilienverkäufe zu besseren Preisen sind drei Faktoren entscheidend: Erstens, eine professionelle Präsentation mit hochwertigen Fotos, Videos und virtuellen Rundgängen. Zweitens, eine präzise Preisgestaltung basierend auf Marktanalysen. Drittens, die gezielte Ansprache der richtigen Käuferzielgruppe über digitale Kanäle. Unsere spezialisierten Marketingstrategien helfen Immobilienprofis, genau die Käufer zu erreichen, die aktiv nach Ihren Angeboten suchen, was zu schnelleren Abschlüssen und besseren Konditionen führt."
     },
     {
-      question: "Wie hoch ist das Mindestbudget für eine Zusammenarbeit?",
-      answer: "Für effektive Kampagnen empfehlen wir ein Werbebudget von mindestens 2.000€ monatlich plus unsere Betreuungsgebühr. Klingt erstmal nach viel, aber bedenke: Ein einziger abgeschlossener Deal bringt dir ein Vielfaches davon ein. Wir können aber auch individuell schauen, was für deine Situation am besten passt – manchmal macht es Sinn, kleiner zu starten und dann zu skalieren."
+      question: "Wie gewinne ich als Finanzberater qualifizierte Neukunden?",
+      answer: "Die Neukundengewinnung für Finanzberater erfordert heute eine strategische digitale Präsenz: Erstens, setzen Sie auf LinkedIn für die B2B-Leadgenerierung mit gezieltem Content und Networking. Zweitens, nutzen Sie personalisierte E-Mail-Kampagnen mit wertvollen Finanzinformationen. Drittens, etablieren Sie sich als Experte durch Webinare und digitale Beratungsangebote. Unsere Kunden profitieren von einem transparenten Reporting-System, das genau zeigt, welche Strategien die besten Leads generieren. Für die optimale Betreuung dieser Leads bieten wir zusätzlich Gesprächsleitfäden und Nachverfolgungs-Tipps."
     },
     {
-      question: "Muss ich mich um die technische Umsetzung kümmern?",
-      answer: "Absolut nicht! Wir übernehmen den kompletten technischen Teil – von der Einrichtung der Tracking-Pixel über die Landing-Page-Erstellung bis hin zur Kampagnensteuerung. Du musst dich nur um die Betreuung der eingehenden Leads kümmern. Wir liefern dir sogar Gesprächsleitfäden und Tipps für die Nachverfolgung, damit du das Maximum aus jedem Lead herausholen kannst."
+      question: "Was kostet professionelle Leadgenerierung für Immobilienmakler?",
+      answer: "Für effektive Leadgenerierung im Immobilienbereich empfehlen wir ein Werbebudget von mindestens 2.000€ monatlich plus unsere Betreuungsgebühr. Diese Investition rentiert sich schnell: Ein einziger erfolgreicher Immobilienabschluss bringt Ihnen ein Vielfaches davon ein. Unsere Kunden erzielen durchschnittlich 30-50 qualifizierte Leads pro Monat, was zu 5-10 Besichtigungsterminen und 1-3 Abschlüssen führt. Wir können auch individuelle Lösungen entwickeln – manchmal ist es sinnvoll, kleiner zu starten und dann mit nachgewiesenem ROI zu skalieren."
+    },
+    {
+      question: "Wie steigere ich meine Sichtbarkeit als Immobilienmakler im Internet?",
+      answer: "Die digitale Sichtbarkeit für Immobilienmakler lässt sich durch mehrere Strategien deutlich erhöhen: Erstens, lokale SEO-Optimierung Ihrer Website für relevante Suchbegriffe in Ihrer Region. Zweitens, regelmäßige Erstellung von hochwertigem Content zu Immobilienthemen. Drittens, aktives Management Ihrer Google Business-Präsenz mit Kundenbewertungen. Viertens, strategisches Social-Media-Marketing auf Instagram und Facebook. Wir übernehmen den kompletten technischen Teil dieser Strategien – von der SEO-Optimierung über Content-Erstellung bis zur Kampagnensteuerung, damit Sie sich auf Ihr Kerngeschäft konzentrieren können."
+    },
+    {
+      question: "Wie nutze ich LinkedIn erfolgreich für die Kundenakquise?",
+      answer: "LinkedIn ist heute eines der effektivsten Tools für B2B-Leadgenerierung, besonders für Finanz- und Immobilienprofis. Erfolgreiche Strategien umfassen: Erstens, die Optimierung Ihres persönlichen Profils mit Fokus auf Kundennutzen. Zweitens, gezieltes Content-Marketing mit Branchenexpertise. Drittens, systematisches Networking mit Ihrer Zielgruppe. Viertens, automatisierte aber personalisierte Kontaktanfragen. Unsere LinkedIn-Automation-Lösungen ermöglichen es Ihnen, täglich 20-30 qualifizierte Kontakte zu knüpfen und Ihr Netzwerk strategisch zu erweitern, ohne selbst Zeit investieren zu müssen."
     }
   ];
 
@@ -45,7 +53,7 @@ export default function Questions() {
             </span>
           </h2>
           <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-400">
-            Alles, was du über unsere Leadgenerierung für Finanzberater und Immobilien-Profis wissen solltest
+            Alles, was du über erfolgreiche Leadgenerierung für Finanzberater und Immobilienmakler wissen musst
           </p>
         </div>
 
