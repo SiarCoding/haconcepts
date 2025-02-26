@@ -60,12 +60,12 @@ export default function Footer() {
             <h3 className="text-white font-bold mb-6">Rechtliches</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="#" className="text-gray-400 hover:text-[#ff5500] transition-colors">
+                <Link href="/impressum" className="text-gray-400 hover:text-[#ff5500] transition-colors">
                   Impressum
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-[#ff5500] transition-colors">
+                <Link href="/datenschutz" className="text-gray-400 hover:text-[#ff5500] transition-colors">
                   Datenschutz
                 </Link>
               </li>
