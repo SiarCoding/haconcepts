@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
-import SplineCanvas from '@/components/ui/spline-canvas';
+import Spline from '@splinetool/react-spline';
 
 const MobileIphoneLeadSpline = dynamic(() => import('./MobileIphoneLeadSpline'), {
   ssr: false
@@ -35,10 +35,7 @@ const IphoneLeadSpline = () => {
   return (
     <div className="w-full flex justify-center items-center min-h-[400px] sm:min-h-[500px] md:min-h-[600px]">
       <div className="w-full h-[400px] sm:h-[500px] md:h-[600px] flex justify-center items-center transform-gpu">
-        <SplineCanvas 
-          scene="/leads.spline" 
-          className="w-full h-full max-w-[350px] sm:max-w-full" 
-        />
+        <Spline scene="leads.spline"/>
       </div>
     </div>
   );
