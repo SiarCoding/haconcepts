@@ -70,7 +70,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-400 hover:text-[#ff5500] transition-colors">
+                <Link href="/agb" className="text-gray-400 hover:text-[#ff5500] transition-colors">
                   AGB
                 </Link>
               </li>
@@ -89,7 +89,7 @@ export default function Footer() {
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 text-[#ff5500] flex-shrink-0 mt-0.5 mr-3" />
                 <span className="text-gray-400">
-                  Kedenburger Straße 44<br />
+                  Kedenburgstraße 44<br />
                   22043 Hamburg
                 </span>
               </li>

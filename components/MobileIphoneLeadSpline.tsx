@@ -1,22 +1,24 @@
 'use client';
 
-import React, { Suspense } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 
 // Lazy-load Spline für bessere Performance
-const Spline = React.lazy(() => import('@splinetool/react-spline'));
+const Spline = dynamic(() => import('@splinetool/react-spline'), {
+  ssr: false,
+  loading: () => <LoadingFallback />
+});
 
 const MobileIphoneLeadSpline = () => {
   return (
     <div className="w-full flex justify-center items-center h-[300px]">
       {/* Mobile Spline 3D Content - vereinfachter Container */}
       <div className="relative w-[160px] h-[300px] mx-auto">
-        <Suspense fallback={<LoadingFallback />}>
-          <Spline 
-            scene="/leads.spline" 
-            className="w-full h-full" 
-          />
-        </Suspense>
+        <Spline 
+          scene="/leads.spline" 
+          className="w-full h-full" 
+        />
       </div>
     </div>
   );

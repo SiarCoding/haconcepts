@@ -44,28 +44,12 @@ export const metadata: Metadata = {
   authors: [{ name: 'Ali Alizadah', url: 'https://nextmoveconsulting.de' }],
   creator: 'Nextmove Consulting',
   publisher: 'Nextmove Consulting',
-  openGraph: {
-    type: 'website',
-    locale: 'de_DE',
-    url: 'https://nextmoveconsulting.de',
-    title: 'Nextmove Consulting - Leadgenerierung für Immobilienmakler & Finanzberater',
-    description: 'Wir generieren qualifizierte Leads für Finanzberater und Immobilien-Profis mit nachweisbarem ROI',
-    siteName: 'Nextmove Consulting',
-    images: [
-      {
-        url: 'https://nextmove-consulting.de/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Nextmove Consulting - Leadgenerierung für Immobilienmakler & Finanzberater'
-      }
-    ]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Nextmove Consulting - Leadgenerierung für Immobilienmakler',
-    description: 'Wir generieren qualifizierte Leads für Finanzberater und Immobilien-Profis mit nachweisbarem ROI',
-    creator: '@nextmoveconsult',
-    images: ['https://nextmove-consulting.de/twitter-image.jpg']
+  metadataBase: new URL('https://nextmoveconsulting.de'),
+  alternates: {
+    canonical: 'https://nextmoveconsulting.de',
+    languages: {
+      'de-DE': '/',
+    },
   },
   robots: {
     index: true,
@@ -78,8 +62,28 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  alternates: {
-    canonical: 'https://nextmove-consulting.de',
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: 'https://nextmoveconsulting.de',
+    title: 'Nextmove Consulting - Leadgenerierung für Immobilienmakler & Finanzberater',
+    description: 'Wir generieren qualifizierte Leads für Finanzberater und Immobilien-Profis mit nachweisbarem ROI',
+    siteName: 'Nextmove Consulting',
+    images: [
+      {
+        url: 'https://nextmoveconsulting.de/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Nextmove Consulting - Leadgenerierung für Immobilienmakler & Finanzberater'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Nextmove Consulting - Leadgenerierung für Immobilienmakler',
+    description: 'Wir generieren qualifizierte Leads für Finanzberater und Immobilien-Profis mit nachweisbarem ROI',
+    creator: '@nextmoveconsult',
+    images: ['https://nextmoveconsulting.de/twitter-image.jpg']
   },
 };
 

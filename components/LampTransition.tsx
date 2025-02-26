@@ -8,7 +8,9 @@ const LampTransition = () => {
   return (
     <div className="py-10">
       <LampContainer className="min-h-[60vh]">
-        <div></div>
+        <div>
+          {/* Leerer Container für den Lamp-Effekt */}
+        </div>
       </LampContainer>
     </div>
   );

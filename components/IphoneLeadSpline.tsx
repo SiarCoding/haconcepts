@@ -5,14 +5,21 @@ import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 
 // Lazy-load Spline für bessere Performance
-const Spline = React.lazy(() => import('@splinetool/react-spline'));
-const MobileIphoneLeadSpline = dynamic(() => import('./MobileIphoneLeadSpline'));
+const Spline = dynamic(() => import('@splinetool/react-spline'), {
+  ssr: false,
+  loading: () => <LoadingFallback />
+});
+const MobileIphoneLeadSpline = dynamic(() => import('./MobileIphoneLeadSpline'), {
+  ssr: false
+});
 
 const IphoneLeadSpline = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   // Prüfen, ob mobile Ansicht
   useEffect(() => {
+    setMounted(true);
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 640);
     };
@@ -25,6 +32,8 @@ const IphoneLeadSpline = () => {
     };
   }, []);
 
+  if (!mounted) return <LoadingFallback />;
+
   // Wenn mobile Ansicht, verwende die dedizierte mobile Komponente
   if (isMobile) {
     return <MobileIphoneLeadSpline />;
@@ -34,12 +43,10 @@ const IphoneLeadSpline = () => {
   return (
     <div className="w-full flex justify-center items-center min-h-[400px] sm:min-h-[500px] md:min-h-[600px]">
       <div className="w-full h-[400px] sm:h-[500px] md:h-[600px] flex justify-center items-center transform-gpu">
-        <Suspense fallback={<LoadingFallback />}>
-          <Spline 
-            scene="/leads.spline" 
-            className="w-full h-full max-w-[350px] sm:max-w-full" 
-          />
-        </Suspense>
+        <Spline 
+          scene="/leads.spline" 
+          className="w-full h-full max-w-[350px] sm:max-w-full" 
+        />
       </div>
     </div>
   );
