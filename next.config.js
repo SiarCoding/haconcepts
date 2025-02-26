@@ -10,6 +10,10 @@ const nextConfig = {
       test: /\.spline$/,
       type: 'asset/resource',
     });
+    
+    // Wichtig: Externals für Spline konfigurieren
+    config.externals = [...(config.externals || []), { canvas: 'canvas' }];
+    
     return config;
   },
 };

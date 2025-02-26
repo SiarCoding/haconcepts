@@ -18,9 +18,6 @@ import {
   RiTeamLine
 } from 'react-icons/ri';
 import { ReactLenis } from '@studio-freight/react-lenis';
-import LinkedInBeamAnimation from '@/components/ui/animated-beam-linkedin';
-import EmailBeamAnimation from '@/components/ui/animated-beam-email';
-import { LeadAnimatedList } from '@/components/ui/animated-lead-list';
 import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
 import { LinkedInOrbiting } from "@/components/magicui/linkedin-orbiting";
 import SplineContent from '@/components/SplineContent';

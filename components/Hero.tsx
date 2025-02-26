@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { FlipWords } from '@/components/ui/flip-word';
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip';
 import { Star, Play } from 'lucide-react';
-import Spline from '@splinetool/react-spline';
 
 const Hero = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -51,13 +50,8 @@ const Hero = () => {
     },
   ];
 
-  const onLoad = (spline: any) => {
-    // Zugriff auf die Spline-Scene
-    if (spline) {
-      const scene = spline.getScene();
-      // Hintergrund auf schwarz setzen
-      scene.background.visible = false;
-    }
+  const onLoad = () => {
+    // Leere Funktion als Platzhalter
   };
   
   const playVideo = () => {
