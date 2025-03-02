@@ -108,14 +108,14 @@ const Hero = () => {
       ) : (
         <div className="relative w-full h-full">
           {/* Video Thumbnail */}
-          <div 
-            className="absolute inset-0 bg-gradient-to-br from-black/80 to-black/40"
-            style={{
-              backgroundImage: "url('/video-thumbnail.jpg')",
-              backgroundSize: "cover",
-              backgroundPosition: "center"
-            }}
-          ></div>
+          <div className="relative w-full h-full">
+            <img
+              src="/Bild2.jpg"
+              alt="Video Thumbnail"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/80 to-black/40 z-10"></div>
+          </div>
           
           {/* Play Button */}
           <button 
@@ -182,10 +182,12 @@ const Hero = () => {
             {/* Testimonials Section */}
             <div className="mt-8 sm:mt-12 relative z-10">
               <p className="text-lg font-normal text-white">Bereits +100 zufriedene Partner</p>
-              <div className="flex items-center mt-3 lg:justify-start justify-center">
-                <AnimatedTooltip items={teamMembers} />
-                <div className="ml-8 flex items-center">
-                  <div className="flex mr-4">
+              <div className="flex flex-col md:flex-row items-center mt-3 justify-center lg:justify-start">
+                <div className="scale-[0.6] md:scale-100 flex-shrink-0">
+                  <AnimatedTooltip items={teamMembers} />
+                </div>
+                <div className="mt-6 md:mt-0 md:ml-12 flex items-center">
+                  <div className="flex mr-6">
                     {[...Array(5)].map((_, index) => (
                       <Star
                         key={index}
