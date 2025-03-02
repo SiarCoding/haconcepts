@@ -18,21 +18,15 @@ const Header = () => {
   const [expanded, setExpanded] = useState(false);
 
   const menuItems = [
-    { title: 'Home', href: '/' },
-    { title: 'Referenzen', href: '#referenzen' },
-    { title: 'Warum wir ?', href: '#warum-wir' },
-    { title: 'Karriere', href: '#karriere' },
-    { title: 'Kontakt', href: '#kontakt' },
+    { title: 'Startseite', href: '/' },
+    { title: 'Unsere Lösung', href: '#solutions' },
+    { title: 'Warum wir?', href: '#why-us' },
+    { title: 'Kundenstimmen', href: '#testimonials' },
   ];
 
   const handleCtaClick = () => {
-    // Hier die gewünschte Aktion ausführen
-    console.log('CTA Button geklickt!');
-    // z.B. Scrolle zum Kontaktformular oder öffne das Modal
-    const contactSection = document.getElementById('kontakt');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Öffne Calendly-Link in einem neuen Tab
+    window.open('https://calendly.com/ali-nextmove-digital/30min?preview_source=et_card&month=2025-03', '_blank');
   };
 
   return (

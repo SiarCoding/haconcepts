@@ -8,7 +8,7 @@ export default function Testimonials() {
   );
 
   return (
-    <section className="py-12 bg-black sm:py-16 lg:py-20">
+    <section className="py-12 bg-black sm:py-16 lg:py-20" id="testimonials">
       <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
       
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">

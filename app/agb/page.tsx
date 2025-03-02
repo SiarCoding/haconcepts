@@ -5,8 +5,8 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 
 export const metadata: Metadata = {
-  title: 'AGB | NextMove Consulting | Vertragsbedingungen für Lead-Generierung',
-  description: 'Allgemeine Geschäftsbedingungen von NextMove Consulting. Erfahren Sie mehr über unsere Vertragsbedingungen und Leistungen im Bereich Performance Marketing und Lead-Generierung für Finanzberater und Immobilienmakler.',
+  title: 'AGB | Haconcepts GbR | Vertragsbedingungen für Lead-Generierung',
+  description: 'Allgemeine Geschäftsbedingungen von Haconcepts GbR. Erfahren Sie mehr über unsere Vertragsbedingungen und Leistungen im Bereich Performance Marketing und Lead-Generierung für Finanzberater und Immobilienmakler.',
   alternates: {
     canonical: '/agb',
   },
@@ -26,90 +26,107 @@ export default function AGB() {
           
           <div className="space-y-6 text-gray-300">
             <section>
-              <h2 className="text-xl font-semibold text-white mb-2">1. Geltungsbereich</h2>
-              <p>1.1 Die nachstehenden Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge, Lieferungen und sonstigen Leistungen der NextMove Consulting, Inhaber Ali Alizadah, Kedenburgstraße 44, 22043 Hamburg (nachfolgend "NextMove Consulting" genannt).</p>
-              <p>1.2 Abweichende Geschäftsbedingungen des Kunden werden nicht anerkannt, es sei denn, NextMove Consulting stimmt ihrer Geltung ausdrücklich schriftlich zu.</p>
-              <p>1.3 Diese AGB gelten sowohl gegenüber Verbrauchern als auch gegenüber Unternehmern, es sei denn, in der jeweiligen Klausel wird eine Differenzierung vorgenommen.</p>
+              <p className="font-semibold text-white mb-4">Allgemeine Geschäftsbedingungen Haconcepts GbR, Kedenburgstraße 44, 22041 Hamburg gegenüber Unternehmern und Kaufleuten.</p>
             </section>
             
             <section>
-              <h2 className="text-xl font-semibold text-white mb-2">2. Vertragsschluss</h2>
-              <p>2.1 Die Darstellung der Dienstleistungen auf unserer Website stellt kein rechtlich bindendes Angebot, sondern eine Aufforderung zur Abgabe eines Angebots dar.</p>
-              <p>2.2 Durch die Beauftragung unserer Dienstleistungen gibt der Kunde ein verbindliches Angebot ab. Der Vertrag kommt erst durch unsere Auftragsbestätigung oder mit Beginn der Ausführung der Dienstleistung zustande.</p>
-              <p>2.3 Alle Angebote von NextMove Consulting sind freibleibend und unverbindlich, sofern sie nicht ausdrücklich als verbindlich gekennzeichnet sind oder eine bestimmte Annahmefrist enthalten.</p>
+              <h2 className="text-xl font-semibold text-white mb-2">§ 1 Anwendungsbereich, Geltung</h2>
+              <p>(1) Alle Lieferungen, Leistungen und Angebote von HACONCEPTS erfolgen ausschließlich aufgrund dieser Allgemeinen Geschäftsbedingungen. Diese sind Bestandteil aller Verträge, die HACONCEPTS mit ihren Vertragspartnern (nachfolgend auch "Kunde" genannt) über die von ihr angebotenen Lieferungen oder Leistungen schließt. Sie gelten auch für alle zukünftigen Lieferungen, Leistungen oder Angebote an den Auftraggeber, selbst wenn sie nicht nochmals gesondert vereinbart werden.</p>
+              <p>(2) Geschäftsbedingungen des Kunden oder Dritter finden keine Anwendung, auch wenn HACONCEPTS ihrer Geltung im Einzelfall nicht gesondert widerspricht. Selbst wenn HACONCEPTS auf ein Schreiben oder eine E-Mail Bezug nimmt, das Geschäftsbedingungen des Kunden oder eines Dritten enthält oder auf solche verweist, liegt darin kein Einverständnis mit der Geltung jener Geschäftsbedingungen.</p>
             </section>
             
             <section>
-              <h2 className="text-xl font-semibold text-white mb-2">3. Leistungsumfang</h2>
-              <p>3.1 Der Umfang der Leistungen ergibt sich aus der Leistungsbeschreibung in unserem Angebot bzw. unserer Auftragsbestätigung.</p>
-              <p>3.2 NextMove Consulting ist berechtigt, die vereinbarten Leistungen durch qualifizierte Dritte erbringen zu lassen.</p>
-              <p>3.3 Änderungen oder Ergänzungen des vereinbarten Leistungsumfangs bedürfen der Schriftform.</p>
-              <p>3.4 Bei der Erstellung und Durchführung von Marketing-Kampagnen kann NextMove Consulting keine Garantie für einen bestimmten Erfolg oder eine bestimmte Anzahl von Leads übernehmen, da der Erfolg von verschiedenen, nicht immer beeinflussbaren Faktoren abhängt.</p>
+              <h2 className="text-xl font-semibold text-white mb-2">§ 2 Leistungen von Haconcepts / Mitwirkung des Kunden</h2>
+              <p>(1) HACONCEPTS erbringt die Agentur- und Beratungsdienstleistungen gegenüber Unternehmern und Kaufleuten im Bereich des Onlinemarketings, insbesondere auch den Bereichen des Online Reputation Managements (ORM) und der Anfragen- und Leadgenerierung, soweit nicht ausdrücklich schriftlich abweichend vereinbart, schuldet HACONCEPTS dem Kunden nicht die Erbringung eines Werks / konkreten Erfolgs oder Umsatzes.</p>
+              <p>(2) HACONCEPTS schuldet weder eine bestimmte Anzahl an Leads noch eine bestimmte Qualität. Der Kunde wird darauf hingewiesen, dass etwaige Anfrager im Einzelfall auch falsche Angaben machen können.</p>
+              <p>(3) Der Kunde hat die ihm obliegenden Mitwirkungshandlungen stets vollständig und fristgemäß auf erstes Anfordern von HACONCEPTS zu erbringen. Unterlässt der Kunde eine Mitwirkungshandlung und verhindert damit die Leistungserbringung durch HACONCEPTS, bleibt der Vergütungsanspruch von HACONCEPTS unberührt.</p>
+              <p>(4) In Bezug auf die von HACONCEPTS zu erbringenden Dienstleistungen gegenüber dem Kunden steht HACONCEPTS hinsichtlich der Ausführung ein Leistungsbestimmungsrecht nach § 315 BGB zu.</p>
+              <p>(5) HACONCEPTS ist berechtigt, dem Kunden geschuldete Leistungen auch von Erfüllungsgehilfen / Subunternehmern und Dritten erbringen zu lassen.</p>
+              <p>(6) HACONCEPTS ist nicht für den dauerhaften Bestand einer Onlinemarketing-Kampagne auf Drittplattformen wie Google My Business verantwortlich.</p>
+              <p>(7) HACONCEPTS ist nicht für die Rechtskonformität etwaiger Maßnahmen im Bereich ORM / Onlinemarketing für den Kunden verantwortlich. Im Zweifel hat der Kunde vor Beginn einer Maßnahme einen Rechtsbeistand auf eigene Kosten zu konsultieren.</p>
+              <p>(8) Sofern Web- und Landeseiten für den Kunden erstellt werden, gelten diese für die Dauer der Vertragslaufzeit als an den Kunden vermietet. Darüber hinaus besteht kein Nutzungsrecht des Kunden.</p>
+              <p>(9) Kosten für Werbekampagnen und Drittanbieterplattformen sind in der mit HACONCEPTS vereinbarten Pauschalvergütung nicht enthalten. Der Kunde hat diese separat selbst zu tragen und gegebenenfalls direkt mit der Drittanbieterplattform abzurechnen.</p>
             </section>
             
             <section>
-              <h2 className="text-xl font-semibold text-white mb-2">4. Mitwirkungspflichten des Kunden</h2>
-              <p>4.1 Der Kunde ist verpflichtet, NextMove Consulting alle für die Erbringung der vereinbarten Leistungen erforderlichen Informationen, Materialien und Zugänge rechtzeitig zur Verfügung zu stellen.</p>
-              <p>4.2 Der Kunde stellt sicher, dass die von ihm bereitgestellten Inhalte nicht gegen geltendes Recht verstoßen und keine Rechte Dritter verletzen.</p>
-              <p>4.3 Verzögerungen, die durch eine verspätete oder unvollständige Bereitstellung von Informationen oder Materialien durch den Kunden entstehen, gehen zu Lasten des Kunden und können zu einer Verschiebung vereinbarter Termine führen.</p>
+              <h2 className="text-xl font-semibold text-white mb-2">§ 3 Zustandekommen von Verträgen</h2>
+              <p>Der Vertragsschluss zwischen HACONCEPTS und dem Kunden kann fernmündlich, schriftlich oder in Textform erfolgen.</p>
             </section>
             
             <section>
-              <h2 className="text-xl font-semibold text-white mb-2">5. Vergütung und Zahlungsbedingungen</h2>
-              <p>5.1 Die Vergütung für unsere Leistungen richtet sich nach den im Angebot bzw. in der Auftragsbestätigung genannten Preisen.</p>
-              <p>5.2 Alle Preise verstehen sich zuzüglich der gesetzlichen Mehrwertsteuer, sofern nicht anders angegeben.</p>
-              <p>5.3 Rechnungen sind innerhalb von 14 Tagen nach Rechnungsstellung ohne Abzug zur Zahlung fällig, sofern nicht anders vereinbart.</p>
-              <p>5.4 Bei Zahlungsverzug ist NextMove Consulting berechtigt, Verzugszinsen in Höhe von 9 Prozentpunkten über dem Basiszinssatz (bei Unternehmern) bzw. 5 Prozentpunkten über dem Basiszinssatz (bei Verbrauchern) zu berechnen.</p>
-              <p>5.5 Bei längerfristigen Projekten ist NextMove Consulting berechtigt, angemessene Abschlagszahlungen zu verlangen.</p>
+              <h2 className="text-xl font-semibold text-white mb-2">§ 4 Zahlungen, Preise, Bedingungen</h2>
+              <p>(1) Die Preise, die von HACONCEPTS angegeben und mitgeteilt werden, sind verbindlich. Die mitgeteilten Preise verstehen sich jeweils netto zuzüglich gesetzlicher Umsatzsteuer.</p>
+              <p>(2) Die vom Kunden geschuldete Vergütung ist vorbehaltlich anderslautender Individualabrede sofort, in voller Höhe und im Voraus fällig. Eine von HACONCEPTS erteilte (SEPA-) Einzugsermächtigung gilt bis auf Widerruf auch für die weitere Geschäftsverbindung.</p>
+              <p>(3) Sofern der SEPA-Lastschrifteinzug vereinbart wird, hat der Kunde HACONCEPTS nach Vertragsschluss ein schriftliches SEPA-Lastschriftmandat zu erteilen. HACONCEPTS stellt ein solches auf Anfrage zur Verfügung.</p>
+              <p>(4) HACONCEPTS stellt dem Kunden eine ordnungsgemäße und die Umsatzsteuer ausweisende Rechnung aus (ggf. durch Erfüllungsgehilfen).</p>
+              <p>(5) Für den Fall, dass vereinbarte Lastschriften nicht vom Konto des Kunden eingezogen werden können und eine Rückbuchung erfolgt, ist der Kunde verpflichtet, den geschuldeten Betrag binnen drei Werktagen nach Rückbuchung an HACONCEPTS zu überweisen und die durch die Rückbuchung veranlassten Kosten zu übernehmen.</p>
+              <p>(6) Die Aufrechnung mit Gegenforderungen ist wechselseitig nur zulässig, wenn der jeweils andere Vertragspartner die Aufrechnung anerkannt hat oder diese rechtskräftig festgestellt ist. Dasselbe gilt für die Ausübung eines Zurückbehaltungsrechts durch eine Vertragspartei.</p>
             </section>
             
             <section>
-              <h2 className="text-xl font-semibold text-white mb-2">6. Laufzeit und Kündigung</h2>
-              <p>6.1 Die Laufzeit des Vertrages ergibt sich aus dem Angebot bzw. der Auftragsbestätigung.</p>
-              <p>6.2 Bei Verträgen mit einer festen Laufzeit ist eine ordentliche Kündigung vor Ablauf der vereinbarten Laufzeit ausgeschlossen.</p>
-              <p>6.3 Bei Verträgen mit unbestimmter Laufzeit kann der Vertrag von beiden Seiten mit einer Frist von 30 Tagen zum Monatsende gekündigt werden, sofern nicht anders vereinbart.</p>
-              <p>6.4 Das Recht zur außerordentlichen Kündigung aus wichtigem Grund bleibt unberührt.</p>
-              <p>6.5 Kündigungen bedürfen der Schriftform.</p>
+              <h2 className="text-xl font-semibold text-white mb-2">§ 5 Kündigung, Laufzeit</h2>
+              <p>(1) Der Vertrag hat die individuell zwischen den Parteien vereinbarte Mindestlaufzeit. Die vorzeitige Kündigung ist ausgeschlossen. Sofern der Vertrag nicht spätestens vier Wochen vor Ablauf der Laufzeit gegenüber der jeweils anderen Partei aufgekündigt werden, verlängert er sich zu gleicher Laufzeit und gleichen Bedingungen.</p>
+              <p>(2) Etwaige freie Kündigungsrechte des Kunden sind ausgeschlossen.</p>
+              <p>(3) Kündigungen bedürfen zu ihrer Wirksamkeit der Schriftform.</p>
+              <p>(4) Das Recht zur außerordentlichen Kündigung aus wichtigem Grund / Rücktritt aus wichtigem Grund bleibt stets unberührt. Das Vorliegen eines wichtigen Grundes ist stets nachzuweisen.</p>
             </section>
             
             <section>
-              <h2 className="text-xl font-semibold text-white mb-2">7. Nutzungsrechte</h2>
-              <p>7.1 NextMove Consulting räumt dem Kunden an den im Rahmen des Auftrags erstellten Werken und Arbeitsergebnissen ein einfaches, nicht übertragbares Nutzungsrecht ein, soweit nicht ausdrücklich etwas anderes vereinbart wurde.</p>
-              <p>7.2 Die Einräumung der Nutzungsrechte steht unter der aufschiebenden Bedingung der vollständigen Zahlung der vereinbarten Vergütung.</p>
-              <p>7.3 NextMove Consulting ist berechtigt, auf die für den Kunden erstellten Werke als Referenz hinzuweisen und diese zu Präsentationszwecken zu nutzen, sofern keine berechtigten Interessen des Kunden entgegenstehen.</p>
+              <h2 className="text-xl font-semibold text-white mb-2">§ 6 Verzug / außerordentliche Kündigung</h2>
+              <p>(1) Fristen für die Leistungserbringung durch HACONCEPTS beginnen nicht, bevor der Rechnungsbetrag bei HACONCEPTS eingegangen ist und vereinbarungsgemäß die für die Dienstleistungen notwendigen Daten bei HACONCEPTS vollständig vorliegen beziehungsweise die notwendigen Mitwirkungshandlungen komplett erbracht sind.</p>
+              <p>(2) Ist der Kunde mit fälligen Zahlungen im Verzug, behält HACONCEPTS sich vor, weitere Leistungen bis zum Ausgleich des offenen Betrages nicht auszuführen.</p>
+              <p>(3) Ist der Kunde im Fall der Ratenzahlung mit mindestens zwei fälligen Zahlungen gegenüber HACONCEPTS in Verzug, ist HACONCEPTS berechtigt, den Vertrag außerordentlich zu kündigen und die Leistungen einzustellen. HACONCEPTS wird gegebenenfalls gesamte Vergütung, die bis zum nächsten ordentlichen Beendigungstermin fällig wird, als Schadensersatz geltend zu machen.</p>
             </section>
             
             <section>
-              <h2 className="text-xl font-semibold text-white mb-2">8. Haftung</h2>
-              <p>8.1 NextMove Consulting haftet unbeschränkt für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit, die auf einer vorsätzlichen oder fahrlässigen Pflichtverletzung von NextMove Consulting, seinen gesetzlichen Vertretern oder Erfüllungsgehilfen beruhen.</p>
-              <p>8.2 Für sonstige Schäden haftet NextMove Consulting nur, wenn sie auf einer vorsätzlichen oder grob fahrlässigen Pflichtverletzung von NextMove Consulting, seinen gesetzlichen Vertretern oder Erfüllungsgehilfen beruhen.</p>
-              <p>8.3 Die Haftung für leichte Fahrlässigkeit ist ausgeschlossen, sofern keine wesentlichen Vertragspflichten verletzt werden. Wesentliche Vertragspflichten sind solche, deren Erfüllung die ordnungsgemäße Durchführung des Vertrags überhaupt erst ermöglicht und auf deren Einhaltung der Kunde regelmäßig vertrauen darf.</p>
-              <p>8.4 Die Haftung ist auf den vorhersehbaren, typischerweise eintretenden Schaden begrenzt.</p>
-              <p>8.5 Die vorstehenden Haftungsbeschränkungen gelten nicht für Ansprüche nach dem Produkthaftungsgesetz.</p>
+              <h2 className="text-xl font-semibold text-white mb-2">§ 7 Erfüllung</h2>
+              <p>(1) HACONCEPTS wird die vereinbarten Dienstleistungen gemäß Angebot mit der erforderlichen Sorgfalt durchführen. HACONCEPTS ist berechtigt, sich dazu uneingeschränkt der Hilfe Dritter zu bedienen.</p>
+              <p>(2) Ist HACONCEPTS gehindert, die vereinbarten Dienstleistungen zu erbringen und stammen die Hinderungsausgründe aus der Sphäre des Kunden, bleibt der Vergütungsanspruch von HACONCEPTS unberührt.</p>
             </section>
             
             <section>
-              <h2 className="text-xl font-semibold text-white mb-2">9. Datenschutz</h2>
-              <p>9.1 NextMove Consulting verarbeitet personenbezogene Daten des Kunden unter Einhaltung der geltenden datenschutzrechtlichen Bestimmungen.</p>
-              <p>9.2 Weitere Informationen zum Datenschutz finden Sie in unserer Datenschutzerklärung.</p>
+              <h2 className="text-xl font-semibold text-white mb-2">§ 8 Verhalten und Rücksichtnahme</h2>
+              <p>(1) Der Kunde hat die üblichen Verhaltensweisen eines redlichen Kaufmanns uns gegenüber zu gewährleisten. Wir behalten uns vor, jede rechtswidrige und/oder unsachgemäße beziehungsweise sachgrundlose Äußerung über unser Unternehmen und unsere Dienstleistungen, sei es durch Kunden, Mitbewerber oder anderweitige Dritte, insbesondere unwahre Tatsachenbehauptungen und Schmähkritiken, zivilrechtlich zu verfolgen und darüber hinaus ohne Vorankündigung zur Strafanzeige zu bringen.</p>
+              <p>(2) Der Kunde ist bei Teilnahme an unseren Programmen und Veranstaltungen verpflichtet, den störungsfreien Fortgang an unseren Programmen und Veranstaltungen zu gewährleisten und unseren Anweisungen unmittelbar Folge zu leisten. Bei wiederholt festgestelltem Verstoß gegen eine einmal erteilte Anweisung sind wir berechtigt, den Kunden vorübergehend oder dauerhaft von der entsprechenden Teilnahme auszuschließen. Unser Vergütungsanspruch bleibt in diesen Fällen unberührt.</p>
             </section>
             
             <section>
-              <h2 className="text-xl font-semibold text-white mb-2">10. Geheimhaltung</h2>
-              <p>10.1 Die Parteien verpflichten sich, alle im Rahmen der Zusammenarbeit erhaltenen Informationen, Unterlagen und Daten vertraulich zu behandeln und nur für die Zwecke des jeweiligen Auftrags zu verwenden.</p>
-              <p>10.2 Diese Verpflichtung gilt auch nach Beendigung der Zusammenarbeit fort.</p>
+              <h2 className="text-xl font-semibold text-white mb-2">§ 9 Schutzrechte Dritter</h2>
+              <p>Der Kunde gewährleistet, dass HACONCEPTS überlassene Arbeitsmaterialien (z.B. Fotos, Texte, Videos) frei von Rechten Dritter sind oder die für die Zwecke des Hauptvertrags erforderlichen Genehmigungen vorliegen. Der Kunde stellt HACONCEPTS insoweit von jeglicher Inanspruchnahme Dritter frei.</p>
             </section>
             
             <section>
-              <h2 className="text-xl font-semibold text-white mb-2">11. Schlussbestimmungen</h2>
-              <p>11.1 Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts.</p>
-              <p>11.2 Erfüllungsort und ausschließlicher Gerichtsstand für alle Streitigkeiten aus oder im Zusammenhang mit diesem Vertrag ist Hamburg, sofern der Kunde Kaufmann, juristische Person des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen ist.</p>
-              <p>11.3 Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, so wird dadurch die Wirksamkeit der übrigen Bestimmungen nicht berührt.</p>
-              <p>11.4 Änderungen und Ergänzungen dieser AGB bedürfen der Schriftform. Dies gilt auch für die Änderung dieser Schriftformklausel.</p>
+              <h2 className="text-xl font-semibold text-white mb-2">§ 10 Nutzungsrechte</h2>
+              <p>(1) Der Kunde erhält ausschließlich für die Dauer der Vertragslaufzeit ein einfaches und nicht übertragbares Nutzungsrecht in Bezug auf die von HACONCEPTS erstellten und zur Verfügung gestellten Arbeits- und Leistungsergebnisse. Leistungs- und Arbeitsergebnisse im Sinne des zugrunde liegenden Vertrags sind alle Werk- bzw. Dienstleistungen oder Teile davon, die von HACONCEPTS für den Kunden erstellt wurden (z B alle Informationen, Dokumente, Auswertungen, Videos, Fotos, im Rahmen der Auftragserfüllung erworbenes Knowhow, Werbeanzeigen, Zeichnungen, Materialien, Pflichtenhefte, Programmentwürfe, (elektronische) Dateien, Datensammlungen, Individualsoftware einschließlich dazugehöriger Dokumentation, Handbücher und IT-Systeme in Form von Quellcodes oder in sonstiger Form).</p>
+              <p>(2) Absatz 1 gilt ausschließlich unter dem Vorbehalt, dass der Kunde die HACONCEPTS nach dem Hauptvertrag zustehende Vergütung vollständig entrichtet hat.</p>
+              <p>(3) Ist Ratenzahlung vereinbart, geht das nach Absatz 1 benannte Nutzungsrecht vorbehaltlich anderslautender Individualvereinbarung erst mit vollständiger Zahlung der letzten Rate an HACONCEPTS über.</p>
+              <p>(4) Die Weitergabe der Arbeits- und Leistungsergebnisse an Dritte (auch verbundene Unternehmen) wird ausgeschlossen. Gleiches gilt für eine Bearbeitung nach § 23 UrhG.</p>
+              <p>(5) Die Weitergabe unserer Programminhalte an Dritte ist verboten und wird im Fall des Verstoßes zivil- und strafrechtlich verfolgt werden. Dies gilt insbesondere auch für Zugänge zu unseren Mitgliederplattformen. Vorbehaltlich anderslautender Individualabrede besteht ein Nutzungsrecht ausschließlich für unseren direkten Vertragspartner.</p>
+            </section>
+            
+            <section>
+              <h2 className="text-xl font-semibold text-white mb-2">§ 11 Widerrufsrecht</h2>
+              <p>Ein Widerrufsrecht für Unternehmer im Sinne des § 14 BGB und Kaufleute gemäß Handelsgesetzbuch (HGB) besteht weder von Gesetzes wegen noch wird ein solches von HACONCEPTS anderweitig eingeräumt.</p>
+            </section>
+            
+            <section>
+              <h2 className="text-xl font-semibold text-white mb-2">§ 12 Haftung</h2>
+              <p>(1) HACONCEPTS haftet auf Schadensersatz – gleich aus welchem Rechtsgrund - nur für Vorsatz und grobe Fahrlässigkeit. Bei einfacher Fahrlässigkeit haftet HACONCEPTS nur</p>
+              <p>a) für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit,</p>
+              <p>b) für Schäden aus der Verletzung einer wesentlichen Vertragspflicht (Verpflichtung, deren Erfüllung die ordnungsgemäße Durchführung des Vertrags überhaupt erst ermöglicht und auf deren Einhaltung der Vertragspartner regelmäßig vertraut und vertrauen darf); in diesem Fall ist die Haftung jedoch auf den Ersatz des vorhersehbaren, typischerweise eintretenden Schadens begrenzt.</p>
+              <p>(2) In den Grenzen nach Absatz 1 haftet HACONCEPTS nicht für Daten- und Programmverluste. Die Haftung für Datenverlust wird der Höhe nach auf den typischen Wiederherstellungsaufwand beschränkt, der bei regelmäßiger und gefahr entsprechender Anfertigung von Sicherungskopien eingetreten wäre. Die Haftung nach dem Produkthaftungsgesetz bleibt ebenso stets unberührt wie die für die Übernahme einer Garantie.</p>
+            </section>
+            
+            <section>
+              <h2 className="text-xl font-semibold text-white mb-2">§ 13 Schlussbestimmungen</h2>
+              <p>(1) Abweichungen von diesen AGB sind nur wirksam, wenn sie schriftlich vereinbart wurden. Im Einzelfall getroffene, individuelle Vereinbarungen mit dem Kunden einschließlich Nebenabreden, Ergänzungen und Änderungen) haben in jedem Fall Vorrang vor diesen AGB. Für den Inhalt derartiger Vereinbarungen ist ein schriftlicher Vertrag bzw. die schriftliche Bestätigung von HACONCEPTS maßgeblich.</p>
+              <p>(2) Das gesamte Vertragsverhältnis zwischen HACONCEPTS und dem Kunden unterliegt deutschem Recht unter Ausschluss des UN-Kaufrechts.</p>
+              <p>(3) Erfüllungsort ist der Sitz von HACONCEPTS. Ausschließlicher kaufmännischer Gerichtsstand ist der Sitz von HACONCEPTS, derzeit Nürtingen.</p>
+              <p>(4) Sollten eine oder mehrere Bestimmungen des Vertrags aus tatsächlichen oder rechtlichen Gründen unwirksam oder undurchführbar sein oder werden, so wird die Wirksamkeit der übrigen Vertragsbestimmungen hierdurch nicht berührt. HACONCEPTS und der Kunde sind verpflichtet, die unwirksame oder undurchführbare Bestimmung durch eine wirksame Bestimmung zu ersetzen, die dem wirtschaftlich Gewollten am nächsten kommt.</p>
             </section>
             
             <section className="mt-8">
-              <p className="italic">Stand: Juni 2024</p>
+              <p className="italic">AGB Stand: 31.07.2022 © Vervielfältigung verboten</p>
             </section>
           </div>
           

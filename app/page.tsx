@@ -17,6 +17,7 @@ import SocialProof from '@/components/SocialProof';
 import Questions from '@/components/Questions';
 import LampTransition from '@/components/LampTransition';
 import FailureReasons from '@/components/FailureReasons';
+import CalendlyWidget from '@/components/CalendlyWidget';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
@@ -91,6 +92,7 @@ export default function Home() {
         <Testimonials />
         <WhyUs />
         <CTA />
+        <CalendlyWidget />
         <Questions />
         <Footer />
         <WhatsAppChat />
