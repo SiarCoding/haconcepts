@@ -80,17 +80,75 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button mit originalem Design */}
+          {/* Neuer CTA Button mit Book Now/Hero-Stil */}
           <div className="relative hidden md:inline-flex z-50">
             <button 
               onClick={handleCtaClick}
-              className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 cursor-pointer"
+              style={{
+                background: 'rgba(255, 85, 0, 0.1)',
+                color: 'white',
+                border: '1px solid rgba(255, 85, 0, 0.5)',
+                padding: '12px 32px',
+                borderRadius: '50px',
+                fontWeight: '500',
+                fontSize: '14px',
+                letterSpacing: '0.5px',
+                textTransform: 'uppercase',
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 0 20px rgba(255, 85, 0, 0.4)',
+                cursor: 'pointer'
+              }}
+              className="relative"
             >
-              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#ff8040_0%,#ff5500_50%,#ff8040_100%)]" />
-              <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-6 py-2 text-sm font-medium text-white backdrop-blur-3xl transition-all duration-300 ease-in-out hover:bg-[#cc4400]">
+              <div 
+                style={{
+                  position: 'absolute',
+                  inset: '0',
+                  background: 'radial-gradient(circle at center, rgba(255, 85, 0, 0.9) 0%, rgba(255, 85, 0, 0.5) 40%, transparent 70%)',
+                  filter: 'blur(20px)',
+                  opacity: '0.7',
+                  zIndex: '-1',
+                  transform: 'scale(1.2)'
+                }}
+              ></div>
+              
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: '0',
+                  background: 'linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent)',
+                  transform: 'translateX(-100%)',
+                  animation: 'shine 3s infinite',
+                  zIndex: '1'
+                }}
+              ></div>
+              
                 Lass dich kostenlos beraten!
-              </span>
             </button>
+            
+            <style jsx>{`
+              @keyframes shine {
+                0% {
+                  transform: translateX(-100%);
+                }
+                20%, 100% {
+                  transform: translateX(100%);
+                }
+              }
+              
+              button:hover {
+                background: rgba(255, 85, 0, 0.25) !important;
+                border-color: rgba(255, 85, 0, 0.8) !important;
+                box-shadow: 0 0 30px rgba(255, 85, 0, 0.6) !important;
+              }
+              
+              button:hover div:first-of-type {
+                opacity: 0.9 !important;
+                transform: scale(1.3) !important;
+              }
+            `}</style>
           </div>
         </div>
 
@@ -110,15 +168,52 @@ const Header = () => {
                 </Link>
               ))}
               
-              {/* Mobile CTA Button */}
+              {/* Mobile CTA Button mit Book Now/Hero-Stil */}
               <button 
                 onClick={handleCtaClick}
-                className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 cursor-pointer"
+                style={{
+                  background: 'rgba(255, 85, 0, 0.1)',
+                  color: 'white',
+                  border: '1px solid rgba(255, 85, 0, 0.5)',
+                  padding: '12px 32px',
+                  borderRadius: '50px',
+                  fontWeight: '500',
+                  fontSize: '14px',
+                  letterSpacing: '0.5px',
+                  textTransform: 'uppercase',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 0 20px rgba(255, 85, 0, 0.4)',
+                  cursor: 'pointer',
+                  marginTop: '20px'
+                }}
+                className="relative"
               >
-                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#ff8040_0%,#ff5500_50%,#ff8040_100%)]" />
-                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-6 py-2 text-sm font-medium text-white backdrop-blur-3xl transition-all duration-300 ease-in-out hover:bg-[#cc4400]">
+                <div 
+                  style={{
+                    position: 'absolute',
+                    inset: '0',
+                    background: 'radial-gradient(circle at center, rgba(255, 85, 0, 0.9) 0%, rgba(255, 85, 0, 0.5) 40%, transparent 70%)',
+                    filter: 'blur(20px)',
+                    opacity: '0.7',
+                    zIndex: '-1',
+                    transform: 'scale(1.2)'
+                  }}
+                ></div>
+                
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: '0',
+                    background: 'linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent)',
+                    transform: 'translateX(-100%)',
+                    animation: 'shine 3s infinite',
+                    zIndex: '1'
+                  }}
+                ></div>
+                
                   Lass dich kostenlos beraten!
-                </span>
               </button>
             </div>
           </nav>

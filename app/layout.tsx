@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import WhatsAppChat from '@/components/WhatsAppChat';
 import { ScrollProgress } from "@/components/magicui/scroll-progress";
+import OrangeCursor from '@/components/OrangeCursor';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -286,6 +287,8 @@ export default function RootLayout({
         <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
       </head>
       <body className={inter.className}>
+        {/* Orangefarbener Custom Cursor als Client-Komponente */}
+        <OrangeCursor />
         <ScrollProgress className="bg-gradient-to-r from-[#ff5500] via-[#ff8040] to-[#ff5500]" />
         {children}
         <WhatsAppChat />

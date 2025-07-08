@@ -1,24 +1,26 @@
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import Testimonials from '@/components/Testimonials';
-import WhyUs from '@/components/WhyUs';
-import CTA from '@/components/CTA';
-import Footer from '@/components/Footer';
-import WhatsAppChat from '@/components/WhatsAppChat';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Target, TrendingUp, Zap } from 'lucide-react';
-import Timeline from '@/components/Timeline';
-import PainPoints from '@/components/PainPoints';
-import Solutions from '@/components/Solutions';
 import { MovingLogos } from '@/components/ui/moving-cards'
-import SocialProof from '@/components/SocialProof';
-import Questions from '@/components/Questions';
-import LampTransition from '@/components/LampTransition';
-import FailureReasons from '@/components/FailureReasons';
-import CalendlyWidget from '@/components/CalendlyWidget';
 import Script from 'next/script';
+
+// Dynamisches Laden für Komponenten "below the fold"
+const PainPoints = dynamic(() => import('@/components/PainPoints'));
+const Solutions = dynamic(() => import('@/components/Solutions'));
+const SocialMediaContent = dynamic(() => import('@/components/SocialMediaContent'));
+const Websites = dynamic(() => import('@/components/Websites'));
+const FailureReasons = dynamic(() => import('@/components/FailureReasons'));
+const Team = dynamic(() => import('@/components/Team'));
+const Timeline = dynamic(() => import('@/components/Timeline'));
+const Testimonials = dynamic(() => import('@/components/Testimonials'));
+const WhyUs = dynamic(() => import('@/components/WhyUs'));
+const CTA = dynamic(() => import('@/components/CTA'));
+const CalendlyWidget = dynamic(() => import('@/components/CalendlyWidget'));
+const Questions = dynamic(() => import('@/components/Questions'));
+const Footer = dynamic(() => import('@/components/Footer'));
+const NextMove = dynamic(() => import('@/components/NextMove'));
+const BusinessSection = dynamic(() => import('@/components/BusinessSection'));
 
 export const metadata: Metadata = {
   title: 'NextMove Consulting | Leads für Finanzberater ohne Google Ads | Performance Marketing',
@@ -83,11 +85,15 @@ export default function Home() {
           <Hero />
         </div>
         <MovingLogos />
-        <PainPoints />
-        <LampTransition />
-        <Solutions />
-        <SocialProof />
+        {/* Übergang zwischen PainPoints und Solutions */}
+        <div className="relative">
+          <PainPoints />
+          <Solutions />
+        </div>
         <FailureReasons />
+        <BusinessSection />
+        <NextMove />
+        <Team />
         <Timeline />
         <Testimonials />
         <WhyUs />
@@ -95,7 +101,6 @@ export default function Home() {
         <CalendlyWidget />
         <Questions />
         <Footer />
-        <WhatsAppChat />
       </main>
     </>
   );

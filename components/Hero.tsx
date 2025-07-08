@@ -1,70 +1,109 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useMemo, useCallback, memo } from 'react';
 import Image from 'next/image';
-import { FlipWords } from '@/components/ui/flip-word';
-import { AnimatedTooltip } from '@/components/ui/animated-tooltip';
+import dynamic from 'next/dynamic';
 import { Star, Play } from 'lucide-react';
 
-const Hero = () => {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+// Lazy load components for better performance
+const FlipWords = dynamic(() => import('@/components/ui/flip-word').then(mod => ({ default: mod.FlipWords })), {
+  loading: () => <div className="w-56 h-8 bg-gray-800/20 rounded animate-pulse" />,
+});
+
+const AnimatedTooltip = dynamic(() => import('@/components/ui/animated-tooltip').then(mod => ({ default: mod.AnimatedTooltip })), {
+  loading: () => <div className="flex space-x-2">
+    {[...Array(6)].map((_, i) => (
+      <div key={i} className="w-12 h-12 bg-gray-800/20 rounded-full animate-pulse" />
+    ))}
+  </div>,
+});
+
+const Hero = memo(() => {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
   
-  const flipWords = ['Umsatz', 'Reichweite', 'Mitarbeiter'];
+  // Animation Refs
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
   
-  const teamMembers = [
+  // Memoized constants to prevent recreation
+  const flipWords = useMemo(() => ['Umsatz', 'Reichweite', 'Mitarbeiter'], []);
+  
+  const teamMembers = useMemo(() => [
     {
       id: 1,
-      name: 'Willem Blankwater',
-      designation: 'Immobilien-Makler',
-      image: '/blankwater.jpeg',
+      name: 'Azim Choudhury',
+      designation: 'CD Immobilien Portfolio',
+      image: '/azimchoudry.jpg',
     },
     {
       id: 2,
-      name: 'Timm Sonnenfeld',
-      designation: 'Immobilien-Makler',
-      image: '/sonnenfeld.jpeg',
+      name: 'Michael Schürdt',
+      designation: 'HMS-Finance Consulting',
+      image: '/P1039493.jpg',
     },
     {
       id: 3,
-      name: 'Adil Hersan',
-      designation: 'Immobilien-Makler',
-      image: '/hersan.jpeg',
+      name: 'Jens Freyer',
+      designation: 'Freyer Immobilien',
+      image: '/P1039309.jpg',
     },
     {
       id: 4,
-      name: 'Michaelis Kekelidis',
-      designation: 'Immobilien-Makler',
-      image: '/kekelidis.jpeg',
+      name: 'Alexander Banzhaf',
+      designation: 'Banzhaf Immobilien',
+      image: '/banzhaf.jpeg',
     },
     {
       id: 5,
-      name: 'Sven Dederichs',
-      designation: 'Kapitalanlage',
+      name: 'Jacek',
+      designation: 'MSH Immobilien',
       image: '/profilbild1.jpg',
     },
     {
       id: 6,
-      name: 'Nico Fesel & Stefan Fries',
-      designation: 'Kapitalanlage',
-      image: '/Hilpert.jpg',
+      name: 'Alexander Kedro',
+      designation: 'Kedro Immobilien',
+      image: '/kedro.jpeg',
     },
-  ];
+  ], []);
 
-  const onLoad = () => {
-    // Leere Funktion als Platzhalter
-  };
-  
-  const playVideo = () => {
+  // Memoized animation function
+  const applyAnimations = useCallback(() => {
+    const title = titleRef.current;
+    const subtitle = subtitleRef.current;
+    const cta = ctaRef.current;
+
+    setTimeout(() => {
+      if (title) title.classList.add('animate-slide-right');
+    }, 100);
+    
+    setTimeout(() => {
+      if (subtitle) subtitle.classList.add('animate-fade-in');
+    }, 300);
+    
+    setTimeout(() => {
+      if (cta) cta.classList.add('animate-fade-in');
+    }, 600);
+  }, []);
+
+  useEffect(() => {
+    // Starte Animationen nach kurzem Delay, damit DOM vollständig geladen ist
+    const timer = setTimeout(applyAnimations, 100);
+    return () => clearTimeout(timer);
+  }, [applyAnimations]);
+
+  const playVideo = useCallback(() => {
     setIsVideoPlaying(true);
-  };
+  }, []);
 
-  const handleCtaClick = () => {
+  const handleCtaClick = useCallback(() => {
     // Öffne Calendly-Link in einem neuen Tab
     window.open('https://calendly.com/ali-nextmove-digital/30min?preview_source=et_card&month=2025-03', '_blank');
-  };
+  }, []);
 
-  // Orangener Blur-Effekt Komponente für Wiederverwendung
-  const OrangeBlurEffect = () => (
+  // Memoized components to prevent recreation
+  const OrangeBlurEffect = useMemo(() => (
     <div className="absolute inset-0 -translate-y-24 sm:-translate-y-48 pointer-events-none">
       <svg className="blur-3xl filter opacity-40" style={{ filter: 'blur(64px)' }} width="444" height="536" viewBox="0 0 444 536" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M225.919 112.719C343.98 64.6648 389.388 -70.487 437.442 47.574C485.496 165.635 253.266 481.381 135.205 529.435C17.1445 577.488 57.9596 339.654 9.9057 221.593C-38.1482 103.532 107.858 160.773 225.919 112.719Z" fill="url(#c)" />
@@ -76,12 +115,11 @@ const Hero = () => {
         </defs>
       </svg>
     </div>
-  );
+  ), []);
 
-  // Desktop-spezifischer orangener Blur-Effekt mit höherer Sichtbarkeit
-  const DesktopOrangeBlurEffect = () => (
-    <div className="absolute -inset-16 -translate-x-16 -translate-y-20 pointer-events-none">
-      <svg className="blur-3xl filter opacity-60 w-[130%] h-[130%]" style={{ filter: 'blur(70px)' }} viewBox="0 0 444 536" fill="none" xmlns="http://www.w3.org/2000/svg">
+  const DesktopOrangeBlurEffect = useMemo(() => (
+    <div className="absolute -inset-4 translate-y-8 pointer-events-none z-0">
+      <svg className="blur-3xl filter opacity-50 w-[100%] h-[100%]" style={{ filter: 'blur(60px)' }} viewBox="0 0 444 536" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M225.919 112.719C343.98 64.6648 389.388 -70.487 437.442 47.574C485.496 165.635 253.266 481.381 135.205 529.435C17.1445 577.488 57.9596 339.654 9.9057 221.593C-38.1482 103.532 107.858 160.773 225.919 112.719Z" fill="url(#desktop-c)" />
         <defs>
           <linearGradient id="desktop-c" x1="82.7339" y1="550.792" x2="-39.945" y2="118.965" gradientUnits="userSpaceOnUse">
@@ -91,97 +129,140 @@ const Hero = () => {
         </defs>
       </svg>
     </div>
-  );
+  ), []);
 
-  // Video-Player-Komponente für Wiederverwendung
-  const VideoPlayer = () => (
-    <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl z-10">
-      {isVideoPlaying ? (
-        <iframe 
-          className="absolute inset-0 w-full h-full"
-          src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1" 
-          title="Marketing Video"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      ) : (
-        <div className="relative w-full h-full">
-          {/* Video Thumbnail */}
-          <div className="relative w-full h-full">
-            <img
-              src="/Bild2.jpg"
-              alt="Video Thumbnail"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/80 to-black/40 z-10"></div>
-          </div>
-          
-          {/* Play Button */}
-          <button 
-            onClick={playVideo}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 group z-20"
-          >
-            <div className="relative">
-              {/* Outer glow */}
-              <div className="absolute inset-0 rounded-full bg-[#ff5500]/30 blur-xl scale-150 animate-pulse"></div>
-              
-              {/* Button background */}
-              <div className="relative w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-br from-[#ff5500] to-[#ff8040] shadow-lg shadow-[#ff5500]/30 group-hover:scale-110 transition-transform duration-300">
-                <Play className="w-8 h-8 text-white fill-white ml-1" />
-              </div>
-            </div>
-            
-            <p className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 text-white font-medium">
-              Video abspielen
-            </p>
-          </button>
-        </div>
-      )}
+  const GumletVideoPlayer = useMemo(() => (
+    <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl z-50" style={{position: 'relative', aspectRatio: '16/9'}}>
+      <iframe 
+        loading="lazy" 
+        title="Gumlet video player"
+        src="https://play.gumlet.io/embed/6838f13e71151e6b584f492d?autoplay=1&muted=1&controls=1&loop=1&playsinline=1"
+        style={{border: 'none', position: 'absolute', top: 0, left: 0, height: '100%', width: '100%', zIndex: 100}}
+        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; microphone; camera"
+        allowFullScreen
+        frameBorder="0"
+        sandbox="allow-scripts allow-same-origin allow-presentation allow-forms allow-pointer-lock allow-popups allow-modals"
+      />
     </div>
-  );
+  ), []);
 
   return (
-    <section className="relative py-8 sm:py-10 lg:py-12 overflow-hidden bg-black sm:pb-16 lg:pb-20 xl:pb-24">
+    <section className="relative py-6 sm:py-8 lg:py-16 overflow-hidden bg-black sm:pb-12 lg:pb-16 xl:pb-20 mt-8 lg:mt-12">
+      {/* Animierte Hintergrundgradienten */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-orange-900/10 z-0"></div>
+      
+      {/* Glühende Kugeln */}
+      <div className="absolute top-1/4 right-1/4 h-60 w-60 rounded-full bg-orange-500/10 filter blur-[100px] animate-pulse-orange"></div>
+      <div className="absolute bottom-1/3 left-1/3 h-80 w-80 rounded-full bg-orange-500/5 filter blur-[120px] animate-pulse-orange" style={{ animationDelay: '1s' }}></div>
+      
       <div className="px-4 mx-auto relative sm:px-6 lg:px-8 max-w-7xl">
-        <div className="grid items-center grid-cols-1 gap-y-12 lg:grid-cols-5 gap-x-8">
-          {/* Linke Spalte - Text-Inhalt (3/5 der Breite) */}
-          <div className="lg:col-span-3 relative z-10 lg:text-left text-center">
-            <h1 className="text-4xl font-normal text-white sm:text-5xl lg:text-6xl xl:text-7xl lg:text-left">
-              <div className="mb-2">
-              Täglich neue 
+        {/* Flexbox Layout für Desktop */}
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-12">
+          {/* Linke Spalte - Text-Inhalt */}
+          <div className="flex-1 lg:max-w-[50%] relative z-10 lg:text-left text-center order-1 lg:order-1">
+            {/* Haupttitel - parallel zum Video positioniert */}
+            <h1 ref={titleRef} className="text-4xl font-normal text-white sm:text-5xl lg:text-5xl xl:text-6xl lg:text-left" style={{ lineHeight: '1.1' }}>
+              <span className="block relative">
                 <span className="relative inline-block">
-                  <span className="relative z-10">qualifizierte Leads</span>
-                  <span className="absolute -bottom-2 left-0 right-0 h-4 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-lg opacity-50"></span>
-                  <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span>
-                </span>
-              </div>
-              <div>für Finanzberater und Kapitalanleger</div>
+                  Täglich
+                  {/* Gerader Unterstrich statt geschwungener Linie - mehr Abstand hinzugefügt */}
+                  <span className="absolute bottom-[-8px] md:bottom-[-6px] left-0 w-full h-2 bg-[#ff5500]"></span>
+                </span> neue <span style={{ color: '#ff5500' }} className="text-glow font-bold uppercase">qualifizierte</span>
+              </span>
+              <span className="block"> Leads für Finanzberater und Kapitalanlagen-Berater</span>
             </h1>
 
             {/* Video nur in mobiler Ansicht nach H1 */}
-            <div className="mt-8 lg:hidden relative mx-auto max-w-2xl">
+            <div className="mt-6 lg:hidden relative mx-auto max-w-2xl order-2">
               {/* Orangener Blur-Effekt für mobile Ansicht */}
-              <OrangeBlurEffect />
-              <VideoPlayer />
+              <div className="lg:hidden">
+                {OrangeBlurEffect}
+              </div>
+              {GumletVideoPlayer}
             </div>
 
-            {/* Button mit originalem Design */}
-            <div className="mt-8 sm:mt-12 relative z-40 lg:text-left flex lg:justify-start justify-center">
+            {/* Button */}
+            <div ref={ctaRef} className="mt-6 sm:mt-8 relative z-40 lg:text-left flex lg:justify-start justify-center order-3 lg:order-2">
               <button 
                 onClick={handleCtaClick}
-                className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 cursor-pointer"
+                style={{
+                  background: 'rgba(255, 85, 0, 0.1)',
+                  color: 'white',
+                  border: '1px solid rgba(255, 85, 0, 0.5)',
+                  padding: '20px 48px',
+                  borderRadius: '16px',
+                  fontWeight: '600',
+                  fontSize: '20px',
+                  letterSpacing: '1.5px',
+                  textTransform: 'uppercase',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 0 20px rgba(255, 85, 0, 0.4)',
+                  cursor: 'pointer',
+                  minWidth: '320px',
+                  maxWidth: '100%',
+                  lineHeight: '1.2',
+                }}
+                className="relative"
               >
-                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#ff8040_0%,#ff5500_50%,#ff8040_100%)]" />
-                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-6 py-2 text-sm font-medium text-white backdrop-blur-3xl transition-all duration-300 ease-in-out hover:bg-[#cc4400]">
-                  Worauf wartest du denn noch?
-                </span>
+                <div 
+                  style={{
+                    position: 'absolute',
+                    inset: '0',
+                    background: 'radial-gradient(circle at center, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 40%, transparent 70%)',
+                    filter: 'blur(15px)',
+                    opacity: '0.6',
+                    zIndex: '-1',
+                    transform: 'scale(1.1)'
+                  }}
+                ></div>
+                
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: '0',
+                    background: 'linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent)',
+                    transform: 'translateX(-100%)',
+                    animation: 'shine 3s infinite',
+                    zIndex: '1'
+                  }}
+                ></div>
+
+                Jetzt kostenlos anfragen
               </button>
+              
+              {/* CSS Animation für Shine-Effekt */}
+              <style jsx>{`
+                @keyframes shine {
+                  0% {
+                    transform: translateX(-100%);
+                  }
+                  20%, 100% {
+                    transform: translateX(100%);
+                  }
+                }
+                
+                button:hover {
+                  background: rgba(255, 85, 0, 0.2) !important;
+                  border-color: rgba(255, 85, 0, 0.7) !important;
+                  box-shadow: 0 0 30px rgba(255, 85, 0, 0.6) !important;
+                }
+                
+                button:hover div:first-of-type {
+                  opacity: 0.85 !important;
+                }
+              `}</style>
             </div>
 
-            {/* Testimonials Section */}
-            <div className="mt-8 sm:mt-12 relative z-10">
-              <p className="text-lg font-normal text-white">Bereits +100 zufriedene Partner</p>
+            {/* Testimonials Section - nur auf Mobile sichtbar */}
+            <div className="mt-6 sm:mt-10 relative z-10 order-4 lg:order-3 lg:hidden">
+              <p className="text-lg font-normal text-white">
+                Bereits <span className="relative inline-block">
+                  +100 zufriedene Partner
+                  <span className="absolute bottom-[-2px] left-0 w-full h-1 bg-[#ff5500]"></span>
+                </span>
+              </p>
               <div className="flex flex-col md:flex-row items-center mt-3 justify-center lg:justify-start">
                 <div className="scale-[0.6] md:scale-100 flex-shrink-0">
                   <AnimatedTooltip items={teamMembers} />
@@ -191,7 +272,7 @@ const Hero = () => {
                     {[...Array(5)].map((_, index) => (
                       <Star
                         key={index}
-                        className="w-6 h-6 text-yellow-400 fill-yellow-400 mr-1"
+                        className="w-6 h-6 text-[#ff5500] fill-[#ff5500] mr-1"
                       />
                     ))}
                   </div>
@@ -203,8 +284,8 @@ const Hero = () => {
               </div>
             </div>
             
-            {/* Flip Words Section - Größe angepasst */}
-            <div className="mt-8 h-14 mb-2 text-2xl sm:text-3xl md:text-4xl flex lg:justify-start justify-center">
+            {/* Flip Words Section */}
+            <div className="mt-6 h-14 mb-2 text-2xl sm:text-3xl md:text-4xl flex lg:justify-start justify-center order-5 lg:order-4">
               <div className="flex items-center mx-auto lg:mx-0">
                 <span className="text-white mr-2 font-normal">Mehr</span>
                 <FlipWords
@@ -215,18 +296,11 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Partner Logos - ProvenExpert hinzugefügt */}
-            <div className="flex flex-wrap lg:justify-start justify-center items-center mt-8 gap-4 relative z-10">
+            {/* Partner Logos - TikTok entfernt, nur ProvenExpert und andere */}
+            <div className="flex flex-wrap lg:justify-start justify-center items-center mt-6 gap-4 relative z-10 order-6 lg:order-5">
               <Image
                 src="/google5.svg"
                 alt="Google Partners"
-                width={120}
-                height={60}
-                className="object-contain"
-              />
-              <Image
-                src="/Tiktokpartner.svg"
-                alt="TikTok for Business"
                 width={120}
                 height={60}
                 className="object-contain"
@@ -255,20 +329,48 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Rechte Spalte - Video (2/5 der Breite) - nur auf Desktop sichtbar */}
-          <div className="relative lg:col-span-2 hidden lg:block">
-            {/* Orangener Blur-Effekt für Desktop */}
+          {/* Rechte Spalte - Video (nur auf Desktop sichtbar) */}
+          <div className="flex-1 lg:max-w-[50%] hidden lg:flex flex-col items-center justify-start relative order-2 lg:order-2">
+            {/* Orangener Blur-Effekt für Desktop - niedriger z-index */}
             <div className="absolute inset-0 z-0">
-              <DesktopOrangeBlurEffect />
+              {DesktopOrangeBlurEffect}
             </div>
             
-            {/* Video Player - nur auf Desktop */}
-            <VideoPlayer />
+            {/* Gumlet Video Player - parallel zum H1 positioniert mit hohem z-index */}
+            <div className="w-full transform scale-[1.15] mt-8 relative z-50">
+              {GumletVideoPlayer}
+            </div>
+
+            {/* Testimonials Section - unter dem Video auf Desktop mit mehr Abstand zum Video */}
+            <div className="mt-16 relative z-10 flex flex-col items-center">
+              <p className="text-lg font-normal text-white text-center mb-2">
+                Bereits <span className="inline-block">+100 zufriedene Partner</span>
+              </p>
+              <div className="flex flex-col items-center mt-0">
+                <div className="scale-100 flex-shrink-0">
+                  <AnimatedTooltip items={teamMembers} />
+                </div>
+                <div className="mt-4 flex items-center">
+                  <div className="flex mr-6">
+                    {[...Array(5)].map((_, index) => (
+                      <Star
+                        key={index}
+                        className="w-6 h-6 text-[#ff5500] fill-[#ff5500] mr-1"
+                      />
+                    ))}
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-lg font-semibold text-white">4.9</span>
+                    <span className="text-sm text-gray-400 ml-1">/5</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
-};
+});
 
 export default Hero;

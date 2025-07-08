@@ -2,15 +2,12 @@
 
 import React from 'react';
 import { LampContainer } from '@/components/ui/lamp';
-import { motion } from 'framer-motion';
 
 const LampTransition = () => {
   return (
-    <div className="py-10">
-      <LampContainer className="min-h-[60vh]">
-        <div>
-          {/* Leerer Container für den Lamp-Effekt */}
-        </div>
+    <div className="relative overflow-hidden w-full -mb-8 sm:-mb-16 md:-mb-24">
+      <LampContainer className="min-h-[20vh] sm:min-h-[25vh] md:min-h-[30vh] p-0 m-0">
+        <></> {/* Empty fragment as children */}
       </LampContainer>
     </div>
   );

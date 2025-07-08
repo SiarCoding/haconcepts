@@ -12,17 +12,27 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-  	extend: {
-  		backgroundImage: {
-  			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-  			'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
-  		},
-  		animation: {
-  			'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
-  			orbit: 'orbit calc(var(--duration)*1s) linear infinite',
-  			marquee: 'marquee var(--duration) infinite linear',
-  			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite'
-  		},
+    extend: {
+      // HIER DEN FOLGENDEN BLOCK HINZUFÜGEN
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        unbounded: ['Unbounded', 'sans-serif'], // Wichtig für die Titel in den Karten
+      },
+      // DER REST DEINER KONFIGURATION BLEIBT GLEICH...
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
+      },
+      animation: {
+        'fade-in-up': 'fade-in-up 0å6s ease-out forwards',
+        orbit: 'orbit calc(var(--duration)*1s) linear infinite',
+        marquee: 'marquee var(--duration) infinite linear',
+        'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
+        'fade-in': 'fade-in 0.5s ease-out forwards',
+        'slide-right': 'slide-right 0.5s ease-out forwards',
+        'pulse-orange': 'pulse-orange 3s infinite'
+      },
   		keyframes: {
   			'fade-in-up': {
   				'0%': {
@@ -57,7 +67,33 @@ const config: Config = {
   				to: {
   					transform: 'translateY(calc(-100% - var(--gap)))'
   				}
-  			}
+  			},
+        'fade-in': {
+          '0%': {
+            opacity: '0'
+          },
+          '100%': {
+            opacity: '1'
+          }
+        },
+        'slide-right': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateX(-50px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateX(0)'
+          }
+        },
+        'pulse-orange': {
+          '0%, 100%': {
+            opacity: '0.5'
+          },
+          '50%': {
+            opacity: '0.1'
+          }
+        }
   		}
   	}
   },
@@ -76,6 +112,45 @@ const config: Config = {
         { values: flattenColorPalette(theme('backgroundColor')), type: 'color' }
       );
     },
+    function ({ addUtilities }: any) {
+      addUtilities({
+        '.text-glow': {
+          'text-shadow': '0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor'
+        },
+        '.btn-glow': {
+          'background': 'linear-gradient(to right, #ff5500, #ff8040)',
+          'box-shadow': '0 0 15px rgba(255, 85, 0, 0.5), 0 0 30px rgba(255, 85, 0, 0.3)'
+        },
+        '.btn-shine': {
+          'position': 'relative',
+          'overflow': 'hidden',
+          '&::after': {
+            content: '""',
+            position: 'absolute',
+            top: '-50%',
+            left: '-50%',
+            width: '200%',
+            height: '200%',
+            background: 'linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent)',
+            transform: 'rotate(30deg)',
+            animation: 'shine 3s infinite',
+          }
+        },
+        '.orange-glassmorphism': {
+          'background': 'rgba(255, 85, 0, 0.1)',
+          'backdrop-filter': 'blur(10px)',
+          'border': '1px solid rgba(255, 85, 0, 0.2)',
+        }
+      });
+      
+      // Add keyframes for shine effect
+      addUtilities({
+        '@keyframes shine': {
+          '0%': { transform: 'rotate(30deg) translateX(-300%)' },
+          '100%': { transform: 'rotate(30deg) translateX(300%)' }
+        }
+      });
+    }
   ],
 };
 

@@ -25,7 +25,7 @@ export function MovingLogos() {
   return (
     <div className="relative bg-black py-20">
       <div className="text-center mb-16">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-white">
           <span className="relative">
             +
             <span className="relative mx-2">
