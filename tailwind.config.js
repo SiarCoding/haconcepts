@@ -13,6 +13,11 @@ module.exports = {
         ring: 'hsl(var(--ring))',
       },
       keyframes: {
+        "border-beam": {
+          "100%": {
+            "offset-distance": "100%",
+          },
+        },
         orbit: {
           '0%': {
             transform: 'translate(-50%, -50%) rotate(calc(var(--angle) * 1deg)) translateX(var(--radius)) rotate(calc(var(--angle) * -1deg))',
@@ -27,6 +32,7 @@ module.exports = {
         },
       },
       animation: {
+        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
         'orbit': 'orbit var(--duration) linear infinite',
         'scroll': 'scroll 30s linear infinite',
       },

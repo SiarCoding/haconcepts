@@ -46,25 +46,25 @@ const members: Member[] = [
 // --- Team-Karten Unterkomponente ---
 const TeamCard: React.FC<TeamCardProps> = ({ member }) => {
     return (
-        <div className="team-card">
-            <div className="team-card-image-container">
+        <div className="group relative flex h-[550px] w-full max-w-sm cursor-pointer flex-col overflow-visible transition-all duration-500 ease-in-out hover:-translate-y-2.5 hover:shadow-2xl hover:shadow-orange-500/20">
+            <div className="relative h-full w-full overflow-hidden rounded-[30px] bg-gray-900 transition-all duration-500 ease-in-out">
                 <Image
                     src={member.avatar}
                     alt={member.name}
                     fill
-                    className="team-card-image object-cover"
+                    className="absolute inset-0 object-cover grayscale transition-all duration-500 ease-in-out group-hover:grayscale-0 group-hover:scale-110"
                     style={{
                         objectPosition: 'center 20%',
                     }}
                 />
                 
-                <div className="team-card-title-container">
-                    <p className="team-card-title-main">{member.role}</p>
-                    <p className="team-card-title-sub">{member.expertise}</p>
+                <div className="absolute left-[30px] top-[30px] z-[3] leading-none">
+                    <p className="font-montserrat text-4xl font-bold uppercase text-[#ff5500] transition-transform duration-500 ease-out group-hover:-translate-y-2">{member.role}</p>
+                    <p className="font-montserrat mt-1 text-base font-bold uppercase text-white opacity-0 transition-all duration-500 ease-out [transition-delay:0.1s] group-hover:opacity-70 group-hover:translate-y-0">{member.expertise}</p>
                 </div>
             </div>
 
-            <div className="team-card-info">
+            <div className="relative z-10 -mt-[70px] flex h-[90px] w-full flex-col items-center justify-center gap-1 rounded-[20px] bg-black/50 p-2.5 backdrop-blur-md transition-transform duration-500 ease-in-out group-hover:-translate-y-2.5">
                 <h3 className="font-montserrat text-2xl font-normal text-white text-center">{member.name}</h3>
                 <p className="font-inter text-base text-white/70 text-center">{member.position}</p>
             </div>
@@ -88,8 +88,8 @@ export default function TeamSection() {
     };
 
     return (
-        <section className="team-section-container">
-            <div className="team-section-wrapper">
+        <section className="w-full overflow-x-hidden bg-black px-4 py-24 sm:px-6 lg:px-8">
+            <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-12">
                 <motion.div 
                     className="text-center"
                     initial={{ y: 20, opacity: 0 }}
@@ -106,14 +106,14 @@ export default function TeamSection() {
                 </motion.div>
 
                 <motion.div 
-                    className="team-grid"
+                    className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.1 }}
                 >
                     {members.map((member) => (
-                        <motion.div key={member.name} variants={itemVariants}>
+                        <motion.div className="flex justify-center" key={member.name} variants={itemVariants}>
                             <TeamCard member={member} />
                         </motion.div>
                     ))}

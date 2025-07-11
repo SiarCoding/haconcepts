@@ -3,12 +3,14 @@ import { Check, ArrowUpRight, MoreHorizontal } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import React from "react";
+import CountUp from "./ui/CountUp";
+
 
 const BusinessSection = () => {
   return (
-    <section className="min-h-screen bg-black flex items-center justify-center p-8 text-white">
+    <section className="min-h-screen bg-black flex items-center justify-center p-4 md:p-8 text-white">
       <div className="container max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-8">
             <Badge 
@@ -19,11 +21,11 @@ const BusinessSection = () => {
             </Badge>
             
             <div className="space-y-6">
-              <h2 className="text-5xl lg:text-6xl font-normal font-montserrat text-white leading-tight">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-normal font-montserrat text-white leading-tight">
                 Ihr Wachstumspotenzial mit NextMove
               </h2>
               
-              <p className="text-xl text-gray-300 leading-relaxed max-w-lg font-inter">
+              <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-lg font-inter">
                 Sehen Sie, wie unsere maßgeschneiderten Strategien Ihren Umsatz steigern. 
                 Wir verwandeln prädiktive Einblicke in reale Cashflows und optimieren 
                 Ihre finanzielle Gesundheit nachhaltig.
@@ -86,9 +88,13 @@ const BusinessSection = () => {
           
           {/* Right Dashboard */}
           <div className="relative">
-            <div className="bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-md backdrop-saturate-150 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(255,85,0,0.1)] rounded-3xl p-8">
+            <div className="relative overflow-hidden bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-md backdrop-saturate-150 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(255,85,0,0.1)] rounded-3xl p-6 md:p-8">
+              
+              {/* Shine Effect */}
+              <div className="shine-effect" />
+
               {/* Main Chart */}
-              <div className="mb-6">
+              <div className="relative z-10 mb-6">
                 <h3 className="text-white text-xl font-semibold mb-6 font-montserrat">
                   ROI-Entwicklung mit NextMove
                 </h3>
@@ -151,34 +157,34 @@ const BusinessSection = () => {
               </div>
               
               {/* Revenue Card */}
-              <Card className="bg-black/20 border-white/10 p-6 backdrop-blur-sm">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="text-white font-semibold font-inter">
+              <Card className="relative z-10 bg-black/20 border-white/10 p-4 backdrop-blur-sm">
+                <div className="flex items-center justify-between mb-4">
+                  <h4 className="text-white/80 font-medium font-inter text-sm">
                     Monatlicher Mehrumsatz
                   </h4>
                   <MoreHorizontal className="w-5 h-5 text-gray-400" />
                 </div>
                 
-                <div className="flex items-end justify-between">
-                  <div>
-                    <div className="text-3xl font-bold text-white mb-1">
-                      €12.89K
+                <div className="flex items-baseline justify-between">
+                  <div className="relative">
+                    <div className="flex items-baseline space-x-2">
+                      <span className="text-3xl font-bold text-white">€</span>
+                      <CountUp
+                        to={12890}
+                        duration={3}
+                        className="text-3xl font-bold text-white"
+                        separator="."
+                      />
                     </div>
-                    <div className="flex items-center gap-2">
-                      <ArrowUpRight className="w-4 h-4 text-[#ff5500]" />
-                      <span className="text-gray-400 text-sm font-inter">
-                        +45% seit Beginn
-                      </span>
-                    </div>
+                    <span className="absolute -bottom-1 left-0 right-0 h-2 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-md opacity-50"></span>
+                    <span className="absolute -bottom-1 left-0 right-0 h-[1px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span>
                   </div>
                   
-                  {/* Mini Bar Chart */}
-                  <div className="flex items-end gap-1 h-12">
-                    <div className="w-2 bg-gray-600/50 h-6 rounded-sm"></div>
-                    <div className="w-2 bg-gray-600/50 h-8 rounded-sm"></div>
-                    <div className="w-2 bg-[#ff5500] h-12 rounded-sm"></div>
-                    <div className="w-2 bg-[#ff5500]/70 h-10 rounded-sm"></div>
-                    <div className="w-2 bg-gray-600/50 h-7 rounded-sm"></div>
+                  <div className="flex items-center gap-1 text-sm">
+                    <ArrowUpRight className="w-4 h-4 text-[#ff5500]" />
+                    <span className="text-gray-400 font-inter">
+                      +45%
+                    </span>
                   </div>
                 </div>
               </Card>
@@ -190,6 +196,42 @@ const BusinessSection = () => {
           </div>
         </div>
       </div>
+      <style jsx>{`
+        .shine-effect {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        .shine-effect::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 15%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 130, 64, 0.2), transparent);
+          animation: shine 6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+          transform: translateX(-150%);
+          pointer-events: none;
+        }
+        
+        @keyframes shine {
+          0% {
+            transform: translateX(-150%) skewX(-25deg);
+          }
+          50% {
+            transform: translateX(800%) skewX(-25deg);
+          }
+          100% {
+            transform: translateX(800%) skewX(-25deg);
+          }
+        }
+      `}</style>
     </section>
   );
 };

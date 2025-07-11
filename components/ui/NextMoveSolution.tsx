@@ -1,4 +1,5 @@
 import { GradientCard } from './gradient-card';
+import { BorderBeam } from "./border-beam";
 
 const features = [
     { 
@@ -37,6 +38,7 @@ export function NextMoveSolution() {
                 </div>
                 
                 <div className="relative rounded-2xl border border-orange-500/20 bg-gray-900/50 p-4 md:p-6 shadow-2xl shadow-orange-500/10">
+                    <BorderBeam colorFrom="#ff5500" colorTo="#ff8040" />
                     <div className="aspect-video relative rounded-lg overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-t z-1 from-black/50 via-transparent to-black/20"></div>
                         <img 

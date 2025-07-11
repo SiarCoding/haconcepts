@@ -14,6 +14,7 @@ const FailureReasons = dynamic(() => import('@/components/FailureReasons'));
 const Team = dynamic(() => import('@/components/Team'));
 const Timeline = dynamic(() => import('@/components/Timeline'));
 const Testimonials = dynamic(() => import('@/components/Testimonials'));
+const TestimonialVideo = dynamic(() => import('@/components/TestimonialVideo'));
 const WhyUs = dynamic(() => import('@/components/WhyUs'));
 const CTA = dynamic(() => import('@/components/CTA'));
 const CalendlyWidget = dynamic(() => import('@/components/CalendlyWidget'));
@@ -21,6 +22,7 @@ const Questions = dynamic(() => import('@/components/Questions'));
 const Footer = dynamic(() => import('@/components/Footer'));
 const NextMove = dynamic(() => import('@/components/NextMove'));
 const BusinessSection = dynamic(() => import('@/components/BusinessSection'));
+const AdsDesign = dynamic(() => import('@/components/AdsDesign'));
 
 export const metadata: Metadata = {
   title: 'NextMove Consulting | Leads für Finanzberater ohne Google Ads | Performance Marketing',
@@ -92,10 +94,12 @@ export default function Home() {
         </div>
         <FailureReasons />
         <BusinessSection />
+        <AdsDesign />
         <NextMove />
         <Team />
         <Timeline />
         <Testimonials />
+        <TestimonialVideo />
         <WhyUs />
         <CTA />
         <CalendlyWidget />
