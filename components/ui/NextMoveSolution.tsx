@@ -29,10 +29,10 @@ export function NextMoveSolution() {
         <section className="py-16 md:py-32 bg-black text-white">
             <div className="mx-auto max-w-7xl space-y-12 px-4 sm:px-6 lg:px-8">
                 <div className="relative z-10 text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-normal text-white font-montserrat">
+                    <h2 className="text-4xl md:text-5xl font-normal text-white" style={{fontFamily: 'Inter, Inter Placeholder, sans-serif'}}>
                         Ihr eigenes <span className="text-[#ff5500]">NextMove-Kundenportal</span>
                     </h2>
-                    <p className="max-w-3xl mx-auto mt-4 text-lg text-gray-300 font-inter">
+                    <p className="max-w-3xl mx-auto mt-4 text-lg text-gray-300" style={{fontFamily: 'Inter, Inter Placeholder, sans-serif'}}>
                         Das All-in-One-Tool für Ihren Erfolg: DSGVO-konformes CRM, Lead-Management, Performance-Tracking und automatisierte Workflows – alles an einem Ort.
                     </p>
                 </div>

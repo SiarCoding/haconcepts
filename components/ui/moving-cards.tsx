@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 const clients = [
   {
-    href: '/logo.png',
+    href: '/logohms.png',
   },
   {
     href: '/logo1.png',
@@ -14,10 +14,13 @@ const clients = [
     href: '/logo2.jpg',
   },
   {
-    href: '/logo3.png',
+    href: '/simonlogo.png',
   },
   {
     href: '/logo4.jpeg',
+  },
+  {
+    href: '/logocd.webp',
   },
 ]
 
@@ -43,20 +46,29 @@ export function MovingLogos() {
         <div className="absolute left-0 top-0 bottom-0 w-[150px] bg-gradient-to-r from-black via-black to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-[150px] bg-gradient-to-l from-black via-black to-transparent z-10" />
         
-        {/* Scrolling Container */}
-        <div className="flex animate-scroll w-max">
-          {/* Dreifache Gruppe von Logos für nahtloseres Scrollen */}
-          {[...Array(3)].map((_, groupIdx) => (
-            clients.map((client, idx) => (
-              <Image
-                key={`${groupIdx}-${idx}`}
-                src={client.href}
-                alt="Client Logo"
-                width={80}
-                height={80}
-                className="mx-8 w-24 h-24 object-contain opacity-50 hover:opacity-100 transition-opacity"
-              />
-            ))
+        {/* Scrolling Container mit endloser Schleife */}
+        <div className="flex animate-scroll-infinite w-max">
+          {/* Erste Gruppe der Logos */}
+          {clients.map((client, idx) => (
+            <Image
+              key={`group1-${idx}`}
+              src={client.href}
+              alt="Client Logo"
+              width={80}
+              height={80}
+              className="mx-8 w-24 h-24 object-contain opacity-50 hover:opacity-100 transition-opacity"
+            />
+          ))}
+          {/* Zweite identische Gruppe für nahtlose Schleife */}
+          {clients.map((client, idx) => (
+            <Image
+              key={`group2-${idx}`}
+              src={client.href}
+              alt="Client Logo"
+              width={80}
+              height={80}
+              className="mx-8 w-24 h-24 object-contain opacity-50 hover:opacity-100 transition-opacity"
+            />
           ))}
         </div>
       </div>

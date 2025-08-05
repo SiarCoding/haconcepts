@@ -1,38 +1,41 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 export default function CTA() {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
 
+  const handleCtaClick = useCallback(() => {
+    // Öffne Calendly-Link in einem neuen Tab
+    window.open('https://calendly.com/ali-nextmove-digital/30min?preview_source=et_card&month=2025-03', '_blank');
+  }, []);
+
   return (
     <section className="relative py-24 overflow-hidden">
-      {/* Hintergrundbild oder Farbverlauf als Fallback */}
+      {/* Hamburg.png Hintergrundbild */}
       <div className="absolute inset-0 w-full h-full">
         {!imageError ? (
           <>
-            {/* Versuche das Bild zu laden */}
+            {/* Hamburg.png Bild laden */}
             <img 
-              src="/CTA.png" 
-              alt="Call to Action Hintergrund" 
+              src="/Hamburg.png" 
+              alt="Hamburg Hintergrund" 
               className="absolute inset-0 w-full h-full object-cover"
               onLoad={() => setImageLoaded(true)}
               onError={() => setImageError(true)}
             />
             {/* Zeige Ladeindikator, während das Bild lädt */}
             {!imageLoaded && (
-              <div className="absolute inset-0 bg-gradient-to-br from-[#ff5500] to-[#ff8040] animate-pulse"></div>
+              <div className="absolute inset-0 bg-black block sm:hidden animate-pulse"></div>
             )}
           </>
         ) : (
-          /* Fallback-Farbverlauf, wenn das Bild nicht geladen werden kann */
-          <div className="absolute inset-0 bg-gradient-to-br from-[#ff5500] to-[#ff8040]"></div>
+          /* Fallback-schwarzer Hintergrund, wenn das Bild nicht geladen werden kann */
+          <div className="absolute inset-0 bg-black"></div>
         )}
         
-        {/* Dunkle Overlay für bessere Lesbarkeit */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        {/* Dunkles transparentes Overlay wie FailureReasons.tsx */}
+        <div className="absolute inset-0 bg-black/75"></div>
       </div>
       
       {/* Content */}
@@ -43,13 +46,42 @@ export default function CTA() {
         <p className="text-xl mb-10 text-white/90 max-w-2xl mx-auto">
           Sichere dir jetzt dein kostenloses Strategiegespräch und erfahre, wie wir deinen Vertrieb auf das nächste Level bringen
         </p>
-        <Button 
-          size="lg" 
-          className="bg-white text-[#ff5500] hover:bg-white/90 hover:scale-105 transition-all duration-300 shadow-xl group"
+        
+        {/* Button im Hero.tsx Stil */}
+        <button
+          onClick={handleCtaClick}
+          style={{
+            background: 'rgba(255, 85, 0, 0.1)',
+            color: 'white',
+            border: '1px solid rgba(255, 85, 0, 0.5)',
+            borderRadius: '14px',
+            fontWeight: '600',
+            fontSize: '16px',
+            letterSpacing: '1px',
+            textTransform: 'uppercase',
+            position: 'relative',
+            overflow: 'hidden',
+            transition: 'all 0.3s ease',
+            boxShadow: '0 0 15px rgba(255, 85, 0, 0.4)',
+            cursor: 'pointer',
+            lineHeight: '1.2',
+          }}
+          className="relative px-8 py-4 lg:px-10 lg:py-5 btn-orange-glow"
         >
-          Jetzt Termin vereinbaren 
-          <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-        </Button>
+          <div
+            style={{
+              position: 'absolute',
+              inset: '0',
+              background: 'radial-gradient(circle at center, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 40%, transparent 70%)',
+              filter: 'blur(12px)',
+              opacity: '0.6',
+              zIndex: '-1',
+              transform: 'scale(1.1)'
+            }}
+          ></div>
+
+          Jetzt Termin vereinbaren
+        </button>
       </div>
     </section>
   );

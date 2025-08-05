@@ -1,214 +1,184 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-    
-    /* Brand Orange Colors */
-    --brand-orange: #ff5500;
-    --brand-orange-light: #ff8040;
-    --brand-orange-dark: #cc4400;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+html {
+  color-scheme: dark;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+/* Global Font Override - System Font Stack für DSGVO-Konformität */
+* {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif !important;
+}
 
-  body {
-    @apply bg-background text-foreground;
-    scroll-behavior: smooth;
+/* Performance Optimierungen */
+* {
+  box-sizing: border-box;
+}
+
+/* Reduzierte Animationen auf mobilen Geräten - mit Ausnahmen für spezielle Animationen */
+@media (max-width: 768px) {
+  *:not(.animate-scroll):not(.animate-orbit) {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.3s !important;
   }
   
-  /* Custom styles for marketing section */
-  .orange-glow {
-    background: radial-gradient(circle at center, rgba(255,85,0,0.2) 0%, rgba(0,0,0,0) 70%);
+  /* Behalte Orange Blur-Effekte auf Desktop-Niveau für alle Geräte */
+  .blur-3xl {
+    filter: blur(64px) !important;
+  }
+  
+  .blur-2xl {
+    filter: blur(40px) !important;
+  }
+  
+  .blur-xl {
+    filter: blur(24px) !important;
+  }
+  
+  /* Reduziere backdrop-blur auf mobilen Geräten */
+  .backdrop-blur-md {
+    backdrop-filter: blur(4px) !important;
   }
 }
 
-.scroll-container {
-  overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer and Edge */
-}
-
-.scroll-container::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
-}
-
-.card-animation {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card-animation:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(255, 85, 0, 0.2);
-}
-
-.orange-accent-line {
-  background: #FF5500;
-  height: 4px;
-  width: 150px;
-}
-
-/* Custom scrollbar for webkit browsers */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #121212;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #FF5500;
-}
-
-/* Smooth scrolling for timeline */
-.timeline-scroll {
+/* Optimiertes Scrolling */
+html {
   scroll-behavior: smooth;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
-.timeline-scroll::-webkit-scrollbar {
-  display: none;
+/* Container Optimierungen für kleinere Bildschirme */
+@media (max-width: 1440px) {
+  .container {
+    max-width: 90% !important;
+  }
 }
 
-@keyframes fade-in-up {
+@media (max-width: 1200px) {
+  .container {
+    max-width: 95% !important;
+  }
+}
+
+/* Pulse Animation Optimierung */
+@keyframes pulse-orange {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-orange {
+  animation: pulse-orange 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Slide Animations für bessere Performance */
+@keyframes slide-right {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateX(-20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slide-right {
+  animation: slide-right 0.8s ease-out forwards;
 }
 
 .animate-fade-in {
-  animation: fade-in-up 0.6s ease-out forwards;
+  animation: fade-in 0.6s ease-out forwards;
 }
 
-.delay-200 {
-  animation-delay: 0.2s;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
+/* Optimierte Shine Animation */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
   }
-  50% {
-    opacity: 0.7;
+  20%, 100% {
+    transform: translateX(100%);
   }
 }
 
-.animate-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+/* Glassmorphism Optimierungen */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* === START: CODE FÜR TEAM SECTION (FRAMER) v5 - Final === */
-/* === ENDE: CODE FÜR TEAM SECTION (FRAMER) v5 - Final === */
+/* Responsive Typography */
+@media (max-width: 1366px) {
+  h1 { font-size: clamp(2rem, 4vw, 3.5rem) !important; }
+  h2 { font-size: clamp(1.75rem, 3.5vw, 3rem) !important; }
+  h3 { font-size: clamp(1.5rem, 3vw, 2.5rem) !important; }
+  h4 { font-size: clamp(1.25rem, 2.5vw, 2rem) !important; }
+  h5 { font-size: clamp(1.125rem, 2vw, 1.75rem) !important; }
+  h6 { font-size: clamp(1rem, 1.5vw, 1.5rem) !important; }
+}
 
-.full-width-section {
-  width: 100vw;
-  position: relative;
+/* Button Hover Optimierungen */
+.btn-orange-glow:hover {
+  background: rgba(255, 85, 0, 0.25) !important;
+  border-color: rgba(255, 85, 0, 0.8) !important;
+  box-shadow: 0 0 30px rgba(255, 85, 0, 0.6) !important;
+}
+
+/* Moving Cards Animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+/* Endlose Logo Animation */
+@keyframes scroll-infinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-infinite {
+  animation: scroll-infinite 20s linear infinite;
+}
+
+/* LinkedIn Orbiting Animation */
+@keyframes orbit {
+  0% {
+    transform: translateX(-50%) translateY(-50%) rotate(calc(var(--angle) * 1deg)) translateX(var(--radius)) rotate(calc(var(--angle) * -1deg));
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%) rotate(calc(var(--angle) * 1deg + 360deg)) translateX(var(--radius)) rotate(calc(var(--angle) * -1deg - 360deg));
+  }
+}
+
+.animate-orbit {
+  animation: orbit var(--duration) linear infinite;
+  transform-origin: center;
+  position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
 }

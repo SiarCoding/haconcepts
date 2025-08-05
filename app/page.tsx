@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import Header from '@/components/Header';
+import { Header } from '@/components/Header';
 import Hero from '@/components/Hero';
 import { MovingLogos } from '@/components/ui/moving-cards'
 import Script from 'next/script';
@@ -8,8 +8,8 @@ import Script from 'next/script';
 // Dynamisches Laden für Komponenten "below the fold"
 const PainPoints = dynamic(() => import('@/components/PainPoints'));
 const Solutions = dynamic(() => import('@/components/Solutions'));
+const FlipWebsites = dynamic(() => import('@/components/unsere-loesung/flip-websites'));
 const SocialMediaContent = dynamic(() => import('@/components/SocialMediaContent'));
-const Websites = dynamic(() => import('@/components/Websites'));
 const FailureReasons = dynamic(() => import('@/components/FailureReasons'));
 const Team = dynamic(() => import('@/components/Team'));
 const Timeline = dynamic(() => import('@/components/Timeline'));
@@ -80,21 +80,26 @@ export default function Home() {
           }
         `}
       </Script>
-      <main className="flex min-h-screen flex-col bg-black">
-        {/* Container mit leicht negativem Margin für Hero */}
-        <div className="-space-y-4 sm:-space-y-6 md:-space-y-8">
-          <Header />
+      
+      <Header />
+      
+      <main className="flex min-h-screen flex-col bg-black overflow-x-hidden max-w-full pt-24 sm:pt-28 lg:pt-32">
+        {/* Hero Section - erster Inhalt nach Header */}
+        <div className="relative">
           <Hero />
         </div>
+        
         <MovingLogos />
+        
         {/* Übergang zwischen PainPoints und Solutions */}
         <div className="relative">
           <PainPoints />
           <Solutions />
         </div>
+        <AdsDesign />
+        <FlipWebsites />
         <FailureReasons />
         <BusinessSection />
-        <AdsDesign />
         <NextMove />
         <Team />
         <Timeline />

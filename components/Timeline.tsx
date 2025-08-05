@@ -24,7 +24,7 @@ const timelineSteps: TimelineStep[] = [
       <div className="relative backdrop-blur-xl bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6 shadow-2xl">
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/[0.08] to-transparent pointer-events-none"></div>
         <div className="relative z-10">
-          <h4 className="text-2xl sm:text-3xl font-bold text-white font-montserrat mb-2 leading-tight">
+          <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-white font-montserrat mb-2 leading-tight">
             PROZESSANALYSE
           </h4>
           <h3 className="text-lg md:text-xl text-orange-500 font-light font-montserrat mb-3">
@@ -45,8 +45,9 @@ const timelineSteps: TimelineStep[] = [
       <div className="relative backdrop-blur-xl bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6 shadow-2xl">
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/[0.08] to-transparent pointer-events-none"></div>
         <div className="relative z-10">
-          <h4 className="text-2xl sm:text-3xl font-bold text-white font-montserrat mb-2 leading-tight">
-            STRATEGIEENTWICKLUNG
+          <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-white font-montserrat mb-2 leading-tight">
+            <span className="block sm:inline">STRATEGIE</span>
+            <span className="block sm:inline">ENTWICKLUNG</span>
           </h4>
           <h3 className="text-lg md:text-xl text-orange-500 font-light font-montserrat mb-3">
             Maßgeschneiderte Lösung
@@ -66,7 +67,7 @@ const timelineSteps: TimelineStep[] = [
       <div className="relative backdrop-blur-xl bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6 shadow-2xl">
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/[0.08] to-transparent pointer-events-none"></div>
         <div className="relative z-10">
-          <h4 className="text-2xl sm:text-3xl font-bold text-white font-montserrat mb-2 leading-tight">
+          <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-white font-montserrat mb-2 leading-tight">
             OPTIMIERUNG
           </h4>
           <h3 className="text-lg md:text-xl text-orange-500 font-light font-montserrat mb-3">
@@ -87,7 +88,7 @@ const timelineSteps: TimelineStep[] = [
       <div className="relative backdrop-blur-xl bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6 shadow-2xl">
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/[0.08] to-transparent pointer-events-none"></div>
         <div className="relative z-10">
-          <h4 className="text-2xl sm:text-3xl font-bold text-white font-montserrat mb-2 leading-tight">
+          <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-white font-montserrat mb-2 leading-tight">
             SKALIERUNG
           </h4>
           <h3 className="text-lg md:text-xl text-orange-500 font-light font-montserrat mb-3">
@@ -172,40 +173,58 @@ export const Timeline = ({ data }: { data: TimelineStep[] }) => {
       </div>
 
       {/* Timeline Content */}
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-20 z-10">
-        {data.map((item, index) => (
-          <div
-            key={index}
-            className="flex justify-start pt-10 md:pt-40 md:gap-10"
-          >
-            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-black/60 backdrop-blur-sm border border-orange-500/30 flex items-center justify-center">
-                <div className="h-4 w-4 rounded-full bg-orange-500 border border-orange-600 shadow-lg shadow-orange-500/50" />
-              </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-3xl font-bold text-white font-montserrat">
-                <div className="inline-block relative">
-                  <span className="relative z-10">{item.title}</span>
-                  <span className="absolute -bottom-1 left-0 right-0 h-2 md:h-3 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-md opacity-50"></span>
-                  <span className="absolute -bottom-1 left-0 right-0 h-[1px] md:h-[2px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span>
+      <div ref={ref} className="relative max-w-6xl mx-auto pb-20 z-10 px-6 sm:px-8">
+        {data.map((item, index) => {
+          const isEven = index % 2 === 0;
+          return (
+            <div
+              key={index}
+              className="relative mb-48 min-h-[300px]"
+            >
+              {/* Card Content */}
+              <div className={`absolute top-16 ${
+                isEven 
+                  ? 'left-0 right-[54%] sm:right-1/2 pr-4 sm:pr-6 md:pr-8 lg:pr-16' 
+                  : 'left-[54%] sm:left-1/2 right-0 pl-4 sm:pl-6 md:pl-8 lg:pl-16'
+              }`}>
+                <div className="max-w-[260px] sm:max-w-sm md:max-w-md lg:max-w-lg">
+                  {item.content}
                 </div>
-              </h3>
-            </div>
+              </div>
 
-            <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-orange-500 font-montserrat">
-                {item.title}
-              </h3>
-              {item.content}
+              {/* Timeline Indicator - Centered on line */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 top-20 z-40">
+                <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-black/80 backdrop-blur-sm border-2 border-orange-500 flex items-center justify-center shadow-lg shadow-orange-500/30">
+                  <div className="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-orange-500 shadow-inner" />
+                </div>
+              </div>
+
+              {/* Phase Title - On opposite side of card */}
+              <div className={`absolute top-16 ${
+                isEven 
+                  ? 'left-[54%] sm:left-1/2 right-0 pl-4 sm:pl-6 md:pl-8 lg:pl-16' 
+                  : 'left-0 right-[54%] sm:right-1/2 pr-4 sm:pr-6 md:pr-8 lg:pr-16'
+              } flex items-center ${
+                isEven ? 'justify-start' : 'justify-end'
+              }`}>
+                <h3 className="text-xs sm:text-base md:text-lg lg:text-xl font-bold text-white font-montserrat break-words max-w-full">
+                  <div className="inline-block relative">
+                    <span className="relative z-10 leading-tight block">{item.title}</span>
+                    <span className="absolute -bottom-1 left-0 right-0 h-1 sm:h-2 md:h-3 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-sm md:blur-md opacity-50"></span>
+                    <span className="absolute -bottom-1 left-0 right-0 h-[1px] md:h-[2px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span>
+                  </div>
+                </h3>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
         
-        {/* Timeline Line */}
+        {/* Timeline Line - Centered */}
         <div
           style={{
             height: height + "px",
           }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-gray-600 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
+          className="absolute left-1/2 transform -translate-x-1/2 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-gray-600 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
         >
           <motion.div
             style={{

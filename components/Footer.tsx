@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Logo und Beschreibung */}
           <div className="col-span-1 md:col-span-1">
-            <Image src="/CONSULTING.svg" alt="NextMove Consulting Logo" width={180} height={60} className="mb-6" />
+            <Image src="/Logonextmove.png" alt="NextMove Consulting Logo" width={180} height={60} className="mb-6" />
             <p className="text-gray-400 mb-6">
               Spezialisiert auf Performance Marketing für Finanzberater und Immobilien-Profis.
             </p>

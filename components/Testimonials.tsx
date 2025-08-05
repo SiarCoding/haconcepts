@@ -51,36 +51,40 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[600px] py-20 bg-black">
-      <h2 className="text-3xl sm:text-5xl md:text-6xl font-normal text-center max-w-[90vw] sm:max-w-none text-white mb-20">
-        Was unsere
-        <div className="relative inline-block mx-2">
-          <span className="relative z-10">Kunden</span>
-          <span className="absolute -bottom-1 left-0 right-0 h-4 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-lg opacity-50" />
-          <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]" />
+    <section className="relative flex flex-col items-center justify-center min-h-[500px] lg:min-h-[550px] py-16 lg:py-20 bg-black">
+      <div className="max-w-6xl mx-auto px-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center max-w-[90vw] sm:max-w-none text-white mb-16 lg:mb-18">
+          Was unsere
+          <div className="relative inline-block mx-2">
+            <span className="relative z-10">Kunden</span>
+            <span className="absolute -bottom-1 left-0 right-0 h-3 lg:h-4 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-lg opacity-50" />
+            <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]" />
+          </div>
+          <span className="block sm:inline">sagen</span>
+        </h2>
+        
+        <div className="relative w-full max-w-[300px] sm:max-w-[360px] lg:max-w-[420px] h-[400px] lg:h-[450px] mx-auto">
+          {order.map((idx, i) => (
+            <TestimonialCard
+              key={testimonials[idx].id}
+              handleShuffle={handleShuffle}
+              testimonial={testimonials[idx].testimonial}
+              position={positions[i]}
+              id={testimonials[idx].id}
+              author={testimonials[idx].author}
+              avatar={testimonials[idx].avatar}
+              role={testimonials[idx].role}
+            />
+          ))}
         </div>
-        <span className="block sm:inline">sagen</span>
-      </h2>
-      <div className="relative w-full max-w-[340px] sm:max-w-[420px] h-[480px] mx-auto">
-        {order.map((idx, i) => (
-          <TestimonialCard
-            key={testimonials[idx].id}
-            handleShuffle={handleShuffle}
-            testimonial={testimonials[idx].testimonial}
-            position={positions[i]}
-            id={testimonials[idx].id}
-            author={testimonials[idx].author}
-            avatar={testimonials[idx].avatar}
-            role={testimonials[idx].role}
-          />
-        ))}
-      </div>
-      <div className="mt-8 flex items-center justify-center text-white/50 space-x-4">
-        <MoveLeft className="w-6 h-6" />
-        <span className="text-sm font-medium uppercase tracking-widest">
-          Wischen zum Entdecken
-        </span>
-        <MoveRight className="w-6 h-6" />
+        
+        <div className="mt-6 lg:mt-8 flex items-center justify-center text-white/50 space-x-3 lg:space-x-4">
+          <MoveLeft className="w-5 h-5 lg:w-6 lg:h-6" />
+          <span className="text-xs lg:text-sm font-medium uppercase tracking-widest">
+            Wischen zum Entdecken
+          </span>
+          <MoveRight className="w-5 h-5 lg:w-6 lg:h-6" />
+        </div>
       </div>
     </section>
   );

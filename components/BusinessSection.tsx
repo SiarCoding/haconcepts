@@ -8,45 +8,79 @@ import CountUp from "./ui/CountUp";
 
 const BusinessSection = () => {
   return (
-    <section className="min-h-screen bg-black flex items-center justify-center p-4 md:p-8 text-white">
-      <div className="container max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+    <section className="relative bg-black overflow-hidden py-10 sm:py-12 lg:py-16 xl:py-18">
+      {/* Enhanced Gradient Background Effect */}
+      <div className="absolute inset-0">
+        <svg 
+          className="blur-2xl md:blur-3xl filter opacity-30 md:opacity-40" 
+          width="100%" 
+          height="100%" 
+          viewBox="0 0 444 536" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path 
+            d="M374.558 127.891C290.893 33.7273 152.005 71.9567 95.2954 136.742C38.5854 201.527 -24.5696 384.971 59.0954 479.135C142.76 573.299 359.895 442.346 416.605 377.561C473.315 312.776 458.223 222.055 374.558 127.891Z" 
+            fill="url(#paint0_linear)" 
+          />
+          <defs>
+            <linearGradient 
+              id="paint0_linear" 
+              x1="404.5" 
+              y1="100" 
+              x2="44.5" 
+              y2="436" 
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stopColor="#ff8040" stopOpacity="0.3" />
+              <stop offset="1" stopColor="#ff5500" stopOpacity="0.3" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      {/* Additional floating blur orbs */}
+      <div className="absolute top-1/4 left-1/4 w-24 md:w-32 h-24 md:h-32 rounded-full bg-white/5 blur-2xl md:blur-3xl"></div>
+      <div className="absolute bottom-1/3 right-1/4 w-32 md:w-40 h-32 md:h-40 rounded-full bg-orange-500/10 blur-2xl md:blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative max-w-6xl">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="space-y-6 lg:space-y-8">
             <Badge 
               variant="outline" 
-              className="bg-gray-900/50 border-[#ff5500]/30 text-[#ff5500] px-4 py-2 text-sm font-medium rounded-full backdrop-blur-sm"
+              className="bg-white/10 border-[#ff5500]/30 text-[#ff5500] px-4 py-2 text-sm font-medium rounded-full backdrop-blur-sm"
             >
               Wachstumsprognose
             </Badge>
             
-            <div className="space-y-6">
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-normal font-montserrat text-white leading-tight">
+            <div className="space-y-4 lg:space-y-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white leading-tight">
                 Ihr Wachstumspotenzial mit NextMove
               </h2>
               
-              <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-lg font-inter">
+              <p className="text-base sm:text-lg text-gray-300 leading-relaxed max-w-lg">
                 Sehen Sie, wie unsere maßgeschneiderten Strategien Ihren Umsatz steigern. 
                 Wir verwandeln prädiktive Einblicke in reale Cashflows und optimieren 
                 Ihre finanzielle Gesundheit nachhaltig.
               </p>
             </div>
             
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="w-6 h-6 rounded-full bg-[#ff5500] flex items-center justify-center">
-                  <Check className="w-4 h-4 text-white" />
+            <div className="space-y-3 lg:space-y-4">
+              <div className="flex items-center gap-3 lg:gap-4">
+                <div className="w-5 h-5 lg:w-6 lg:h-6 rounded-full bg-[#ff5500] flex items-center justify-center">
+                  <Check className="w-3 h-3 lg:w-4 lg:h-4 text-white" />
                 </div>
-                <span className="text-white text-lg font-inter">
+                <span className="text-white text-base lg:text-lg">
                   Konstanter Strom qualifizierter Leads
                 </span>
               </div>
               
-              <div className="flex items-center gap-4">
-                <div className="w-6 h-6 rounded-full bg-[#ff5500] flex items-center justify-center">
-                  <Check className="w-4 h-4 text-white" />
+              <div className="flex items-center gap-3 lg:gap-4">
+                <div className="w-5 h-5 lg:w-6 lg:h-6 rounded-full bg-[#ff5500] flex items-center justify-center">
+                  <Check className="w-3 h-3 lg:w-4 lg:h-4 text-white" />
                 </div>
-                <span className="text-white text-lg font-inter">
+                <span className="text-white text-base lg:text-lg">
                   Messbare Steigerung der Abschlussquote
                 </span>
               </div>
@@ -57,26 +91,26 @@ const BusinessSection = () => {
                 background: 'rgba(255, 85, 0, 0.1)',
                 color: 'white',
                 border: '1px solid rgba(255, 85, 0, 0.5)',
-                borderRadius: '16px',
+                borderRadius: '14px',
                 fontWeight: '600',
-                fontSize: '18px',
+                fontSize: '16px',
                 letterSpacing: '1px',
                 textTransform: 'uppercase',
                 position: 'relative',
                 overflow: 'hidden',
                 transition: 'all 0.3s ease',
-                boxShadow: '0 0 20px rgba(255, 85, 0, 0.4)',
+                boxShadow: '0 0 15px rgba(255, 85, 0, 0.4)',
                 cursor: 'pointer',
                 lineHeight: '1.2',
                 }}
-                className="relative px-8 py-4"
+                className="relative px-6 py-3 lg:px-8 lg:py-4 btn-orange-glow"
             >
                 <div
                 style={{
                     position: 'absolute',
                     inset: '0',
                     background: 'radial-gradient(circle at center, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 40%, transparent 70%)',
-                    filter: 'blur(15px)',
+                    filter: 'blur(12px)',
                     opacity: '0.6',
                     zIndex: '-1',
                     transform: 'scale(1.1)'
@@ -86,20 +120,20 @@ const BusinessSection = () => {
             </button>
           </div>
           
-          {/* Right Dashboard */}
+          {/* Right Dashboard - kompakter */}
           <div className="relative">
-            <div className="relative overflow-hidden bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-md backdrop-saturate-150 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(255,85,0,0.1)] rounded-3xl p-6 md:p-8">
+            <div className="relative overflow-hidden bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-md backdrop-saturate-150 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(255,85,0,0.1)] rounded-3xl p-5 md:p-6">
               
               {/* Shine Effect */}
               <div className="shine-effect" />
 
-              {/* Main Chart */}
-              <div className="relative z-10 mb-6">
-                <h3 className="text-white text-xl font-semibold mb-6 font-montserrat">
+              {/* Main Chart - kompakter */}
+              <div className="relative z-10 mb-5">
+                <h3 className="text-white text-lg lg:text-xl font-semibold mb-4 lg:mb-5">
                   ROI-Entwicklung mit NextMove
                 </h3>
                 
-                <div className="relative h-64 w-full">
+                <div className="relative h-48 lg:h-56 w-full">
                   {/* Span effect behind curve */}
                   <div className="absolute top-1/4 left-0 w-full h-1/2 bg-gradient-to-r from-transparent via-[#ff5500]/10 to-transparent blur-3xl"></div>
 
@@ -112,7 +146,7 @@ const BusinessSection = () => {
                   </div>
                   
                   {/* Y-Axis Labels */}
-                  <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-gray-400 text-sm py-2">
+                  <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-gray-400 text-xs lg:text-sm py-2">
                     <span>+60%</span>
                     <span>+45%</span>
                     <span>+30%</span>
@@ -121,7 +155,7 @@ const BusinessSection = () => {
                   </div>
                   
                   {/* Chart Lines SVG */}
-                  <svg className="absolute inset-0 w-full h-full ml-8" viewBox="0 0 400 200">
+                  <svg className="absolute inset-0 w-full h-full ml-6 lg:ml-8" viewBox="0 0 400 200">
                     {/* Orange Line (ROI Growth) */}
                     <path
                       d="M 20 180 Q 80 170 120 140 T 200 80 T 280 60 T 360 40"
@@ -150,39 +184,39 @@ const BusinessSection = () => {
                     />
                   </svg>
                   
-                  <div className="absolute bottom-0 right-8 text-gray-400 text-sm">
+                  <div className="absolute bottom-0 right-6 lg:right-8 text-gray-400 text-xs lg:text-sm">
                     Letzte 6 Monate
                   </div>
                 </div>
               </div>
               
-              {/* Revenue Card */}
-              <Card className="relative z-10 bg-black/20 border-white/10 p-4 backdrop-blur-sm">
-                <div className="flex items-center justify-between mb-4">
-                  <h4 className="text-white/80 font-medium font-inter text-sm">
+              {/* Revenue Card - kompakter */}
+              <Card className="relative z-10 bg-white/20 border-white/10 p-3 lg:p-4 backdrop-blur-sm">
+                <div className="flex items-center justify-between mb-3 lg:mb-4">
+                  <h4 className="text-white/80 font-medium text-sm">
                     Monatlicher Mehrumsatz
                   </h4>
-                  <MoreHorizontal className="w-5 h-5 text-gray-400" />
+                  <MoreHorizontal className="w-4 h-4 lg:w-5 lg:h-5 text-gray-400" />
                 </div>
                 
                 <div className="flex items-baseline justify-between">
                   <div className="relative">
                     <div className="flex items-baseline space-x-2">
-                      <span className="text-3xl font-bold text-white">€</span>
+                      <span className="text-2xl lg:text-3xl font-bold text-white">€</span>
                       <CountUp
                         to={12890}
                         duration={3}
-                        className="text-3xl font-bold text-white"
+                        className="text-2xl lg:text-3xl font-bold text-white"
                         separator="."
                       />
                     </div>
-                    <span className="absolute -bottom-1 left-0 right-0 h-2 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-md opacity-50"></span>
+                    <span className="absolute -bottom-1 left-0 right-0 h-1.5 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-md opacity-50"></span>
                     <span className="absolute -bottom-1 left-0 right-0 h-[1px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span>
                   </div>
                   
                   <div className="flex items-center gap-1 text-sm">
-                    <ArrowUpRight className="w-4 h-4 text-[#ff5500]" />
-                    <span className="text-gray-400 font-inter">
+                    <ArrowUpRight className="w-3 h-3 lg:w-4 lg:h-4 text-[#ff5500]" />
+                    <span className="text-gray-400">
                       +45%
                     </span>
                   </div>
@@ -190,9 +224,9 @@ const BusinessSection = () => {
               </Card>
             </div>
             
-            {/* Floating Elements for Premium Feel */}
-            <div className="absolute -top-4 -right-4 w-8 h-8 bg-[#ff5500]/20 rounded-full blur-xl"></div>
-            <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-[#ff5500]/10 rounded-full blur-2xl"></div>
+            {/* Floating Elements for Premium Feel - kompakter */}
+            <div className="absolute -top-3 -right-3 w-6 h-6 lg:w-8 lg:h-8 bg-[#ff5500]/20 rounded-full blur-xl"></div>
+            <div className="absolute -bottom-3 -left-3 w-8 h-8 lg:w-12 lg:h-12 bg-[#ff5500]/10 rounded-full blur-2xl"></div>
           </div>
         </div>
       </div>
