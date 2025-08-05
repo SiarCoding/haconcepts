@@ -1,13 +1,14 @@
 'use client'
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Zap, Cpu, Lock, Sparkles } from "lucide-react";
+import { Zap, Cpu, Lock, Sparkles, TrendingUp } from "lucide-react";
 
 const icons: { [key: string]: React.ElementType } = {
   Zap,
   Cpu,
   Lock,
   Sparkles,
+  TrendingUp,
 };
 
 interface Feature {

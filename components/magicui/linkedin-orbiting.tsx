@@ -36,11 +36,11 @@ export function LinkedInOrbiting({
   const calculatedDuration = duration / speed;
   
   const orbitItems = [
-    { icon: RiMessage2Fill, color: "#0a66c2", bgColor: "white" },
-    { icon: RiRobot2Fill, color: "white", bgColor: "#ff5500" },
-    { icon: RiUserLine, color: "#0a66c2", bgColor: "white" },
-    { icon: RiTeamLine, color: "white", bgColor: "#0a66c2" },
-    { icon: RiCheckboxCircleFill, color: "white", bgColor: "#0a66c2" }
+    { icon: RiMessage2Fill, color: "white", bgColor: "glass" },
+    { icon: RiRobot2Fill, color: "white", bgColor: "glass" },
+    { icon: RiUserLine, color: "white", bgColor: "glass" },
+    { icon: RiTeamLine, color: "white", bgColor: "glass" },
+    { icon: RiCheckboxCircleFill, color: "white", bgColor: "glass" }
   ];
 
   return (
@@ -54,10 +54,12 @@ export function LinkedInOrbiting({
     >
       {/* LinkedIn Logo im Zentrum */}
       <div 
-        className="absolute z-20 bg-[#0a66c2] rounded-xl flex items-center justify-center shadow-xl"
+        className="absolute z-20 rounded-xl flex items-center justify-center shadow-2xl"
         style={{
           width: `${iconSize * 1.2}px`,
           height: `${iconSize * 1.2}px`,
+          background: '#0a66c2',
+          boxShadow: '0 4px 16px 0 rgba(10, 102, 194, 0.3)',
         }}
       >
         <RiLinkedinFill 
@@ -100,21 +102,22 @@ export function LinkedInOrbiting({
               "--angle": angle,
             } as React.CSSProperties}
             className={cn(
-              "absolute left-1/2 top-1/2",
-              "transform-gpu animate-orbit",
+              "animate-orbit",
               { "[animation-direction:reverse]": reverse },
               className
             )}
           >
             <div 
-              className="flex items-center justify-center rounded-xl shadow-lg p-3 transition-transform hover:scale-110 duration-300"
+              className="flex items-center justify-center rounded-xl shadow-lg p-3 transition-transform hover:scale-110 duration-300 backdrop-blur-md border border-white/20"
               style={{
                 width: `${iconSize}px`,
                 height: `${iconSize}px`,
-                backgroundColor: item.bgColor
+                background: 'rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(12px)',
+                boxShadow: '0 8px 32px 0 rgba(255, 255, 255, 0.2)',
               }}
             >
-              <IconComponent style={{ color: item.color, width: '100%', height: '100%' }} />
+              <IconComponent style={{ color: item.color, width: '80%', height: '80%' }} />
             </div>
           </div>
         );
@@ -139,7 +142,7 @@ export function LinkedInOrbiting({
 
       {/* Innere umlaufende Elemente */}
       {orbitItems.slice(0, 3).map((item, index) => {
-        const angle = (360 / 3) * index;
+        const angle = (360 / 3) * index + 60; // Offset für bessere Verteilung
         const IconComponent = item.icon;
         
         return (
@@ -151,21 +154,22 @@ export function LinkedInOrbiting({
               "--angle": angle,
             } as React.CSSProperties}
             className={cn(
-              "absolute left-1/2 top-1/2",
-              "transform-gpu animate-orbit",
+              "animate-orbit",
               { "[animation-direction:reverse]": !reverse },
               className
             )}
           >
             <div 
-              className="flex items-center justify-center rounded-lg shadow-lg p-2 transition-transform hover:scale-110 duration-300"
+              className="flex items-center justify-center rounded-lg shadow-lg p-2 transition-transform hover:scale-110 duration-300 backdrop-blur-md border border-white/20"
               style={{
                 width: `${iconSize * 0.7}px`,
                 height: `${iconSize * 0.7}px`,
-                backgroundColor: item.bgColor
+                background: 'rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(12px)',
+                boxShadow: '0 8px 32px 0 rgba(255, 255, 255, 0.2)',
               }}
             >
-              <IconComponent style={{ color: item.color, width: '100%', height: '100%' }} />
+              <IconComponent style={{ color: item.color, width: '80%', height: '80%' }} />
             </div>
           </div>
         );

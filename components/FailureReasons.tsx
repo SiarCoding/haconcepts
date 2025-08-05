@@ -10,7 +10,7 @@ const InfoIcon = ({ tooltip }: { tooltip: string }) => {
   return (
     <div className="relative inline-block ml-2">
       <div 
-        className="w-5 h-5 rounded-full bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400 text-xs font-semibold cursor-help hover:bg-orange-500/30 transition-colors duration-200"
+        className="w-4 h-4 rounded-full bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400 text-xs font-semibold cursor-help hover:bg-orange-500/30 transition-colors duration-200"
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
       >
@@ -30,8 +30,8 @@ const InfoIcon = ({ tooltip }: { tooltip: string }) => {
 const CopperBlurEffect = () => (
   <div className="absolute inset-0">
     <svg 
-      className="blur-3xl filter opacity-40" 
-      style={{ filter: 'blur(100px)' }} 
+      className="blur-2xl md:blur-3xl filter opacity-30 md:opacity-40" 
+      style={{ filter: 'blur(80px)' }} 
       width="100%" 
       height="100%" 
       viewBox="0 0 444 536" 
@@ -259,8 +259,6 @@ const MarketingROICalculator = () => {
     setShowResults(true);
   };
 
-  // Intersection Observer für Animationen - WIRD ENTFERNT für bessere Performance und um Redundanz mit Framer Motion zu vermeiden.
-  
   // Formatiert Euro Währungswerte
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('de-DE', {
@@ -270,17 +268,9 @@ const MarketingROICalculator = () => {
     }).format(amount);
   };
 
-  // CSS für Shine-Animation
-  const shineAnimation = `
-    @keyframes shine {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-  `;
-
   return (
-    <section className="relative overflow-hidden min-h-screen py-20" style={{
-      backgroundImage: 'url(/buerowandsbek.png)',
+    <section className="relative overflow-hidden py-16 lg:py-20" style={{
+      backgroundImage: 'url(/buroo.png)',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat'
@@ -288,19 +278,20 @@ const MarketingROICalculator = () => {
       {/* Dunkles Overlay */}
       <div className="absolute inset-0 bg-black/75 z-10"></div>
       
-      {/* Entferne CopperBlurEffect, da wir jetzt ein Hintergrundbild haben */}
+      {/* Additional floating blur orbs - reduziert */}
+      <div className="absolute top-1/4 left-1/4 w-24 md:w-32 h-24 md:h-32 rounded-full bg-white/5 blur-2xl md:blur-3xl z-15"></div>
+      <div className="absolute bottom-1/3 right-1/4 w-32 md:w-40 h-32 md:h-40 rounded-full bg-orange-500/10 blur-2xl md:blur-3xl z-15"></div>
       
-      {/* Additional floating blur orbs for glassmorphism effect */}
-      <div className="max-w-7xl mx-auto px-6 py-16 relative z-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-16 relative z-20">
         <motion.div 
           ref={headingRef}
-          className="max-w-4xl mx-auto text-center mb-16"
+          className="max-w-4xl mx-auto text-center mb-12 lg:mb-14"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal text-white mb-6">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white mb-5">
             Berechnen Sie Ihren Marketing-ROI und Ihr Wachstumspotenzial
           </h1>
           
@@ -309,9 +300,9 @@ const MarketingROICalculator = () => {
           </p>
         </motion.div>
             
-        {/* Rechner und Ergebnisbereich */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mt-12 relative z-30">
-          {/* Eingabebereich */}
+        {/* Rechner und Ergebnisbereich - kompakter Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 mt-10 relative z-30">
+          {/* Eingabebereich - kompakter */}
           <motion.div 
             ref={calculatorRef}
             className="relative"
@@ -320,16 +311,16 @@ const MarketingROICalculator = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-8 shadow-2xl">
+            <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6 lg:p-7 shadow-2xl">
               {/* Glassmorphism inner glow */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/[0.08] to-transparent pointer-events-none"></div>
               
               <div className="relative z-10">
-                <h3 className="text-2xl font-semibold text-white mb-8 flex items-center">
+                <h3 className="text-xl lg:text-2xl font-semibold text-white mb-6 flex items-center">
                   Ihr aktueller Status
                 </h3>
                 
-                <div className="space-y-8">
+                <div className="space-y-6">
                   {/* Leads pro Monat */}
                   <div className="space-y-3">
                     <label className="block text-white font-medium flex items-center">
@@ -354,7 +345,7 @@ const MarketingROICalculator = () => {
                         max="100"
                         value={leadsProMonat}
                         onChange={handleLeadsChange}
-                        className="w-20 px-3 py-2 bg-white/5 border border-white/20 rounded-lg text-white text-center focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all duration-200"
+                        className="w-16 px-2 py-2 bg-white/5 border border-white/20 rounded-lg text-white text-center focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all duration-200"
                       />
                     </div>
                   </div>
@@ -371,7 +362,7 @@ const MarketingROICalculator = () => {
                       step="0.01"
                       value={kostenProLead}
                       onChange={handleKostenChange}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all duration-200"
+                      className="w-full px-3 py-2.5 bg-white/5 border border-white/20 rounded-lg text-white focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all duration-200"
                       placeholder="z.B. 200"
                     />
                   </div>
@@ -402,7 +393,7 @@ const MarketingROICalculator = () => {
                         step="0.1"
                         value={abschlussquote}
                         onChange={handleAbschlussquoteChange}
-                        className="w-20 px-3 py-2 bg-white/5 border border-white/20 rounded-lg text-white text-center focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all duration-200"
+                        className="w-16 px-2 py-2 bg-white/5 border border-white/20 rounded-lg text-white text-center focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all duration-200"
                       />
                       <span className="text-white/70">%</span>
                     </div>
@@ -420,7 +411,7 @@ const MarketingROICalculator = () => {
                       step="0.01"
                       value={umsatzProAbschluss}
                       onChange={handleUmsatzChange}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all duration-200"
+                      className="w-full px-3 py-2.5 bg-white/5 border border-white/20 rounded-lg text-white focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all duration-200"
                       placeholder="z.B. 8000"
                     />
                   </div>
@@ -449,24 +440,23 @@ const MarketingROICalculator = () => {
                         max="40"
                         value={stundenProWoche}
                         onChange={handleStundenChange}
-                        className="w-20 px-3 py-2 bg-white/5 border border-white/20 rounded-lg text-white text-center focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all duration-200"
+                        className="w-16 px-2 py-2 bg-white/5 border border-white/20 rounded-lg text-white text-center focus:outline-none focus:border-orange-500/50 focus:bg-white/10 transition-all duration-200"
                       />
                       <span className="text-white/70">h</span>
                     </div>
                   </div>
                   
-                  {/* Berechnen-Button */}
-                  <div className="mt-10 text-center">
+                  {/* Berechnen-Button - kompakter */}
+                  <div className="mt-8 text-center">
                     <button
                       onClick={calculateResults}
                       style={{
                         background: 'rgba(255, 85, 0, 0.1)',
                         color: 'white',
                         border: '1px solid rgba(255, 85, 0, 0.5)',
-                        padding: '14px 28px',
                         borderRadius: '12px',
                         fontWeight: '600',
-                        fontSize: '16px',
+                        fontSize: '15px',
                         letterSpacing: '1px',
                         textTransform: 'uppercase',
                         position: 'relative',
@@ -474,29 +464,25 @@ const MarketingROICalculator = () => {
                         transition: 'all 0.3s ease',
                         boxShadow: '0 0 15px rgba(255, 85, 0, 0.3)',
                         cursor: 'pointer',
-                        width: '100%',
-                        maxWidth: '400px',
                         lineHeight: '1.2',
                       }}
-                      className="relative"
+                      className="relative w-full px-6 py-3 btn-orange-glow"
                     >
                       <div 
                         style={{
                           position: 'absolute',
                           inset: '0',
                           background: 'radial-gradient(circle at center, rgba(255, 85, 0, 0.6) 0%, rgba(255, 85, 0, 0.3) 40%, transparent 70%)',
-                          filter: 'blur(12px)',
+                          filter: 'blur(10px)',
                           opacity: '0.5',
                           zIndex: '-1',
                           transform: 'scale(1.1)'
                         }}
                       ></div>
-                      
-                      {/* SHINE-ANIMATION ENTFERNT für bessere Performance */}
 
                       {isCalculating ? (
                         <span className="flex items-center justify-center">
-                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <svg className="animate-spin -ml-1 mr-3 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                           </svg>
@@ -513,7 +499,7 @@ const MarketingROICalculator = () => {
             </div>
           </motion.div>
 
-          {/* Ergebnisbereich */}
+          {/* Ergebnisbereich - kompakter */}
           <motion.div 
             ref={resultsRef}
             className="relative h-full flex flex-col justify-center z-40"
@@ -523,35 +509,35 @@ const MarketingROICalculator = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             {isCalculating ? (
-              <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-8 shadow-2xl">
-                <div className="flex flex-col items-center justify-center h-96">
-                  <div className="w-16 h-16 border-4 border-orange-500/30 border-t-orange-500 rounded-full animate-spin mb-4"></div>
-                  <p className="text-white/80 text-lg">Berechne Ihr Potenzial...</p>
+              <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6 lg:p-7 shadow-2xl">
+                <div className="flex flex-col items-center justify-center h-72">
+                  <div className="w-12 h-12 border-4 border-orange-500/30 border-t-orange-500 rounded-full animate-spin mb-4"></div>
+                  <p className="text-white/80 text-base">Berechne Ihr Potenzial...</p>
                 </div>
               </div>
             ) : showResults ? (
-              <div className="space-y-6">
-                {/* IST-Zustand */}
-                <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-8 shadow-2xl">
-                  <div className="p-6">
-                    <h3 className="text-2xl font-semibold text-white mb-6">Ihr aktueller Zustand</h3>
-                    <div className="mt-4 space-y-6">
+              <div className="space-y-5">
+                {/* IST-Zustand - kompakter */}
+                <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-5 lg:p-6 shadow-2xl">
+                  <div className="p-4">
+                    <h3 className="text-lg lg:text-xl font-semibold text-white mb-4">Ihr aktueller Zustand</h3>
+                    <div className="mt-3 space-y-4">
                       <div className="flex justify-between items-center">
-                        <span className="text-white">Monatliche Werbekosten:</span>
-                        <span className="text-white/90 font-medium">{formatCurrency(istZustand.monatlicheWerbekosten)}</span>
+                        <span className="text-white text-sm">Monatliche Werbekosten:</span>
+                        <span className="text-white/90 font-medium text-sm">{formatCurrency(istZustand.monatlicheWerbekosten)}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-white/80">Zeitkosten (Akquise):</span>
-                        <span className="text-white/90 font-medium">{formatCurrency(istZustand.monatlicheZeitkosten)}</span>
+                        <span className="text-white/80 text-sm">Zeitkosten (Akquise):</span>
+                        <span className="text-white/90 font-medium text-sm">{formatCurrency(istZustand.monatlicheZeitkosten)}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-white/80">Monatlicher Umsatz:</span>
-                        <span className="text-white/90 font-medium">{formatCurrency(istZustand.monatlicheUmsatz)}</span>
+                        <span className="text-white/80 text-sm">Monatlicher Umsatz:</span>
+                        <span className="text-white/90 font-medium text-sm">{formatCurrency(istZustand.monatlicheUmsatz)}</span>
                       </div>
-                      <div className="border-t border-white/10 pt-3">
+                      <div className="border-t border-white/10 pt-2">
                         <div className="flex justify-between items-center">
-                          <span className="text-white font-medium">Aktueller Gewinn:</span>
-                          <span className={`font-bold text-lg ${istZustand.gewinn >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                          <span className="text-white font-medium text-sm">Aktueller Gewinn:</span>
+                          <span className={`font-bold text-base ${istZustand.gewinn >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                             {formatCurrency(istZustand.gewinn)}
                           </span>
                         </div>
@@ -560,58 +546,58 @@ const MarketingROICalculator = () => {
                   </div>
                 </div>
 
-                {/* SOLL-Zustand */}
-                <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-8 shadow-2xl">
-                  <div className="p-6">
-                    <h3 className="text-2xl font-semibold text-white mb-6">Ihr Potenzial mit uns</h3>
-                    <div className="mt-4 space-y-6">
+                {/* SOLL-Zustand - kompakter */}
+                <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-5 lg:p-6 shadow-2xl">
+                  <div className="p-4">
+                    <h3 className="text-lg lg:text-xl font-semibold text-white mb-4">Ihr Potenzial mit uns</h3>
+                    <div className="mt-3 space-y-4">
                       <div className="flex justify-between items-center">
-                        <span className="text-white">Neue qualifizierte Leads:</span>
-                        <span className="text-white/90 font-medium">{Math.round(sollZustand.neueAnzahlLeads)}/Monat</span>
+                        <span className="text-white text-sm">Neue qualifizierte Leads:</span>
+                        <span className="text-white/90 font-medium text-sm">{Math.round(sollZustand.neueAnzahlLeads)}/Monat</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-white/80">Verbesserte Abschlussquote:</span>
-                        <span className="text-white/90 font-medium">{sollZustand.neueAbschlussquote.toFixed(1)}%</span>
+                        <span className="text-white/80 text-sm">Verbesserte Abschlussquote:</span>
+                        <span className="text-white/90 font-medium text-sm">{sollZustand.neueAbschlussquote.toFixed(1)}%</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-white/80">Neuer Monatsumsatz:</span>
-                        <span className="text-white/90 font-medium">{formatCurrency(sollZustand.neuerUmsatz)}</span>
+                        <span className="text-white/80 text-sm">Neuer Monatsumsatz:</span>
+                        <span className="text-white/90 font-medium text-sm">{formatCurrency(sollZustand.neuerUmsatz)}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-white/80">Gesparte Zeit (Wert):</span>
-                        <span className="text-white/90 font-medium">{formatCurrency(sollZustand.wertGesparteZeit)}</span>
+                        <span className="text-white/80 text-sm">Gesparte Zeit (Wert):</span>
+                        <span className="text-white/90 font-medium text-sm">{formatCurrency(sollZustand.wertGesparteZeit)}</span>
                       </div>
-                      <div className="border-t border-white/10 pt-3">
+                      <div className="border-t border-white/10 pt-2">
                         <div className="flex justify-between items-center">
-                          <span className="text-white font-medium">Neuer Gewinn:</span>
-                          <span className="text-green-400 font-bold text-lg">{formatCurrency(sollZustand.neuerGewinn)}</span>
+                          <span className="text-white font-medium text-sm">Neuer Gewinn:</span>
+                          <span className="text-green-400 font-bold text-base">{formatCurrency(sollZustand.neuerGewinn)}</span>
                         </div>
-                        <div className="flex justify-between items-center mt-2">
-                          <span className="text-white/80">Gewinnsteigerung:</span>
-                          <span className="text-white/90 font-medium">+{sollZustand.gewinnSteigerungProz.toFixed(0)}%</span>
+                        <div className="flex justify-between items-center mt-1">
+                          <span className="text-white/80 text-sm">Gewinnsteigerung:</span>
+                          <span className="text-white/90 font-medium text-sm">+{sollZustand.gewinnSteigerungProz.toFixed(0)}%</span>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* ROI Bereich */}
-                <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-8 shadow-2xl">
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold text-white mb-6 text-center">
+                {/* ROI Bereich - kompakter */}
+                <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-5 lg:p-6 shadow-2xl">
+                  <div className="p-4">
+                    <h3 className="text-lg lg:text-xl font-bold text-white mb-4 text-center">
                       Ihr Marketing-ROI
                     </h3>
-                    <div className="text-center mb-4">
-                      <div className="text-5xl font-bold text-white mb-2 relative inline-block">
+                    <div className="text-center mb-3">
+                      <div className="text-3xl lg:text-4xl font-bold text-white mb-2 relative inline-block">
                         <span className="relative z-10">{roiDaten.roi.toFixed(0)}%</span>
-                        <span className="absolute -bottom-1 left-0 right-0 h-4 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-lg opacity-50"></span>
+                        <span className="absolute -bottom-1 left-0 right-0 h-3 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-lg opacity-50"></span>
                       </div>
-                      <div className="text-white/80 text-lg">
+                      <div className="text-white/80 text-base">
                         Return on Investment
                       </div>
                     </div>
-                    <div className="bg-white/5 rounded-lg p-4 text-center">
-                      <p className="text-white/90 text-lg leading-relaxed">
+                    <div className="bg-white/5 rounded-lg p-3 text-center">
+                      <p className="text-white/90 text-sm lg:text-base leading-relaxed">
                         <strong>Das bedeutet:</strong> Für jeden Euro, den Sie in unsere Zusammenarbeit investieren, 
                         erhalten Sie voraussichtlich <span className="text-white font-bold underline decoration-orange-500/50 decoration-2 underline-offset-2">{roiDaten.faktor.toFixed(1)} Euro</span> zurück!
                       </p>
@@ -620,11 +606,11 @@ const MarketingROICalculator = () => {
                 </div>
               </div>
             ) : (
-              <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-8 shadow-2xl">
-                <div className="text-center h-96 flex flex-col items-center justify-center">
-                  <div className="text-6xl mb-4"></div>
-                  <h3 className="text-2xl font-semibold text-white mb-4">Ihre Ergebnisse</h3>
-                  <p className="text-white text-lg">
+              <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6 lg:p-7 shadow-2xl">
+                <div className="text-center h-72 flex flex-col items-center justify-center">
+                  <div className="text-5xl mb-4">📊</div>
+                  <h3 className="text-xl font-semibold text-white mb-3">Ihre Ergebnisse</h3>
+                  <p className="text-white text-base">
                     Füllen Sie die Felder links aus, um Ihr Potenzial zu berechnen.
                   </p>
                 </div>
@@ -633,16 +619,16 @@ const MarketingROICalculator = () => {
           </motion.div>
         </div>
 
-        {/* Call-to-Action */}
+        {/* Call-to-Action - kompakter */}
         {showResults && (
           <motion.div 
             ref={ctaRef}
-            className="text-center mt-16"
+            className="text-center mt-12 lg:mt-14"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8 }}
           >
-            <h3 className="text-2xl font-semibold text-white mb-6">
+            <h3 className="text-lg lg:text-xl font-semibold text-white mb-5">
               Klingt zu gut, um wahr zu sein? Lassen Sie uns in einem kostenlosen 15-Minuten-Gespräch zeigen, wie wir genau diese Zahlen für IHR Business erreichen.
             </h3>
             <button
@@ -651,10 +637,9 @@ const MarketingROICalculator = () => {
                 background: 'rgba(255, 85, 0, 0.3)',
                 color: 'white',
                 border: '1px solid rgba(255, 85, 0, 0.6)',
-                padding: '16px 32px',
                 borderRadius: '12px',
                 fontWeight: '600',
-                fontSize: '16px',
+                fontSize: '15px',
                 letterSpacing: '1px',
                 textTransform: 'uppercase',
                 position: 'relative',
@@ -662,25 +647,21 @@ const MarketingROICalculator = () => {
                 transition: 'all 0.3s ease',
                 boxShadow: '0 0 15px rgba(255, 85, 0, 0.3)',
                 cursor: 'pointer',
-                minWidth: '280px',
-                maxWidth: '100%',
                 lineHeight: '1.2',
               }}
-              className="relative"
+              className="relative px-8 py-3 lg:px-10 lg:py-4 btn-orange-glow"
             >
               <div 
                 style={{
                   position: 'absolute',
                   inset: '0',
                   background: 'radial-gradient(circle at center, rgba(255, 85, 0, 0.6) 0%, rgba(255, 85, 0, 0.3) 40%, transparent 70%)',
-                  filter: 'blur(12px)',
+                  filter: 'blur(10px)',
                   opacity: '0.5',
                   zIndex: '-1',
                   transform: 'scale(1.1)'
                 }}
               ></div>
-              
-              {/* SHINE-ANIMATION ENTFERNT für bessere Performance */}
 
               Jetzt kostenlose Potenzial-Analyse buchen
             </button>
@@ -692,28 +673,23 @@ const MarketingROICalculator = () => {
       <style jsx>{`
         .slider::-webkit-slider-thumb {
           appearance: none;
-          width: 20px;
-          height: 20px;
+          width: 16px;
+          height: 16px;
           border-radius: 50%;
           background: #ff5500;
           cursor: pointer;
           border: 2px solid #fff;
-          box-shadow: 0 0 10px rgba(255, 85, 0, 0.5);
+          box-shadow: 0 0 8px rgba(255, 85, 0, 0.5);
         }
         
         .slider::-moz-range-thumb {
-          width: 20px;
-          height: 20px;
+          width: 16px;
+          height: 16px;
           border-radius: 50%;
           background: #ff5500;
           cursor: pointer;
           border: 2px solid #fff;
-          box-shadow: 0 0 10px rgba(255, 85, 0, 0.5);
-        }
-        
-        @keyframes shine {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
+          box-shadow: 0 0 8px rgba(255, 85, 0, 0.5);
         }
       `}</style>
     </section>

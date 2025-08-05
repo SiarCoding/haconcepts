@@ -90,7 +90,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
       scale: 1,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };
@@ -105,7 +105,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
       x: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };

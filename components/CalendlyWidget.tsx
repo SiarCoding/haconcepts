@@ -1,6 +1,82 @@
 'use client';
 
+import { useEffect } from 'react';
+
+declare global {
+  interface Window {
+    Lun: any;
+    Cal: any;
+  }
+}
+
 const CalendlyWidget = () => {
+  useEffect(() => {
+    // Only run on client side to prevent hydration errors
+    if (typeof window !== 'undefined') {
+      // Check if already loaded
+      if (window.Lun) {
+        return;
+      }
+
+      // Load the script directly
+      const script = document.createElement('script');
+      script.src = 'https://app.lunacal.ai/embed/embed.js';
+      script.async = true;
+      script.onload = () => {
+        // Wait a bit for the script to initialize
+        setTimeout(() => {
+          if (window.Lun) {
+            const parts = ["k", "n", "i", "L", "l", "a", "c"].reverse();
+            const key = parts.map(ch => String.fromCharCode(ch.charCodeAt(0) + 1)).map(ch => String.fromCharCode(ch.charCodeAt(0) - 1)).join("");
+            const value = "siar-alizadah-w2s/meeting";
+            const inlineOpts: any = { elementOrSelector: "#my-lunacal-inline", layout: "" };
+            inlineOpts[key] = value;
+
+            window.Lun("init", { origin: "https://app.lunacal.ai" });
+            window.Lun("inline", inlineOpts);
+            window.Lun("ui", {
+              "theme": "dark",
+              "styles": {
+                "branding": { "brandColor": "#ff5500" },
+                "colors": {
+                  "primary": "#ff5500",
+                  "background": "#0f172a",
+                  "foreground": "#ffffff",
+                  "card": "#1e293b",
+                  "cardForeground": "#ffffff"
+                }
+              },
+              "hideEventTypeDetails": false,
+              "layout": "",
+              "cssVarsPerTheme": {
+                "dark": {
+                  "embed-primary": "#ff5500",
+                  "embed-primary-light": "#ff8040",
+                  "embed-primary-dark": "#cc4400",
+                  "embed-bg": "#0f172a",
+                  "embed-text": "#ffffff"
+                }
+              }
+            });
+          }
+        }, 100);
+      };
+      document.head.appendChild(script);
+
+      return () => {
+        // Cleanup
+        const scripts = document.querySelectorAll('script[src*="lunacal"]');
+        scripts.forEach(script => script.remove());
+        if (window.Lun) {
+          delete window.Lun;
+        }
+        if (window.Cal) {
+          delete window.Cal;
+        }
+      };
+    }
+  }, []);
+
   return (
     <section id="termine" className="py-20 bg-black text-white">
       <div className="container mx-auto px-4">
@@ -16,16 +92,13 @@ const CalendlyWidget = () => {
           </p>
         </div>
         
-        {/* Nur Calendly-Widget */}
+        {/* LunaCal Widget */}
         <div className="rounded-lg overflow-hidden mx-auto max-w-4xl">
-          <iframe
-            src="https://calendly.com/ali-nextmove-digital/30min?embed_domain=nextmoveconsulting.de&embed_type=Inline&background_color=000000&text_color=ffffff&primary_color=ff5500&hide_gdpr_banner=1"
-            width="100%"
-            height="700"
-            frameBorder="0"
-            title="Terminbuchung"
-            className="rounded-lg"
-          ></iframe>
+          <div 
+            style={{ width: '100%', height: '600px', overflow: 'scroll' }} 
+            id="my-lunacal-inline"
+          >
+          </div>
         </div>
       </div>
     </section>
