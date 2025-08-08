@@ -8,6 +8,7 @@ import { Star, Play } from 'lucide-react';
 // Lazy load components for better performance
 const FlipWords = dynamic(() => import('@/components/ui/flip-word').then(mod => ({ default: mod.FlipWords })), {
   loading: () => <div className="w-40 h-6 bg-gray-800/20 rounded animate-pulse" />,
+  ssr: false
 });
 
 const AnimatedTooltip = dynamic(() => import('@/components/ui/animated-tooltip').then(mod => ({ default: mod.AnimatedTooltip })), {
@@ -16,6 +17,7 @@ const AnimatedTooltip = dynamic(() => import('@/components/ui/animated-tooltip')
       <div key={i} className="w-10 h-10 bg-gray-800/20 rounded-full animate-pulse" />
     ))}
   </div>,
+  ssr: false
 });
 
 const Hero = memo(() => {
@@ -142,13 +144,11 @@ const Hero = memo(() => {
       <iframe
         loading="lazy"
         title="Gumlet video player"
-        src="https://play.gumlet.io/embed/6838f13e71151e6b584f492d?autoplay=1&muted=1&controls=1&loop=1&playsinline=1"
+        src="https://play.gumlet.io/embed/6894ce948d992eda26b310e5"
         style={{ border: 'none', position: 'absolute', top: 0, left: 0, height: '100%', width: '100%', zIndex: 40 }}
-        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; microphone; camera"
+        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
         allowFullScreen
-        frameBorder="0"
-        sandbox="allow-scripts allow-same-origin allow-presentation allow-forms allow-pointer-lock allow-popups allow-modals"
-      />
+      ></iframe>
     </div>
   ), []);
 

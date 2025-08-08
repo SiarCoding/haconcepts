@@ -164,14 +164,14 @@ const Solutions = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal text-white leading-[0.9] tracking-tight px-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal text-white leading-[0.9] tracking-tight px-4">
             <span className="block">Das bieten wir</span>
             <div className="relative mt-2 sm:mt-3 inline-block">
               <span className="relative z-10 bg-gradient-to-r from-[#ff8040] to-[#ff5500] bg-clip-text text-transparent">für Sie</span>
               <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-2 sm:h-3 md:h-4 lg:h-5 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-xl opacity-60"></span>
               <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span>
             </div>
-          </h1>
+          </h2>
           <p className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed mt-3 sm:mt-4 md:mt-6 font-light px-4">
             Maßgeschneiderte Digital-Marketing-Lösungen, die Ihr Immobiliengeschäft auf das nächste Level bringen
           </p>
@@ -179,7 +179,7 @@ const Solutions = () => {
       </div>
 
       {/* Scrolling Solutions */}
-      <div className="relative z-20 -mt-24 sm:-mt-32 md:-mt-40 lg:-mt-28">
+      <div className="relative z-20 -mt-96 sm:-mt-112 md:-mt-128 lg:-mt-104">
         {solutionsData.map((solution, index) => (
           <SolutionSection 
             key={`solution-${index}`} 
@@ -230,7 +230,7 @@ const SolutionSection: React.FC<SolutionItemProps & { isClient?: boolean }> = Re
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6 }}
         >
           {/* Icon with more dramatic effect */}
           <div className="mb-3 sm:mb-4 md:mb-6 flex justify-center">
@@ -259,7 +259,7 @@ const SolutionSection: React.FC<SolutionItemProps & { isClient?: boolean }> = Re
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
         {/* Content Card */}
         <div className={`${reverse ? 'lg:col-start-2' : ''} relative group`}>

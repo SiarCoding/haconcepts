@@ -10,7 +10,8 @@ const websites = [
   { title: 'Freyer Immobilien - Vermögen durch Immobilien aufbauen', url: '/freyerimmo-website.png' },
   { title: 'CD Immo - Nachhaltig Vermögen aufbauen & Steuerlast senken', url: '/cdwebsite.png' },
   { title: 'HMS Finance - In 4 Wochen zur Immobilie für mehr Kapital', url: '/hmsfinancewebsite.png' },
-  { title: 'Kedro - Mit Immobilien Vermögen aufbauen & Altersvorsorge sichern', url: '/kedro_landingpage.png' }
+  { title: 'Kedro - Mit Immobilien Vermögen aufbauen & Altersvorsorge sichern', url: '/kedro_landingpage.png' },
+  { title: 'Simon Hauer Immobilien - Enormer Traffic durch individuellen Rechner', url: '/simon-landingpage.png' }
 ];
 
 // Helper function to get website stats for current website
@@ -75,6 +76,21 @@ const getWebsiteStats = (index: number) => {
         "Emotionales Design"
       ],
       websiteUrl: "https://www.kedro-immobilien.de"
+    },
+    { 
+      leads: 50, 
+      conversion: "25%", 
+      traffic: "+300%",
+      title: "Simon Hauer Immobilien",
+      description: "Enormer Traffic-Zuwachs durch maßgeschneiderten Steuerrechner.",
+      points: [
+        "50+ hochqualifizierte Leads",
+        "25% Conversion durch Rechner", 
+        "+300% organischer Traffic",
+        "Individueller Steuerrechner",
+        "Gamification-Ansatz"
+      ],
+      websiteUrl: "https://simon-hauer-immobilien.de"
     }
   ];
   return statsData[index];

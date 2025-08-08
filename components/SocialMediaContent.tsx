@@ -89,8 +89,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
       x: 0,
       scale: 1,
       transition: {
-        duration: 0.8,
-        ease: "easeOut" as const
+        duration: 0.8
       }
     }
   };
@@ -104,8 +103,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.8,
-        ease: "easeOut" as const
+        duration: 0.8
       }
     }
   };
@@ -135,7 +133,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
               className="relative"
               whileHover={{ 
                 scale: 1.02,
-                transition: { duration: 0.4, ease: "easeOut" }
+                transition: { duration: 0.4 }
               }}
               style={{
                 transformStyle: "preserve-3d",

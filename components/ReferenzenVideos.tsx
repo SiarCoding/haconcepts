@@ -60,8 +60,7 @@ export default function ReferenzenVideos() {
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.8,
-        ease: "easeOut"
+        duration: 0.8
       }
     }
   };
@@ -81,7 +80,7 @@ export default function ReferenzenVideos() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          transition={{ duration: 0.6 }}
         >
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal text-white font-montserrat">
             Unsere <span className="relative">

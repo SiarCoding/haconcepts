@@ -82,13 +82,19 @@ export function TestimonialCard({ handleShuffle, testimonial, position, id, auth
         <span className="block text-sm text-white/70 font-inter">{role}</span>
       </div>
       <span className="text-center text-lg italic text-white/90 font-inter">"{testimonial}"</span>
-      <div className="flex justify-center">
-        {[...Array(5)].map((_, index) => (
-          <Star
-            key={index}
-            className="w-5 h-5 text-[#ff5500] fill-[#ff5500]"
-          />
-        ))}
+      <div className="flex justify-center items-center">
+        <div className="flex mr-4">
+          {[...Array(5)].map((_, index) => (
+            <Star
+              key={index}
+              className="w-5 h-5 text-[#ff5500] fill-[#ff5500] mr-1"
+            />
+          ))}
+        </div>
+        <div className="flex items-center">
+          <span className="text-lg font-semibold text-white">5</span>
+          <span className="text-sm text-gray-400 ml-1">/5</span>
+        </div>
       </div>
     </motion.div>
   );

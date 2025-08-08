@@ -6,7 +6,7 @@ import { BsGraphDownArrow, BsCashStack, BsPeople, BsBarChartLine, BsBuilding, Bs
 const PainPoints = () => {
   const painPoints = [
     {
-      title: "Leads kosten >200€/Stück?",
+      title: "Leads kosten >50€/Stück?",
       description: "Während andere qualifizierte Leads für unter 50€ generieren, zahlen Sie das Vierfache für unqualifizierte Interessenten",
       icon: BsCashStack
     },
