@@ -22,6 +22,7 @@ const Questions = dynamic(() => import('@/components/Questions'));
 const Footer = dynamic(() => import('@/components/Footer'));
 const NextMove = dynamic(() => import('@/components/NextMove'));
 const BusinessSection = dynamic(() => import('@/components/BusinessSection'));
+const CaseStudySection = dynamic(() => import('@/components/CaseStudySection'));
 const AdsDesign = dynamic(() => import('@/components/AdsDesign'));
 
 export const metadata: Metadata = {
@@ -94,16 +95,18 @@ export default function Home() {
         {/* Übergang zwischen PainPoints und Solutions */}
         <div className="relative">
           <PainPoints />
+          {/* Solutions enthält intern ein H1-Element in der Sticky-Überschrift. Das wird durch H2 ersetzt, um nur eine H1 auf der Seite zu haben. */}
           <Solutions />
         </div>
         <AdsDesign />
         <FlipWebsites />
         <FailureReasons />
         <BusinessSection />
+        <CaseStudySection />
         <NextMove />
         <Team />
         <Timeline />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <TestimonialVideo />
         <WhyUs />
         <CTA />

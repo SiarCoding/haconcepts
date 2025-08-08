@@ -11,15 +11,15 @@ export const metadata: Metadata = {
   title: 'NMC | Nextmove Consulting - Leadgenerierung für Immobilienmakler & Finanzberater',
   description: 'Nextmove Consulting generiert qualifizierte Leads für Immobilienmakler und Finanzberater mit nachweisbarem ROI. KI-gestützte Vertriebsstrategien und digitales Marketing für mehr Kunden und Umsatz. Hamburg & bundesweit.',
   keywords: [
-    'Leadgenerierung Immobilienmakler', 
-    'Leads Finanzberater', 
-    'Immobilien Marketing', 
-    'KI Vertriebsstrategien', 
-    'Digitale Leadgenerierung', 
-    'Immobilien Leads', 
-    'Qualifizierte Leads Immobilien', 
-    'LinkedIn Automation Immobilien', 
-    'Facebook Werbung Immobilienmakler', 
+    'Leadgenerierung Immobilienmakler',
+    'Leads Finanzberater',
+    'Immobilien Marketing',
+    'KI Vertriebsstrategien',
+    'Digitale Leadgenerierung',
+    'Immobilien Leads',
+    'Qualifizierte Leads Immobilien',
+    'LinkedIn Automation Immobilien',
+    'Facebook Werbung Immobilienmakler',
     'Digitales Marketing Immobilien',
     'Immobilienmakler Leads generieren',
     'Finanzberater Kunden gewinnen',
@@ -40,7 +40,28 @@ export const metadata: Metadata = {
     'Immobilienmakler Marketingagentur',
     'Online Marketing Immobilienmakler',
     'Immobilienmakler Kunden gewinnen digital',
-    'Lead Akquise Immobilienmakler'
+    'Lead Akquise Immobilienmakler',
+    // Erweiterte Cluster: Finanz, Performance, Automation, KI, Lokal
+    'Finanzdienstleister Leads',
+    'Finanzberater Leads generieren',
+    'Neukundengewinnung Finanzdienstleister',
+    'Google Ads Finanzberater',
+    'Performance Marketing Finanzbranche',
+    'Vertriebsautomatisierung',
+    'Sales Automation',
+    'CRM Automatisierung',
+    'KI im Vertrieb',
+    'KI im Marketing',
+    'KI Leadgenerierung',
+    'Chatbot Immobilien',
+    'Social Media Agentur Hamburg',
+    'Social Media Marketing Hamburg',
+    'LinkedIn Leads Finanzberater',
+    'Content Marketing Immobilien',
+    'Lead Funnel Immobilien',
+    'Landingpage Immobilien Leads',
+    'B2B Leadgenerierung Finanzberater',
+    'Local SEO Hamburg Immobilien',
   ],
   authors: [{ name: 'Ali Alizadah', url: 'https://nextmoveconsulting.de' }],
   creator: 'Nextmove Consulting',
@@ -72,7 +93,7 @@ export const metadata: Metadata = {
     siteName: 'Nextmove Consulting',
     images: [
       {
-        url: 'https://nextmoveconsulting.de/og-image.jpg',
+        url: 'https://nextmoveconsulting.de/Logonextmove.png',
         width: 1200,
         height: 630,
         alt: 'Nextmove Consulting - Leadgenerierung für Immobilienmakler & Finanzberater'
@@ -84,7 +105,7 @@ export const metadata: Metadata = {
     title: 'Nextmove Consulting - Leadgenerierung für Immobilienmakler',
     description: 'Wir generieren qualifizierte Leads für Finanzberater und Immobilien-Profis mit nachweisbarem ROI',
     creator: '@nextmoveconsult',
-    images: ['https://nextmoveconsulting.de/twitter-image.jpg']
+    images: ['https://nextmoveconsulting.de/Logonextmove.png']
   },
 };
 
@@ -232,8 +253,8 @@ export default function RootLayout({
                 {
                   '@type': 'ListItem',
                   position: 2,
-                  name: 'Leistungen',
-                  item: 'https://nextmoveconsulting.de/leistungen'
+                  name: 'Unsere Lösung',
+                  item: 'https://nextmoveconsulting.de/unsere-loesung'
                 },
                 {
                   '@type': 'ListItem',
@@ -265,7 +286,7 @@ export default function RootLayout({
               },
               geo: {
                 '@type': 'GeoCoordinates',
-                latitude: 53.587, 
+                latitude: 53.587,
                 longitude: 10.079
               },
               openingHoursSpecification: {
@@ -286,11 +307,13 @@ export default function RootLayout({
         />
         <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} overflow-x-hidden`}>
         {/* Orangefarbener Custom Cursor als Client-Komponente */}
         <OrangeCursor />
         <ScrollProgress className="bg-gradient-to-r from-[#ff5500] via-[#ff8040] to-[#ff5500]" />
-        {children}
+        <div className="overflow-x-hidden max-w-full">
+          {children}
+        </div>
         <WhatsAppChat />
       </body>
     </html>

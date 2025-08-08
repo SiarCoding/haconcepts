@@ -80,7 +80,7 @@ export const GradientCard: React.FC<GradientCardProps> = ({ feature }) => {
             rotateY: -rotation.y * 0.2,
             z: 1,
           }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.4 }}
         />
         <motion.div
           className="absolute inset-0 z-0"
@@ -111,7 +111,7 @@ export const GradientCard: React.FC<GradientCardProps> = ({ feature }) => {
             y: isHovered ? rotation.x * 0.5 : 0,
             z: 0
           }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.4 }}
         />
         <motion.div
           className="absolute bottom-0 left-0 right-0 h-2/3 z-21"
@@ -126,7 +126,7 @@ export const GradientCard: React.FC<GradientCardProps> = ({ feature }) => {
             y: isHovered ? `calc(10% + ${rotation.x * 0.3}px)` : "10%",
             z: 0
           }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.4 }}
         />
         <motion.div
           className="absolute bottom-0 left-0 right-0 h-[2px] z-25"
@@ -138,7 +138,7 @@ export const GradientCard: React.FC<GradientCardProps> = ({ feature }) => {
             opacity: isHovered ? 1 : 0.9,
             z: 0.5
           }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.4 }}
         />
 
         <motion.div
@@ -160,7 +160,7 @@ export const GradientCard: React.FC<GradientCardProps> = ({ feature }) => {
               rotateX: isHovered ? -rotation.x * 0.5 : 0,
               rotateY: isHovered ? -rotation.y * 0.5 : 0
             }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4 }}
           >
             <div className="absolute top-0 left-0 w-2/3 h-2/3 opacity-40" style={{ background: "radial-gradient(circle at top left, rgba(255, 255, 255, 0.5), transparent 80%)", pointerEvents: "none", filter: "blur(10px)" }} />
             <div className="absolute bottom-0 left-0 w-full h-1/2 opacity-50" style={{ background: "linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent)", pointerEvents: "none", backdropFilter: "blur(3px)" }} />
@@ -176,7 +176,7 @@ export const GradientCard: React.FC<GradientCardProps> = ({ feature }) => {
               rotateX: isHovered ? -rotation.x * 0.3 : 0,
               rotateY: isHovered ? -rotation.y * 0.3 : 0
             }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4 }}
           >
             <div>
                 <motion.h3
@@ -213,8 +213,7 @@ export const GradientCard: React.FC<GradientCardProps> = ({ feature }) => {
                     x: isHovered ? 4 : 0
                     }}
                     transition={{
-                    duration: 0.6,
-                    ease: "easeOut"
+                    duration: 0.6
                     }}
                 >
                     <path
