@@ -38,8 +38,8 @@ const PainPoints = () => {
   ];
 
   const handleCtaClick = () => {
-    // Öffne Calendly-Link in einem neuen Tab
-    window.open('https://calendly.com/ali-nextmove-digital/30min?preview_source=et_card&month=2025-03', '_blank');
+    // Öffne Lunacal-Link in einem neuen Tab
+    window.open('https://lunacal.ai/team/nextmove-digital/meeting', '_blank');
   };
 
   const containerVariants = {
@@ -110,7 +110,7 @@ const PainPoints = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white leading-tight">
             <span className="block sm:inline">Verlieren Sie noch</span>
             <div className="inline-block relative mx-2 mb-2">
-              <span className="relative z-10">Geld & Zeit</span>
+              <span className="relative z-10 text-[#ff5500]">Geld & Zeit</span>
               <span className="absolute -bottom-1 left-0 right-0 h-2 sm:h-3 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-lg opacity-50"></span>
               <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span>
             </div>

@@ -5,19 +5,19 @@ import Image from 'next/image'
 
 const clients = [
   {
-    href: '/logohms.png',
+    href: '/logohms.webp',
   },
   {
-    href: '/logo1.png',
+    href: '/logo1.webp',
   },
   {
-    href: '/logo2.jpg',
+    href: '/logo2.webp',
   },
   {
-    href: '/simonlogo.png',
+    href: '/simonlogo.webp',
   },
   {
-    href: '/logo4.jpeg',
+    href: '/logo4.webp',
   },
   {
     href: '/logocd.webp',

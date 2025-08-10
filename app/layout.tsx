@@ -4,6 +4,10 @@ import { Inter } from 'next/font/google';
 import WhatsAppChat from '@/components/WhatsAppChat';
 import { ScrollProgress } from "@/components/magicui/scroll-progress";
 import OrangeCursor from '@/components/OrangeCursor';
+import ScrollPositionManager from '@/components/ScrollPositionManager';
+import MobileScrollOptimizer from '@/components/MobileScrollOptimizer';
+import { Suspense } from 'react';
+import Analytics from './analytics';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -93,7 +97,7 @@ export const metadata: Metadata = {
     siteName: 'Nextmove Consulting',
     images: [
       {
-        url: 'https://nextmoveconsulting.de/Logonextmove.png',
+        url: 'https://nextmoveconsulting.de/Logonextmove.webp',
         width: 1200,
         height: 630,
         alt: 'Nextmove Consulting - Leadgenerierung für Immobilienmakler & Finanzberater'
@@ -105,7 +109,7 @@ export const metadata: Metadata = {
     title: 'Nextmove Consulting - Leadgenerierung für Immobilienmakler',
     description: 'Wir generieren qualifizierte Leads für Finanzberater und Immobilien-Profis mit nachweisbarem ROI',
     creator: '@nextmoveconsult',
-    images: ['https://nextmoveconsulting.de/Logonextmove.png']
+    images: ['https://nextmoveconsulting.de/Logonextmove.webp']
   },
 };
 
@@ -118,9 +122,9 @@ export default function RootLayout({
     <html lang="de">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/Logo Icon Transparent.webp" type="image/webp" />
+        <link rel="icon" href="/Logo Icon Transparent.webp" sizes="any" />
+        <link rel="apple-touch-icon" href="/Logo Icon Transparent.webp" />
         <meta name="google-site-verification" content="Ihr-Google-Verifizierungscode" />
         <script
           type="application/ld+json"
@@ -308,6 +312,13 @@ export default function RootLayout({
         <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
       </head>
       <body className={`${inter.className} overflow-x-hidden`}>
+        <Suspense>
+          <Analytics />
+        </Suspense>
+        {/* Mobile Scroll Optimizer */}
+        <MobileScrollOptimizer />
+        {/* Scroll Position Manager */}
+        <ScrollPositionManager />
         {/* Orangefarbener Custom Cursor als Client-Komponente */}
         <OrangeCursor />
         <ScrollProgress className="bg-gradient-to-r from-[#ff5500] via-[#ff8040] to-[#ff5500]" />

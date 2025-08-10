@@ -8,35 +8,35 @@ const testimonials = [
     id: 1,
     testimonial: "Wir generieren täglich qualifizierte Leads mit Nextmove Consulting. Mehr Termine, mehr Abschlüsse und ein signifikantes Wachstum unseres Geschäfts.",
     author: "Michael Schürdt",
-    avatar: "/P1039493.jpg",
+    avatar: "/P1039493.webp",
     role: "Kapitalanlage-Berater"
   },
   {
     id: 2,
     testimonial: "Mehr als 40 Anfragen in den ersten Wochen! 16 neue Besichtigungstermine und eine Reichweite von über 160.000 Konten.",
     author: "Jens Freyer",
-    avatar: "/P1039309.jpg",
+    avatar: "/P1039309.webp",
     role: "Freyer Immobilien"
   },
   {
     id: 3,
     testimonial: "Innerhalb der ersten 3 Wochen konnten wir bereits mithilfe von NextMove Consulting über 100 Leads generieren.",
     author: "Azim Chowdhury",
-    avatar: "/azim.png",
+    avatar: "/azim.webp",
     role: "CD Immoportfolio GmbH"
   },
   {
     id: 4,
     testimonial: "Die Zusammenarbeit hat unsere Erwartungen übertroffen. Professionell, zielgerichtet und mit messbaren Ergebnissen.",
     author: "Alexander Banzhaf",
-    avatar: "/banzhaf.jpeg",
+    avatar: "/banzhaf.webp",
     role: "Banzhaf Immobilien"
   },
   {
     id: 5,
     testimonial: "Endlich ein Partner, der die Immobilienbranche versteht. Die Lead-Qualität ist hervorragend.",
     author: "Alexander Kedro",
-    avatar: "/kedro.jpeg",
+    avatar: "/kedro.webp",
     role: "Kedro Immobilien"
   }
 ];

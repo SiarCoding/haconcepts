@@ -4,20 +4,22 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { BsGraphUpArrow, BsEyeFill, BsPeopleFill, BsCurrencyEuro, BsLightning, BsCheckCircleFill } from 'react-icons/bs';
+import { RiCheckboxCircleFill } from 'react-icons/ri';
+import OptimizedVideo from './OptimizedVideo';
 
 const StatItem = ({ value, label, icon: Icon }: { value: string; label: string; icon: React.ElementType }) => (
   <div className="flex items-start text-left">
-    <Icon className="w-5 h-5 text-[#ff5500] mr-3 flex-shrink-0 mt-1.5" />
-    <div>
+    <div className="flex-grow">
       <div className="text-2xl sm:text-3xl font-bold text-white leading-none">{value}</div>
       <div className="text-sm sm:text-base text-white/80 mt-1">{label}</div>
     </div>
+    <RiCheckboxCircleFill className="w-4 h-4 lg:w-5 lg:h-5 text-[#ff5500] flex-shrink-0 mt-1.5 ml-3" />
   </div>
 );
 
 const CaseStudySection = () => {
   const handleCtaClick = () => {
-    window.open('https://calendly.com/ali-nextmove-digital/30min?preview_source=et_card&month=2025-03', '_blank');
+    window.open('https://lunacal.ai/team/nextmove-digital/meeting', '_blank');
   };
 
   const stats1 = [
@@ -26,16 +28,16 @@ const CaseStudySection = () => {
     { value: '70k', label: 'Reichweite', icon: BsGraphUpArrow },
     { value: '10€', label: 'Lead-Preis', icon: BsCurrencyEuro },
     { value: '70', label: 'Pre-Qualifiziert', icon: BsCheckCircleFill },
-    { value: '30', label: 'Tage', icon: BsLightning },
+    { value: '20', label: 'Tage', icon: BsLightning },
   ];
 
   const stats2 = [
-    { value: '150+', label: 'Qualifizierte Leads', icon: BsPeopleFill },
-    { value: '300k+', label: 'Impressionen', icon: BsEyeFill },
-    { value: '120k', label: 'Reichweite', icon: BsGraphUpArrow },
-    { value: '8€', label: 'Lead-Preis', icon: BsCurrencyEuro },
-    { value: '90%', label: 'Pre-Qualifiziert', icon: BsCheckCircleFill },
-    { value: '45', label: 'Tage', icon: BsLightning },
+    { value: '70+', label: 'Qualifizierte Leads', icon: BsPeopleFill },
+    { value: '150k+', label: 'Impressionen', icon: BsEyeFill },
+    { value: '50k', label: 'Reichweite', icon: BsGraphUpArrow },
+    { value: '12€', label: 'Lead-Preis', icon: BsCurrencyEuro },
+    { value: '65%', label: 'Pre-Qualifiziert', icon: BsCheckCircleFill },
+    { value: '30', label: 'Tage', icon: BsLightning },
   ];
 
   return (
@@ -57,7 +59,7 @@ const CaseStudySection = () => {
       <div className="absolute top-1/4 left-1/4 w-24 md:w-32 h-24 md:h-32 rounded-full bg-white/5 blur-2xl md:blur-3xl"></div>
       <div className="absolute bottom-1/3 right-1/4 w-32 md:w-40 h-32 md:h-40 rounded-full bg-orange-500/10 blur-2xl md:blur-3xl"></div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative">
         
         {/* H1 Title like Team/WhyUs - centered */}
         <motion.div 
@@ -99,25 +101,34 @@ const CaseStudySection = () => {
               </svg>
             </div>
 
-            <div className="relative rounded-3xl p-8 sm:p-12 lg:p-16 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-md backdrop-saturate-150 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(255,85,0,0.1)] hover:shadow-[0_16px_48px_0_rgba(255,85,0,0.15)] transition-all duration-500 ease-out overflow-hidden z-10">
+            <div className="relative rounded-3xl p-6 sm:p-8 lg:p-10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-md backdrop-saturate-150 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(255,85,0,0.1)] hover:shadow-[0_16px_48px_0_rgba(255,85,0,0.15)] transition-all duration-500 ease-out overflow-hidden z-10">
               
               <div className="text-center md:text-left">
                 <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6 leading-tight">
-                  Von 0 auf <span className="text-[#ff5500]">100 Leads</span> in{' '}
+                  <span className="text-[#ff5500]">100 Leads</span> in{' '}
                   <span className="relative inline-block">
-                    30 Tagen
+                    20 Tagen
                     <span className="absolute bottom-[-6px] md:bottom-[-5px] left-0 w-full h-1.5 md:h-2 bg-[#ff5500]/40" />
-                  </span>
+                  </span>{' '}durch dieses Reel
                 </h3>
                 <p className="text-base sm:text-lg text-white/80 leading-relaxed mb-8">
                   Dieses Content-Marketing-Reel generierte für Azim hochqualifizierte Immobilien-Leads für nur 10€ pro Stück und revolutionierte sein Business.
                 </p>
               </div>
 
-              {/* Stats Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-8">
+              {/* Stats List - mit Zahlen und Labels nebeneinander */}
+              <div className="space-y-3 lg:space-y-4 mb-8">
                 {stats1.map((stat, index) => (
-                  <StatItem key={index} value={stat.value} label={stat.label} icon={stat.icon} />
+                  <div key={index} className="flex items-center">
+                    <RiCheckboxCircleFill className="w-4 h-4 lg:w-5 lg:h-5 text-[#ff5500] flex-shrink-0 mr-3" />
+                    <div className="flex items-baseline">
+                      <div className="relative inline-block mr-3">
+                        <span className="text-xl sm:text-2xl font-bold text-white leading-none">{stat.value}</span>
+                        <span className="absolute bottom-[-6px] md:bottom-[-5px] left-0 w-full h-1.5 md:h-2 bg-[#ff5500]/40" />
+                      </div>
+                      <span className="text-sm sm:text-base text-gray-200">{stat.label}</span>
+                    </div>
+                  </div>
                 ))}
               </div>
 
@@ -169,15 +180,14 @@ const CaseStudySection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="relative">
-              <Image
-                src="/Purple Daily Horoscope Phone Video Instagram Story.gif"
+              <OptimizedVideo
+                gifSrc="/Purple Daily Horoscope Phone Video Instagram Story.gif"
                 alt="Content Marketing Reel - Case Study 1"
                 width={640}
                 height={1136}
-                className="rounded-3xl shadow-2xl w-full max-w-[400px] sm:max-w-[500px] lg:max-w-[600px] xl:max-w-[700px] h-auto"
-                unoptimized
+                className="max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] xl:max-w-[460px]"
               />
-              {/* Glow effect around GIF */}
+              {/* Glow effect around video */}
               <div className="absolute -inset-6 bg-gradient-to-r from-[#ff8040] to-[#ff5500] rounded-3xl blur-2xl opacity-40 -z-10"></div>
             </div>
           </motion.div>
@@ -195,15 +205,14 @@ const CaseStudySection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="relative">
-              <Image
-                src="/Purple Daily Horoscope Phone Video Instagram Story.gif"
+              <OptimizedVideo
+                gifSrc="/kedroad.gif"
                 alt="Content Marketing Reel - Case Study 2"
                 width={640}
                 height={1136}
-                className="rounded-3xl shadow-2xl w-full max-w-[400px] sm:max-w-[500px] lg:max-w-[600px] xl:max-w-[700px] h-auto"
-                unoptimized
+                className="max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] xl:max-w-[460px]"
               />
-              {/* Glow effect around GIF */}
+              {/* Glow effect around video */}
               <div className="absolute -inset-6 bg-gradient-to-r from-[#ff8040] to-[#ff5500] rounded-3xl blur-2xl opacity-40 -z-10"></div>
             </div>
           </motion.div>
@@ -229,24 +238,34 @@ const CaseStudySection = () => {
               </svg>
             </div>
 
-            <div className="relative rounded-3xl p-8 sm:p-12 lg:p-16 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-md backdrop-saturate-150 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(255,85,0,0.1)] hover:shadow-[0_16px_48px_0_rgba(255,85,0,0.15)] transition-all duration-500 ease-out overflow-hidden z-10">
+            <div className="relative rounded-3xl p-6 sm:p-8 lg:p-10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-md backdrop-saturate-150 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(255,85,0,0.1)] hover:shadow-[0_16px_48px_0_rgba(255,85,0,0.15)] transition-all duration-500 ease-out overflow-hidden z-10">
               
               <div className="text-center md:text-left">
                 <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6 leading-tight">
-                  Ihre möglichen <span className="relative inline-block">
-                    <span className="text-[#ff5500]">Resultate</span>
+                 Über <span className="text-[#ff5500]">70 Leads</span> innerhalb{' '}
+                  <span className="relative inline-block">
+                    einem Monat
                     <span className="absolute bottom-[-6px] md:bottom-[-5px] left-0 w-full h-1.5 md:h-2 bg-[#ff5500]/40" />
                   </span>
                 </h3>
                 <p className="text-base sm:text-lg text-white/80 leading-relaxed mb-8">
-                  Mit unserem bewährten Content-Marketing-System können auch Sie diese beeindruckenden Zahlen erreichen und Ihr Business transformieren.
+                  Diese Content-Marketing-Strategie generierte für Herr Kedro über 70 qualifizierte Leads in nur einem Monat und steigerte seinen Umsatz erheblich.
                 </p>
               </div>
 
-              {/* Stats Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-8">
+              {/* Stats List - mit Zahlen und Labels nebeneinander */}
+              <div className="space-y-3 lg:space-y-4 mb-8">
                 {stats2.map((stat, index) => (
-                  <StatItem key={index} value={stat.value} label={stat.label} icon={stat.icon} />
+                  <div key={index} className="flex items-center">
+                    <RiCheckboxCircleFill className="w-4 h-4 lg:w-5 lg:h-5 text-[#ff5500] flex-shrink-0 mr-3" />
+                    <div className="flex items-baseline">
+                      <div className="relative inline-block mr-3">
+                        <span className="text-xl sm:text-2xl font-bold text-white leading-none">{stat.value}</span>
+                        <span className="absolute bottom-[-6px] md:bottom-[-5px] left-0 w-full h-1.5 md:h-2 bg-[#ff5500]/40" />
+                      </div>
+                      <span className="text-sm sm:text-base text-gray-200">{stat.label}</span>
+                    </div>
+                  </div>
                 ))}
               </div>
 

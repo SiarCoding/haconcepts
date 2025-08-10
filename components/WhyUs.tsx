@@ -230,7 +230,7 @@ export default function WhyUs() {
                   </div>
                   <div className="flex items-center flex-1">
                     <Image
-                      src="/Logonextmove.png"
+                      src="/Logo-NMC-2.png"
                       alt="NextMove Logo"
                       width={400}
                       height={160}

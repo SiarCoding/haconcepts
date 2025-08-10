@@ -25,21 +25,21 @@ const members: Member[] = [
         position: 'Geschäftsführer & Gründer',
         role: 'Visionary',
         expertise: 'Expert',
-        avatar: '/ali3.png',
+        avatar: '/ali3.webp',
     },
     {
         name: 'Siar Alizadah',
         position: 'Mitgründer & IT Berater',
         role: 'Strategic',
         expertise: 'Mastermind',
-        avatar: '/siarjaan.png',
+        avatar: '/siarjaan.webp',
     },
     {
         name: 'Cem Celik',
         position: 'Head of Marketing',
         role: 'Engaging',
         expertise: 'Genius',
-        avatar: '/CemCelik1.png',
+        avatar: '/CemCelik1.webp',
     }
 ];
 

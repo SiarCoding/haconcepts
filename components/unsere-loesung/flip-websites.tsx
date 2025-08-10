@@ -4,14 +4,14 @@ import { motion } from 'framer-motion';
 import { BorderBeam } from "../ui/border-beam";
 import { ChevronLeft, ChevronRight, TrendingUp } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
-import { GradientCardWide } from "../ui/gradient-card-wide";
+import { Carousel } from "../ui/carousel";
 
 const websites = [
-  { title: 'Freyer Immobilien - Vermögen durch Immobilien aufbauen', url: '/freyerimmo-website.png' },
-  { title: 'CD Immo - Nachhaltig Vermögen aufbauen & Steuerlast senken', url: '/cdwebsite.png' },
-  { title: 'HMS Finance - In 4 Wochen zur Immobilie für mehr Kapital', url: '/hmsfinancewebsite.png' },
-  { title: 'Kedro - Mit Immobilien Vermögen aufbauen & Altersvorsorge sichern', url: '/kedro_landingpage.png' },
-  { title: 'Simon Hauer Immobilien - Enormer Traffic durch individuellen Rechner', url: '/simon-landingpage.png' }
+  { id: 0, title: 'Freyer Immobilien - Vermögen durch Immobilien aufbauen', url: 'https://freyer.immo', button: 'Website besuchen', src: '/freyerimmo-website.webp' },
+  { id: 1, title: 'CD Immo - Nachhaltig Vermögen aufbauen & Steuerlast senken', url: 'https://cd-immo.de', button: 'Website besuchen', src: '/cdwebsite.webp' },
+  { id: 2, title: 'HMS Finance - In 4 Wochen zur Immobilie für mehr Kapital', url: 'https://hmsfinance.de', button: 'Website besuchen', src: '/hmsfinancewebsite.webp' },
+  { id: 3, title: 'Kedro - Mit Immobilien Vermögen aufbauen & Altersvorsorge sichern', url: 'https://kedro-immobilien.de', button: 'Website besuchen', src: '/kedro_landingpage.webp' },
+  { id: 4, title: 'Simon Hauer Immobilien - Enormer Traffic durch individuellen Rechner', url: 'https://simon-hauer-immobilien.de', button: 'Website besuchen', src: '/simon-landingpage.webp' }
 ];
 
 // Helper function to get website stats for current website
@@ -141,7 +141,7 @@ const FlipWebsites = () => {
   };
 
   return (
-    <section className="relative bg-black overflow-hidden py-16 sm:py-20 lg:py-28">
+    <section className="relative bg-black overflow-hidden py-20 sm:py-24 md:py-28 lg:py-32">
       {/* Enhanced Orange Gradient Background Effect from PainPoints */}
       <div className="absolute inset-0">
         <svg 
@@ -209,106 +209,82 @@ const FlipWebsites = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div 
-              className="flex flex-row gap-1.5 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8 items-stretch relative min-h-[280px] sm:min-h-[350px] md:min-h-[400px] lg:min-h-[450px] xl:min-h-[500px] w-full"
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-            >
-              {/* Website Image Card - Mobile optimiert */}
-              <div className="flex-[2] sm:flex-[2.5] md:flex-[3] relative rounded-lg sm:rounded-xl md:rounded-2xl border border-orange-500/20 bg-gray-900/50 p-1.5 sm:p-3 md:p-4 lg:p-5 xl:p-6 shadow-2xl shadow-orange-500/10 overflow-hidden min-w-0">
-                <BorderBeam colorFrom="#ff5500" colorTo="#ff8040" />
+            {/* Carousel Container */}
+            <div className="relative w-full max-w-7xl mx-auto">
+              {/* Mobile/Tablet Layout: Carousel only */}
+              <div className="lg:hidden">
                 
-                {/* Image Container - Mobile optimiert */}
-                <div className="relative w-full h-full rounded-md sm:rounded-lg overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t z-1 from-black/50 via-transparent to-black/20"></div>
-                  
-                  {/* Image - Mobile optimiert */}
-                  <div className="relative w-full h-full">
-                    <motion.img 
-                      key={currentIndex}
-                      src={websites[currentIndex].url} 
-                      className="absolute inset-0 w-full h-full object-cover object-top z-0" 
-                      alt={websites[currentIndex].title}
-                      initial={{ opacity: 0, scale: 1.05 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.5 }}
-                      style={{
-                        maxWidth: '100%',
-                        maxHeight: '100%',
-                        objectFit: 'cover',
-                        objectPosition: 'top center',
-                        width: '100%',
-                        height: '100%'
-                      }}
+                {/* Carousel Section - Full width */}
+                <div className="w-full relative">
+                  <div className="relative perspective-1000">
+                    <Carousel 
+                      slides={websites} 
+                      className="min-h-[400px] sm:min-h-[480px] md:min-h-[520px]"
                     />
                   </div>
-                  
-                  <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-md sm:rounded-lg z-2"></div>
                 </div>
-              </div>
 
-              {/* Stats Card - Mobile optimiert */}
-              <div className="flex-[1] min-w-[120px] sm:min-w-[140px] md:min-w-[180px] lg:min-w-[220px] max-w-[140px] sm:max-w-[180px] md:max-w-[220px] lg:max-w-[280px] xl:max-w-[320px]">
-                <motion.div
-                  key={`stats-${currentIndex}`}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
-                  transition={{ duration: 0.5 }}
-                  className="h-full"
-                >
-                  <GradientCardWide 
-                    feature={{
-                      icon: 'TrendingUp',
-                      title: getWebsiteStats(currentIndex).title,
-                      description: getWebsiteStats(currentIndex).description,
-                      points: getWebsiteStats(currentIndex).points,
-                      websiteUrl: getWebsiteStats(currentIndex).websiteUrl
-                    }}
-                  />
-                </motion.div>
+              </div>
+              
+              {/* Desktop Layout: Carousel only */}
+              <div className="hidden lg:block">
+                {/* Carousel Section - Full width */}
+                <div className="w-full relative mb-12 lg:mb-16">
+                  <div className="relative perspective-1000">
+                    <Carousel 
+                      slides={websites} 
+                      className="min-h-[600px] xl:min-h-[650px]"
+                    />
+                  </div>
+                </div>
+
               </div>
             </div>
 
-            {/* Enhanced Navigation Controls - Mobile optimiert */}
-            <div className="flex justify-center items-center mt-6 sm:mt-8 gap-3 sm:gap-4 md:gap-6 z-50">
-              <button
-                type="button"
-                onClick={() => updateIndex(-1)}
-                title="Vorherige Website"
-                className="group relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-all duration-300 hover:scale-110 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/25 active:scale-95"
-              >
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <ChevronLeft size={16} className="sm:scale-110 md:scale-125 relative z-10 transition-transform group-hover:-translate-x-0.5" />
-              </button>
-              
-              <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full bg-black/40 backdrop-blur-md border border-white/10">
-                {websites.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`transition-all duration-500 rounded-full ${
-                      index === currentIndex 
-                        ? 'w-5 sm:w-6 md:w-8 h-1.5 sm:h-2 md:h-3 bg-gradient-to-r from-orange-400 to-orange-600 shadow-lg shadow-orange-500/50' 
-                        : 'w-1.5 sm:w-2 md:w-3 h-1.5 sm:h-2 md:h-3 bg-white/30 hover:bg-white/50 hover:scale-110'
-                    }`}
-                    title={`Website ${index + 1}`}
-                  />
-                ))}
-              </div>
-              
-              <button
-                type="button"
-                onClick={() => updateIndex(1)}
-                title="Nächste Website"
-                className="group relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transition-all duration-300 hover:scale-110 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/25 active:scale-95"
-              >
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <ChevronRight size={16} className="sm:scale-110 md:scale-125 relative z-10 transition-transform group-hover:translate-x-0.5" />
-              </button>
-            </div>
+            {/* Note: Navigation is now handled by the Carousel component */}
+          </motion.div>
+
+          {/* CTA Button Section */}
+          <motion.div
+            className="text-center mt-20 sm:mt-24 md:mt-28 lg:mt-32 xl:mt-36"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <button
+              onClick={() => window.open('https://lunacal.ai/team/nextmove-digital/meeting', '_blank')}
+              style={{
+                background: 'rgba(255, 85, 0, 0.1)',
+                color: 'white',
+                border: '1px solid rgba(255, 85, 0, 0.5)',
+                borderRadius: '14px',
+                fontWeight: '600',
+                fontSize: '16px',
+                letterSpacing: '1px',
+                textTransform: 'uppercase',
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 0 15px rgba(255, 85, 0, 0.4)',
+                cursor: 'pointer',
+                lineHeight: '1.2',
+              }}
+              className="relative px-6 py-3 lg:px-8 lg:py-4 btn-orange-glow"
+            >
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: '0',
+                  background: 'radial-gradient(circle at center, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 40%, transparent 70%)',
+                  filter: 'blur(12px)',
+                  opacity: '0.6',
+                  zIndex: '-1',
+                  transform: 'scale(1.1)'
+                }}
+              ></div>
+              Webseite kostenlos anfragen
+            </button>
           </motion.div>
 
         </div>

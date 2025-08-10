@@ -13,7 +13,7 @@ const featuredPost = {
   author: "Ali Siar",
   date: "2025-01-30",
   readTime: "8 Min.",
-  image: "/blog-hero.jpg",
+  image: "/blog-hero.webp",
   category: "Lead-Generierung",
   featured: true
 };
@@ -26,7 +26,7 @@ const blogPosts = [
     author: "NextMove Team",
     date: "2025-01-28",
     readTime: "6 Min.",
-    image: "/linkedin-automation.jpg",
+    image: "/linkedin-automation.webp",
     category: "Social Media"
   },
   {
@@ -36,7 +36,7 @@ const blogPosts = [
     author: "Ali Siar",
     date: "2025-01-25",
     readTime: "10 Min.",
-    image: "/conversion-optimization.jpg",
+    image: "/conversion-optimization.webp",
     category: "Optimierung"
   },
   {
@@ -46,7 +46,7 @@ const blogPosts = [
     author: "NextMove Team",
     date: "2025-01-22",
     readTime: "12 Min.",
-    image: "/personal-branding.jpg",
+    image: "/personal-branding.webp",
     category: "Branding"
   },
   {
@@ -56,7 +56,7 @@ const blogPosts = [
     author: "Ali Siar",
     date: "2025-01-20",
     readTime: "7 Min.",
-    image: "/roi-tracking.jpg",
+    image: "/roi-tracking.webp",
     category: "Analytics"
   },
   {
@@ -66,7 +66,7 @@ const blogPosts = [
     author: "NextMove Team",
     date: "2025-01-18",
     readTime: "9 Min.",
-    image: "/funnel-optimization.jpg",
+    image: "/funnel-optimization.webp",
     category: "Conversion"
   }
 ];

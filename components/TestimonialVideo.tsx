@@ -33,7 +33,7 @@ const videoTestimonials = [
 
 export default function TestimonialVideo() {
   return (
-    <section className="relative bg-black py-20 sm:py-24 overflow-hidden">
+    <section id="testimonials" className="relative bg-black py-20 sm:py-24 overflow-hidden">
       <div className="absolute inset-0">
         <svg 
           className="blur-2xl md:blur-3xl filter opacity-30 md:opacity-40" 

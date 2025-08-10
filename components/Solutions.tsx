@@ -59,16 +59,16 @@ const Solutions = () => {
   // Memoize solutions data to prevent re-creation on every render
   const solutionsData: SolutionItemProps[] = useMemo(() => [
     {
-      imgUrl: "/meta-leads.png",
-      subheading: "KI-GESTÜTZT & ZIELGERICHTET",
+      imgUrl: "/meta-leads.webp",
+      subheading: "GEZIELT & DATENGETRIEBEN",
       heading: "Digitale Leadgenerierung",
       description: "Erfolgserprobte Strategien mit denen wir qualifizierte Leads generieren und so nicht nur für Reichweite, sondern auch für zahlende Kunden sorgen.",
       features: [
-        "Präzise Zielgruppenansprache",
-        "KI-gestützte Lead-Qualifizierung", 
-        "Automatisierte Follow-up Sequenzen",
+        "Gezielte Zielgruppenansprache",
+        "Automatische Leadgenerierung", 
+        "Performance-optimierte Kampagnen",
         "Transparentes Reporting",
-        "Kostenoptimierte Kampagnen"
+        "Kosteneffiziente Werbeschaltung"
       ],
       icon: BsShare
     },
@@ -88,7 +88,7 @@ const Solutions = () => {
       reverse: true
     },
     {
-      imgUrl: "/funnel1.png",
+      imgUrl: "/funnel1.webp",
       subheading: "AUTOMATISIERT & EFFIZIENT",
       heading: "Funnel-Systeme",
       description: "Automatisierte Verkaufstrichter, die rund um die Uhr Leads qualifizieren und in zahlende Kunden verwandeln - ohne manuellen Aufwand.",
@@ -102,7 +102,7 @@ const Solutions = () => {
       icon: BsLightningFill
     },
     {
-      imgUrl: "/artwork.png",
+      imgUrl: "/artwork.webp",
       subheading: "PROFESSIONELL & EMOTIONAL",
       heading: "Hollywood-reifer Content",
       description: "Mit datengetriebenen, kreativen Video-Ads stechen wir aus der Masse heraus und überzeugen Ihre Zielgruppe direkt auf ihrem Smartphone.",
@@ -117,9 +117,9 @@ const Solutions = () => {
       reverse: true
     },
     {
-      imgUrl: "/bb.png",
+      imgUrl: "/bb.webp",
       subheading: "AUTHENTISCH & AUTORITÄR",
-      heading: "Personal Brand Aufbau",
+      heading: "Brand Aufbau",
       description: "Wir verwandeln Sie in eine unwiderstehliche Marke, die Vertrauen schafft und Kunden anzieht.",
       features: [
         "Authentische Markenpositionierung",
@@ -132,7 +132,7 @@ const Solutions = () => {
       animation: socialBubbleAnimation
     },
     {
-      imgUrl: "/process-optimization.png",
+      imgUrl: "/process-optimization.webp",
       subheading: "INTELLIGENT & HOCHWERTIG",
       heading: "Prozessoptimierte Vertriebsmethoden",
       description: "Systematische Ansprache vermögender Privatpersonen über LinkedIn und automatisierte CRM-Pipelines für nachhaltigen Investoren-Aufbau im Immobilienbereich.",
@@ -149,7 +149,7 @@ const Solutions = () => {
   ], []);
 
   return (
-    <section ref={containerRef} className="relative bg-black overflow-hidden">
+    <section id="solutions" ref={containerRef} className="relative bg-black overflow-hidden">
       {/* Fixed Header Section */}
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center z-10 relative">
         {/* Lamp Effect - positioned above the text */}
@@ -158,7 +158,7 @@ const Solutions = () => {
         </div>
         
         <motion.div 
-          className="text-center relative z-50 flex-1 flex flex-col justify-center pb-12 md:pb-16"
+          className="text-center relative z-50 flex-1 flex flex-col justify-center pb-16 md:pb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -166,13 +166,13 @@ const Solutions = () => {
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal text-white leading-[0.9] tracking-tight px-4">
             <span className="block">Das bieten wir</span>
-            <div className="relative mt-2 sm:mt-3 inline-block">
+            <div className="relative mt-3 sm:mt-3 inline-block">
               <span className="relative z-10 bg-gradient-to-r from-[#ff8040] to-[#ff5500] bg-clip-text text-transparent">für Sie</span>
               <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-2 sm:h-3 md:h-4 lg:h-5 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-xl opacity-60"></span>
               <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span>
             </div>
           </h2>
-          <p className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed mt-3 sm:mt-4 md:mt-6 font-light px-4">
+          <p className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed mt-4 sm:mt-4 md:mt-6 font-light px-4">
             Maßgeschneiderte Digital-Marketing-Lösungen, die Ihr Immobiliengeschäft auf das nächste Level bringen
           </p>
         </motion.div>
@@ -245,7 +245,7 @@ const SolutionSection: React.FC<SolutionItemProps & { isClient?: boolean }> = Re
             </div>
           </div>
           
-          <p className="mb-3 sm:mb-4 md:mb-6 text-center text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl tracking-wider font-semibold text-orange-400 uppercase px-2">
+          <p className="mb-4 sm:mb-4 md:mb-6 text-center text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl tracking-wider font-semibold text-orange-400 uppercase px-2">
             {subheading}
           </p>
           <h2 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black bg-gradient-to-b from-white via-white to-white/60 bg-clip-text text-transparent leading-[0.9] tracking-tight px-2">
@@ -311,7 +311,7 @@ const SolutionSection: React.FC<SolutionItemProps & { isClient?: boolean }> = Re
               
               {/* CTA Button im Hero-Stil */}
               <button
-                onClick={() => window.open('https://calendly.com/ali-nextmove-digital/30min?preview_source=et_card&month=2025-03', '_blank')}
+                onClick={() => window.open('https://lunacal.ai/team/nextmove-digital/meeting', '_blank')}
                 style={{
                   background: 'rgba(255, 85, 0, 0.1)',
                   color: 'white',
@@ -373,8 +373,8 @@ const SolutionSection: React.FC<SolutionItemProps & { isClient?: boolean }> = Re
             </svg>
           </div>
           
-          {/* Personal Brand Chart, LinkedIn Orbiting, or Standard Image */}
-          {heading === "Personal Brand Aufbau" ? (
+          {/* Brand Chart, LinkedIn Orbiting, or Standard Image */}
+          {heading === "Brand Aufbau" ? (
             <div className="relative w-full max-w-md mx-auto z-10 mt-8 sm:mt-12 md:mt-16 lg:mt-20">
               <div className="relative h-64 sm:h-72 md:h-80 w-full">
                 {/* Chart Title */}
@@ -440,9 +440,9 @@ const SolutionSection: React.FC<SolutionItemProps & { isClient?: boolean }> = Re
                   {/* X-Axis Labels */}
                   <div className="absolute bottom-0 left-6 right-0 flex justify-between text-gray-400 text-xs">
                     <span>Start</span>
-                    <span>3M</span>
-                    <span>6M</span>
-                    <span>12M</span>
+                    <span>3 Mon</span>
+                    <span>6 Mon</span>
+                    <span>12 Mon</span>
                   </div>
                 </div>
                 
@@ -450,7 +450,7 @@ const SolutionSection: React.FC<SolutionItemProps & { isClient?: boolean }> = Re
                 <div className="flex items-center justify-center gap-6 mt-4 text-xs">
                   <div className="flex items-center gap-2">
                     <div className="w-4 h-0.5 bg-[#ff5500] rounded"></div>
-                    <span className="text-gray-300">Brand Authority</span>
+                    <span className="text-gray-300">Brand Autorität</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-4 h-0.5 bg-white/50 rounded"></div>

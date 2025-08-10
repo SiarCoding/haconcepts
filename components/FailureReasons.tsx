@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { BsCalculator } from 'react-icons/bs';
 
 // Info-Icon Komponente mit Tooltip
 const InfoIcon = ({ tooltip }: { tooltip: string }) => {
@@ -113,9 +114,9 @@ const MarketingROICalculator = () => {
   const resultsRef = useRef(null);
   const ctaRef = useRef(null);
 
-  // CTA Click Handler für Calendly
+  // CTA Click Handler für Lunacal
   const handleCtaClick = () => {
-    window.open('https://calendly.com/ali-nextmove-digital/30min?preview_source=et_card&month=2025-03', '_blank');
+    window.open('https://lunacal.ai/team/nextmove-digital/meeting', '_blank');
   };
 
   // Input Handler Funktionen
@@ -269,8 +270,8 @@ const MarketingROICalculator = () => {
   };
 
   return (
-    <section className="relative overflow-hidden py-16 lg:py-20" style={{
-      backgroundImage: 'url(/buroo.png)',
+    <section className="relative overflow-hidden py-16 lg:py-20 min-h-[150vh]" style={{
+      backgroundImage: 'url(/buroo.webp)',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat'
@@ -292,7 +293,15 @@ const MarketingROICalculator = () => {
           transition={{ duration: 0.7 }}
         >
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white mb-5">
-            Berechnen Sie Ihren Marketing-ROI und Ihr Wachstumspotenzial
+            Berechnen Sie Ihren <span className="relative inline-block">
+              <span className="text-white">Marketing-ROI</span>
+              <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-2 sm:h-3 md:h-4 lg:h-5 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-xl opacity-60"></span>
+              <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span>
+            </span> und Ihr <span className="relative inline-block">
+              <span className="text-white">Wachstumspotenzial</span>
+              <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-2 sm:h-3 md:h-4 lg:h-5 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-xl opacity-60"></span>
+              <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span>
+            </span>
           </h1>
           
           <p className="text-base text-white leading-relaxed max-w-3xl mx-auto">
@@ -608,7 +617,15 @@ const MarketingROICalculator = () => {
             ) : (
               <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6 lg:p-7 shadow-2xl">
                 <div className="text-center h-72 flex flex-col items-center justify-center">
-                  <div className="text-5xl mb-4">📊</div>
+                  <div className="mb-6 flex justify-center">
+                    <div className="relative">
+                      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-white/[0.2] to-white/[0.05] backdrop-blur-md border border-white/[0.15] flex items-center justify-center shadow-2xl">
+                        <BsCalculator className="w-8 h-8 text-[#ff5500]" />
+                      </div>
+                      <div className="absolute inset-0 rounded-xl bg-orange-500/30 blur-lg opacity-70 animate-pulse"></div>
+                      <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-orange-500/20 to-red-500/20 blur-xl opacity-50"></div>
+                    </div>
+                  </div>
                   <h3 className="text-xl font-semibold text-white mb-3">Ihre Ergebnisse</h3>
                   <p className="text-white text-base">
                     Füllen Sie die Felder links aus, um Ihr Potenzial zu berechnen.

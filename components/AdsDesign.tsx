@@ -44,12 +44,13 @@ const AdsDesign = () => {
         <div className="max-w-6xl mx-auto text-center mb-16 sm:mb-20 lg:mb-24 relative z-10">
           
           
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight relative z-60 mb-4">
-            Performance Marketing
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal text-white leading-[0.9] tracking-tight relative z-60 mb-4">
+            Ads, die <div className="relative inline-block">
+              <span className="relative z-10 bg-gradient-to-r from-[#ff8040] to-[#ff5500] bg-clip-text text-transparent">verkaufen</span>
+              <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-2 sm:h-3 md:h-4 lg:h-5 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-xl opacity-60"></span>
+              <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span>
+            </div>
           </h1>
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal text-white/80 leading-tight relative z-60">
-            auf allen Kanälen
-          </h2>
           <p className="text-gray-400 text-base sm:text-lg md:text-xl lg:text-xl mt-5 sm:mt-6 max-w-4xl mx-auto leading-relaxed px-4 relative z-30">
           </p>
         </div>

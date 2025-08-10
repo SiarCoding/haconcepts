@@ -72,7 +72,7 @@ function ChatBubble({ message }: ChatBubbleProps) {
         ) : (
           <div className="w-10 h-10 rounded-full overflow-hidden border border-white/30 shadow-lg shadow-black/20">
             <Image
-              src="/assistent.png"
+              src="/assistent.webp"
               alt="NextMove AI Assistent"
               width={40}
               height={40}
@@ -235,7 +235,7 @@ export default function LiveSpeakingChatBot() {
         }}
       >
         <Image
-          src="/assistent.png"
+          src="/assistent.webp"
           alt="NextMove AI Assistent"
           width={64}
           height={64}
@@ -269,7 +269,7 @@ export default function LiveSpeakingChatBot() {
             <div className="flex items-center gap-3 relative z-10">
               <div className="w-11 h-11 rounded-2xl bg-white/20 backdrop-blur-xl flex items-center justify-center border border-white/30 shadow-xl overflow-hidden">
                 <Image
-                  src="/assistent.png"
+                  src="/assistent.webp"
                   alt="NextMove AI Assistent"
                   width={44}
                   height={44}
@@ -326,7 +326,7 @@ export default function LiveSpeakingChatBot() {
               <div className="flex items-start gap-3 mb-4 animate-fade-in-up">
                 <div className="w-10 h-10 rounded-full overflow-hidden border border-white/30 shadow-lg shadow-black/20">
                   <Image
-                    src="/assistent.png"
+                    src="/assistent.webp"
                     alt="NextMove AI Assistent"
                     width={40}
                     height={40}

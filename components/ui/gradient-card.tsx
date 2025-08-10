@@ -193,39 +193,6 @@ export const GradientCard: React.FC<GradientCardProps> = ({ feature }) => {
                 </motion.p>
             </div>
             
-            <div className="mt-auto">
-                <motion.a
-                href="#"
-                className="inline-flex items-center text-white text-sm font-medium group"
-                whileHover={{
-                    filter: "drop-shadow(0 0 5px rgba(255, 255, 255, 0.5))"
-                }}
-                >
-                Mehr erfahren
-                <motion.svg
-                    className="ml-1 w-4 h-4"
-                    width="8"
-                    height="8"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    animate={{
-                    x: isHovered ? 4 : 0
-                    }}
-                    transition={{
-                    duration: 0.6
-                    }}
-                >
-                    <path
-                    d="M1 8H15M15 8L8 1M15 8L8 15"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    />
-                </motion.svg>
-                </motion.a>
-            </div>
           </motion.div>
         </motion.div>
       </motion.div>

@@ -15,10 +15,12 @@ export const FlipWords = ({
   words,
   duration = 3000,
   className,
+  onWordClick,
 }: {
   words: string[];
   duration?: number;
   className?: string;
+  onWordClick?: (word: string) => void;
 }) => {
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
@@ -78,10 +80,11 @@ export const FlipWords = ({
           position: 'absolute',
         }}
         className={cn(
-          'z-10 inline-flex items-center justify-between relative text-left px-2 text-orange-500 w-full font-normal',
+          'z-10 inline-flex items-center justify-between relative text-left px-2 text-orange-500 w-full font-normal cursor-pointer hover:text-orange-400 transition-colors',
           className
         )}
         key={currentWord}
+        onClick={() => onWordClick?.(currentWord)}
       >
         <div className="flex-grow">
           {currentWord.split(' ').map((word, wordIndex) => (

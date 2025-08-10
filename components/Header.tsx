@@ -8,12 +8,13 @@ import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 
 const menuItems = [
-  { name: 'Startseite', href: '/' },
-  { name: 'Unsere Lösung', href: '/unsere-loesung' },
-  { name: 'Warum wir?', href: '/warum-wir' },
-  { name: 'Referenzen', href: '/referenzen' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'Kontakt', href: '/kontakt' },
+  { name: 'Startseite', href: '#top' },
+  { name: 'Unsere Lösung', href: '#solutions' },
+  { name: 'Warum wir?', href: '#why-us' },
+  { name: 'Referenzen', href: '#testimonials' },
+  { name: 'Unser Prozess', href: '#timeline' },
+  // { name: 'Blog', href: '/blog' },
+  // { name: 'Kontakt', href: '/kontakt' },
 ];
 
 export const Header = () => {
@@ -30,7 +31,23 @@ export const Header = () => {
   }, []);
 
   const handleCtaClick = () => {
-    window.open('https://calendly.com/ali-nextmove-digital/30min?preview_source=et_card&month=2025-03', '_blank');
+    window.open('https://lunacal.ai/team/nextmove-digital/meeting', '_blank');
+  };
+
+  const handleNavClick = (href: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    if (href === '#top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    
+    // Close mobile menu if open
+    setMenuState(false);
   };
 
   return (
@@ -48,7 +65,7 @@ export const Header = () => {
             <div className="flex-shrink-0 ml-4 lg:ml-8">
               <Link href="/" className="flex items-center">
                 <Image
-                  src="/Logonextmove.png"
+                  src="/Logonextmove.webp"
                   alt="NextMove Logo"
                   width={1000}
                   height={400}
@@ -65,14 +82,15 @@ export const Header = () => {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-6">
               {menuItems.map((item, index) => (
-                <Link
+                <a
                   key={index}
                   href={item.href}
-                  className="text-gray-400 hover:text-white transition-colors duration-200 relative group"
+                  onClick={(e) => handleNavClick(item.href, e)}
+                  className="text-gray-400 hover:text-white transition-colors duration-200 relative group cursor-pointer"
                 >
                   <span className="text-sm font-medium">{item.name}</span>
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#ff8040] to-[#ff5500] transition-all duration-300 group-hover:w-full"></span>
-                </Link>
+                </a>
               ))}
             </nav>
 
@@ -127,15 +145,15 @@ export const Header = () => {
             <div className="lg:hidden absolute top-full left-0 right-0 mt-2 bg-black/95 backdrop-blur-lg border border-white/10 rounded-2xl p-6 mx-4 z-[110]">
               <div className="flex flex-col space-y-4">
                 {menuItems.map((item, index) => (
-                  <Link
+                  <a
                     key={index}
                     href={item.href}
-                    className="text-gray-400 hover:text-white transition-colors duration-200 relative group"
-                    onClick={() => setMenuState(false)}
+                    onClick={(e) => handleNavClick(item.href, e)}
+                    className="text-gray-400 hover:text-white transition-colors duration-200 relative group cursor-pointer"
                   >
                     <span className="text-base font-medium">{item.name}</span>
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#ff8040] to-[#ff5500] transition-all duration-300 group-hover:w-full"></span>
-                  </Link>
+                  </a>
                 ))}
                 
                 {/* Mobile CTA Button */}

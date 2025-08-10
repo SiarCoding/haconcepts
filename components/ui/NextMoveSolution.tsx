@@ -42,7 +42,7 @@ export function NextMoveSolution() {
                     <div className="aspect-video relative rounded-lg overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-t z-1 from-black/50 via-transparent to-black/20"></div>
                         <img 
-                            src="/nextmoveportal.jpg" 
+                            src="/nextmoveportal.webp" 
                             className="absolute inset-0 w-full h-full object-cover z-0" 
                             alt="NextMove Kundenportal Dashboard" 
                         />

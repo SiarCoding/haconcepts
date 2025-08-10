@@ -36,43 +36,43 @@ const Hero = memo(() => {
       id: 1,
       name: 'Azim Choudhury',
       designation: 'CD Immobilien Portfolio',
-      image: '/azimchoudry.jpg',
+      image: '/azimchoudry.webp',
     },
     {
       id: 2,
       name: 'Michael Schürdt',
       designation: 'HMS-Finance Consulting',
-      image: '/P1039493.jpg',
+      image: '/P1039493.webp',
     },
     {
       id: 3,
       name: 'Jens Freyer',
       designation: 'Freyer Immobilien',
-      image: '/P1039309.jpg',
+      image: '/P1039309.webp',
     },
     {
       id: 4,
       name: 'Alexander Banzhaf',
       designation: 'Banzhaf Immobilien',
-      image: '/banzhaf.jpeg',
+      image: '/banzhaf.webp',
     },
     {
       id: 5,
       name: 'Jacek',
       designation: 'MSH Immobilien',
-      image: '/profilbild1.jpg',
+      image: '/profilbild1.webp',
     },
     {
       id: 6,
       name: 'Alexander Kedro',
       designation: 'Kedro Immobilien',
-      image: '/kedro.jpeg',
+      image: '/kedro.webp',
     },
     {
       id: 7,
       name: 'Simon Hauer',
       designation: 'Finanzhaus Südbaden',
-      image: '/Simon.jpg',
+      image: '/Simon.webp',
     },
   ], []);
 
@@ -106,8 +106,22 @@ const Hero = memo(() => {
   }, []);
 
   const handleCtaClick = useCallback(() => {
-    // Öffne Calendly-Link in einem neuen Tab
-    window.open('https://calendly.com/ali-nextmove-digital/30min?preview_source=et_card&month=2025-03', '_blank');
+    // Öffne Lunacal-Link in einem neuen Tab
+    window.open('https://lunacal.ai/team/nextmove-digital/meeting', '_blank');
+  }, []);
+
+  const handleWordClick = useCallback((word: string) => {
+    // Website-Links für FlipWords
+    const websiteLinks = {
+      'Umsatz': 'https://freyer.immo',
+      'Reichweite': 'https://cd-immo.de',
+      'Mitarbeiter': 'https://hmsfinance.de'
+    };
+    
+    const url = websiteLinks[word as keyof typeof websiteLinks];
+    if (url) {
+      window.open(url, '_blank');
+    }
   }, []);
 
   // Memoized components to prevent recreation
@@ -144,7 +158,7 @@ const Hero = memo(() => {
       <iframe
         loading="lazy"
         title="Gumlet video player"
-        src="https://play.gumlet.io/embed/6894ce948d992eda26b310e5"
+        src="https://play.gumlet.io/embed/6894ce948d992eda26b310e5?autoplay=true&muted=true"
         style={{ border: 'none', position: 'absolute', top: 0, left: 0, height: '100%', width: '100%', zIndex: 40 }}
         allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
         allowFullScreen
@@ -277,6 +291,7 @@ const Hero = memo(() => {
                   words={flipWords}
                   duration={3000}
                   className="inline-flex items-center justify-center lg:justify-start w-40 md:w-56 font-normal"
+                  onWordClick={handleWordClick}
                 />
               </div>
             </div>
@@ -298,7 +313,7 @@ const Hero = memo(() => {
                 className="object-contain"
               />
               <Image
-                src="/TrustPilot.png"
+                src="/TrustPilot.webp"
                 alt="Trustpilot"
                 width={100}
                 height={50}

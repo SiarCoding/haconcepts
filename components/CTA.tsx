@@ -6,19 +6,19 @@ export default function CTA() {
   const [imageError, setImageError] = useState(false);
 
   const handleCtaClick = useCallback(() => {
-    // Öffne Calendly-Link in einem neuen Tab
-    window.open('https://calendly.com/ali-nextmove-digital/30min?preview_source=et_card&month=2025-03', '_blank');
+    // Öffne Lunacal-Link in einem neuen Tab
+    window.open('https://lunacal.ai/team/nextmove-digital/meeting', '_blank');
   }, []);
 
   return (
     <section className="relative py-24 overflow-hidden">
-      {/* Hamburg.png Hintergrundbild */}
+      {/* Hamburg.webp Hintergrundbild */}
       <div className="absolute inset-0 w-full h-full">
         {!imageError ? (
           <>
-            {/* Hamburg.png Bild laden */}
+            {/* Hamburg.webp Bild laden */}
             <img 
-              src="/Hamburg.png" 
+              src="/Hamburg.webp" 
               alt="Hamburg Hintergrund" 
               className="absolute inset-0 w-full h-full object-cover"
               onLoad={() => setImageLoaded(true)}

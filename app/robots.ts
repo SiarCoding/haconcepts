@@ -1,5 +1,7 @@
 import { MetadataRoute } from 'next';
 
+export const preferredRegion = ['fra1', 'dub1', 'arn1', 'cdg1'];
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [

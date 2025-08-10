@@ -55,7 +55,7 @@ const ExpertiseHero = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url('/Hamburg.png')`,
+          backgroundImage: `url('/Hamburg.webp')`,
           filter: 'brightness(0.25) contrast(1.1)'
         }}
       />

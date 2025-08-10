@@ -7,17 +7,17 @@ const slides = [
   {
     title: "Immobilien-Marketing",
     button: "Mehr erfahren",
-    src: "/Bild1.jpg"
+    src: "/Bild1.webp"
   },
   {
     title: "Digitale Leadgenerierung",
     button: "Mehr erfahren",
-    src: "/Bild2.jpg"
+    src: "/Bild2.webp"
   },
   {
     title: "KI-gestützte Vertriebsstrategien",
     button: "Mehr erfahren",
-    src: "/Bild3.jpg"
+    src: "/Bild3.webp"
   }
 ];
 

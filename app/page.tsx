@@ -5,6 +5,8 @@ import Hero from '@/components/Hero';
 import { MovingLogos } from '@/components/ui/moving-cards'
 import Script from 'next/script';
 
+export const preferredRegion = ['fra1', 'dub1', 'arn1', 'cdg1'];
+
 // Dynamisches Laden für Komponenten "below the fold"
 const PainPoints = dynamic(() => import('@/components/PainPoints'));
 const Solutions = dynamic(() => import('@/components/Solutions'));
@@ -81,17 +83,20 @@ export default function Home() {
           }
         `}
       </Script>
-      
+
       <Header />
-      
+
       <main className="flex min-h-screen flex-col bg-black overflow-x-hidden max-w-full pt-24 sm:pt-28 lg:pt-32">
         {/* Hero Section - erster Inhalt nach Header */}
         <div className="relative">
           <Hero />
         </div>
-        
+
         <MovingLogos />
-        
+        <FailureReasons />
+        <BusinessSection />
+
+
         {/* Übergang zwischen PainPoints und Solutions */}
         <div className="relative">
           <PainPoints />
@@ -100,8 +105,7 @@ export default function Home() {
         </div>
         <AdsDesign />
         <FlipWebsites />
-        <FailureReasons />
-        <BusinessSection />
+
         <CaseStudySection />
         <NextMove />
         <Team />

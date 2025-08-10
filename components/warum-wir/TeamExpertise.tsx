@@ -11,7 +11,7 @@ const TeamExpertise = () => {
       role: "Gründer & Strategic Director",
       expertise: "Immobilien-Marketing Strategien",
       experience: "5+ Jahre Branchenerfahrung",
-      image: "/ali3.png",
+      image: "/ali3.webp",
       achievements: [
         "200+ erfolgreiche Immobilien-Kampagnen umgesetzt",
         "Spezialist für hochkonvertierende Marketing-Funnels",
@@ -24,7 +24,7 @@ const TeamExpertise = () => {
       role: "Creative Director & Brand Strategist",
       expertise: "Visual Branding & Content Creation",
       experience: "7+ Jahre Design-Expertise",
-      image: "/azimchoudry.jpg",
+      image: "/azimchoudry.webp",
       achievements: [
         "Premium-Brands für 150+ Immobilienmakler entwickelt",
         "Award-winning Creative Portfolio",

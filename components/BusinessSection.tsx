@@ -87,6 +87,7 @@ const BusinessSection = () => {
             </div>
             
             <button
+                onClick={() => window.open('https://lunacal.ai/team/nextmove-digital/meeting', '_blank')}
                 style={{
                 background: 'rgba(255, 85, 0, 0.1)',
                 color: 'white',
@@ -116,7 +117,7 @@ const BusinessSection = () => {
                     transform: 'scale(1.1)'
                 }}
                 ></div>
-                Potenzial entdecken
+                Profitiere jetzt von uns
             </button>
           </div>
           
