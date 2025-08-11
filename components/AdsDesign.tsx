@@ -67,7 +67,7 @@ const AdsDesign = () => {
             <div className="relative rounded-2xl p-4 sm:p-6 lg:p-8 bg-black/50 border border-white/10">
               <div className="w-full rounded-xl overflow-hidden">
                 <Image 
-                  src="/GIF.gif" 
+                  src="https://vrtyqm5fac0amn1s.public.blob.vercel-storage.com/Webseite%20Card%20Gif.gif" 
                   alt="Performance Marketing auf allen Kanälen"
                   width={1200}
                   height={675}
