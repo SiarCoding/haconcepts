@@ -181,7 +181,7 @@ const CaseStudySection = () => {
           >
             <div className="relative">
               <OptimizedVideo
-                gifSrc="/Purple Daily Horoscope Phone Video Instagram Story.gif"
+                gifSrc="https://vrtyqm5fac0amn1s.public.blob.vercel-storage.com/Purple%20Daily%20Horoscope%20Phone%20Video%20Instagram%20Story.gif"
                 alt="Content Marketing Reel - Case Study 1"
                 width={640}
                 height={1136}
@@ -206,7 +206,7 @@ const CaseStudySection = () => {
           >
             <div className="relative">
               <OptimizedVideo
-                gifSrc="/kedroad.gif"
+                gifSrc="https://vrtyqm5fac0amn1s.public.blob.vercel-storage.com/kedroad.gif"
                 alt="Content Marketing Reel - Case Study 2"
                 width={640}
                 height={1136}
