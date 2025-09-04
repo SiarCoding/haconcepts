@@ -7,9 +7,9 @@ const CalendlyWidget = dynamic(() => import('@/components/CalendlyWidget'));
 const Footer = dynamic(() => import('@/components/Footer'));
 
 export const metadata: Metadata = {
-  title: 'Kontakt - NextMove Consulting | Ihr Partner für digitales Marketing',
-  description: 'Nehmen Sie Kontakt mit NextMove Consulting auf. Buchen Sie Ihr kostenloses Strategiegespräch und starten Sie durch mit professioneller Lead-Generierung.',
-  keywords: 'NextMove Consulting Kontakt, Strategiegespräch buchen, Finanzberater Marketing Beratung, Leadgenerierung Anfrage',
+  title: 'Kontakt - NextMove Digital | Ihr Partner für digitales Marketing',
+  description: 'Nehmen Sie Kontakt mit NextMove Digital auf. Buchen Sie Ihr kostenloses Strategiegespräch und starten Sie durch mit professioneller Lead-Generierung.',
+  keywords: 'NextMove Digital Kontakt, Strategiegespräch buchen, Finanzberater Marketing Beratung, Leadgenerierung Anfrage',
   alternates: {
     canonical: '/kontakt',
   },

@@ -20,13 +20,30 @@ const menuItems = [
 export const Header = () => {
   const [menuState, setMenuState] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOnWhiteSection, setIsOnWhiteSection] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      // Check if header is over white section (CaseStudySection)
+      const whiteSections = document.querySelectorAll('.bg-white');
+      const headerHeight = 100; // Approximate header height
+      let overWhiteSection = false;
+      
+      whiteSections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= headerHeight && rect.bottom >= 0) {
+          overWhiteSection = true;
+        }
+      });
+      
+      setIsOnWhiteSection(overWhiteSection);
     };
+    
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -57,7 +74,9 @@ export const Header = () => {
         <div className={cn(
           'mx-auto mt-3 w-full transition-all duration-300',
           isScrolled 
-            ? 'max-w-5xl bg-black/70 backdrop-blur-md rounded-2xl px-4 py-2 glass-effect' 
+            ? isOnWhiteSection
+              ? 'max-w-5xl bg-black/90 backdrop-blur-md rounded-2xl px-4 py-2 border-2 border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.3)]'
+              : 'max-w-5xl bg-black/70 backdrop-blur-md rounded-2xl px-4 py-2 glass-effect border-2 border-[#ff5500] shadow-[0_0_15px_rgba(255,85,0,0.4)]'
             : 'max-w-6xl bg-transparent px-0 py-3'
         )}>
           <div className="flex items-center justify-between">
@@ -86,7 +105,12 @@ export const Header = () => {
                   key={index}
                   href={item.href}
                   onClick={(e) => handleNavClick(item.href, e)}
-                  className="text-gray-400 hover:text-white transition-colors duration-200 relative group cursor-pointer"
+                  className={cn(
+                    "transition-colors duration-200 relative group cursor-pointer",
+                    isOnWhiteSection && isScrolled
+                      ? "text-white hover:text-gray-300"
+                      : "text-gray-400 hover:text-white"
+                  )}
                 >
                   <span className="text-sm font-medium">{item.name}</span>
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#ff8040] to-[#ff5500] transition-all duration-300 group-hover:w-full"></span>
@@ -99,17 +123,27 @@ export const Header = () => {
               <button 
                 onClick={handleCtaClick}
                 className={cn(
-                  'relative overflow-hidden transition-all duration-300 font-medium uppercase tracking-wide btn-orange-glow',
+                  'relative overflow-hidden transition-all duration-300 font-medium uppercase tracking-wide',
                   isScrolled 
                     ? 'px-3 py-2 text-xs rounded-lg' 
-                    : 'px-6 py-3 text-sm rounded-lg'
+                    : 'px-6 py-3 text-sm rounded-lg',
+                  isOnWhiteSection && isScrolled ? '' : 'btn-orange-glow'
                 )}
-                style={{
-                  background: 'rgba(255, 85, 0, 0.1)',
-                  color: 'white',
-                  border: '1px solid rgba(255, 85, 0, 0.5)',
-                  boxShadow: '0 0 15px rgba(255, 85, 0, 0.3)',
-                }}
+                style={
+                  isOnWhiteSection && isScrolled
+                    ? {
+                        background: 'rgba(255, 85, 0, 0.9)',
+                        color: 'white',
+                        border: '1px solid rgba(255, 85, 0, 1)',
+                        boxShadow: '0 0 20px rgba(255, 85, 0, 0.4)',
+                      }
+                    : {
+                        background: 'rgba(255, 85, 0, 0.1)',
+                        color: 'white',
+                        border: '1px solid rgba(255, 85, 0, 0.5)',
+                        boxShadow: '0 0 15px rgba(255, 85, 0, 0.3)',
+                      }
+                }
               >
                 <div 
                   className="absolute inset-0 -z-10"
@@ -129,7 +163,12 @@ export const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMenuState(!menuState)}
-              className="lg:hidden p-2 text-white hover:text-orange-400 transition-colors"
+              className={cn(
+                "lg:hidden p-2 transition-colors",
+                isOnWhiteSection && isScrolled
+                  ? "text-white hover:text-gray-300"
+                  : "text-white hover:text-orange-400"
+              )}
               aria-label={menuState ? 'Menü schließen' : 'Menü öffnen'}
             >
               {menuState ? (

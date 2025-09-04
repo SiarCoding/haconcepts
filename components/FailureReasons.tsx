@@ -270,11 +270,12 @@ const MarketingROICalculator = () => {
   };
 
   return (
-    <section className="relative overflow-hidden py-16 lg:py-20 min-h-[150vh]" style={{
+    <section className="relative overflow-hidden py-12 lg:py-16 min-h-[125vh]" style={{
       backgroundImage: 'url(/buroo.webp)',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
+      backgroundRepeat: 'no-repeat',
+      backgroundAttachment: 'fixed'
     }}>
       {/* Dunkles Overlay */}
       <div className="absolute inset-0 bg-black/75 z-10"></div>
@@ -283,7 +284,7 @@ const MarketingROICalculator = () => {
       <div className="absolute top-1/4 left-1/4 w-24 md:w-32 h-24 md:h-32 rounded-full bg-white/5 blur-2xl md:blur-3xl z-15"></div>
       <div className="absolute bottom-1/3 right-1/4 w-32 md:w-40 h-32 md:h-40 rounded-full bg-orange-500/10 blur-2xl md:blur-3xl z-15"></div>
       
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-16 relative z-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 lg:py-12 relative z-20">
         <motion.div 
           ref={headingRef}
           className="max-w-4xl mx-auto text-center mb-12 lg:mb-14"
@@ -292,7 +293,7 @@ const MarketingROICalculator = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white mb-5">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white mb-5">
             Berechnen Sie Ihren <span className="relative inline-block">
               <span className="text-white">Marketing-ROI</span>
               <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-2 sm:h-3 md:h-4 lg:h-5 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-xl opacity-60"></span>
@@ -302,7 +303,7 @@ const MarketingROICalculator = () => {
               <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-2 sm:h-3 md:h-4 lg:h-5 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-xl opacity-60"></span>
               <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span>
             </span>
-          </h1>
+          </h2>
           
           <p className="text-base text-white leading-relaxed max-w-3xl mx-auto">
             Erfahren Sie in wenigen Sekunden, wie viel Geld und Zeit Sie durch ineffizientes Marketing verlieren und welches Umsatzpotenzial Sie durch eine Zusammenarbeit mit uns heben können.
@@ -525,10 +526,10 @@ const MarketingROICalculator = () => {
                 </div>
               </div>
             ) : showResults ? (
-              <div className="space-y-5">
+              <div className="space-y-3">
                 {/* IST-Zustand - kompakter */}
-                <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-5 lg:p-6 shadow-2xl">
-                  <div className="p-4">
+                <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-4 lg:p-5 shadow-2xl">
+                  <div className="p-2">
                     <h3 className="text-lg lg:text-xl font-semibold text-white mb-4">Ihr aktueller Zustand</h3>
                     <div className="mt-3 space-y-4">
                       <div className="flex justify-between items-center">
@@ -556,8 +557,8 @@ const MarketingROICalculator = () => {
                 </div>
 
                 {/* SOLL-Zustand - kompakter */}
-                <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-5 lg:p-6 shadow-2xl">
-                  <div className="p-4">
+                <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-4 lg:p-5 shadow-2xl">
+                  <div className="p-2">
                     <h3 className="text-lg lg:text-xl font-semibold text-white mb-4">Ihr Potenzial mit uns</h3>
                     <div className="mt-3 space-y-4">
                       <div className="flex justify-between items-center">
@@ -591,8 +592,8 @@ const MarketingROICalculator = () => {
                 </div>
 
                 {/* ROI Bereich - kompakter */}
-                <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-5 lg:p-6 shadow-2xl">
-                  <div className="p-4">
+                <div className="relative backdrop-blur-md bg-white/[0.02] border border-white/[0.08] rounded-2xl p-4 lg:p-5 shadow-2xl">
+                  <div className="p-2">
                     <h3 className="text-lg lg:text-xl font-bold text-white mb-4 text-center">
                       Ihr Marketing-ROI
                     </h3>
@@ -640,7 +641,7 @@ const MarketingROICalculator = () => {
         {showResults && (
           <motion.div 
             ref={ctaRef}
-            className="text-center mt-12 lg:mt-14"
+            className="text-center mt-8 lg:mt-10"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8 }}

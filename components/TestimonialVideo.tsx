@@ -26,7 +26,7 @@ const videoTestimonials = [
   {
     id: 4,
     name: "Alexander Banzhaf",
-    company: "HMS-Berater",
+    company: "ALBA Unternehmens- und Wirtschaftsberatung",
     videoSrc: "https://play.gumlet.io/embed/6894636207ba3f8de70d04a7",
   },
 ];
@@ -103,7 +103,7 @@ export default function TestimonialVideo() {
                     title="Gumlet video player"
                     src={testimonial.videoSrc}
                     style={{ border: 'none', position: 'absolute', top: 0, left: 0, height: '100%', width: '100%' }}
-                    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
+                    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
                     allowFullScreen
                   ></iframe>
                 </div>

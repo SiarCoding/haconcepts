@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Unsere Lösung | Nextmove Consulting – Digitale Leadgenerierung & Vertriebsautomatisierung',
+  title: 'Unsere Lösung | Nextmove Digital – Digitale Leadgenerierung & Vertriebsautomatisierung',
   description: 'Individuelle Lead-Funnel, KI-gestützte Vertriebsautomatisierung und konvertierende Landingpages für Immobilienmakler und Finanzberater. Hamburg & DACH.',
   keywords: [
     'Lead Funnel Immobilien',

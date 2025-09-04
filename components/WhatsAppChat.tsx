@@ -99,7 +99,7 @@ export default function LiveSpeakingChatBot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: 'Hallo! 👋 Willkommen bei NextMove Consulting. Falls Sie offene Fragen zu Immobilienprojekten oder digitalen Strategien haben, sprechen Sie einfach oder klicken Sie unten auf das Mikrofon. Ich höre Ihnen gerne zu!',
+      content: 'Hallo! 👋 Willkommen bei NextMove Digital. Falls Sie offene Fragen zu Immobilienprojekten oder digitalen Strategien haben, sprechen Sie einfach oder klicken Sie unten auf das Mikrofon. Ich höre Ihnen gerne zu!',
       sender: 'ai',
       timestamp: new Date(),
     },

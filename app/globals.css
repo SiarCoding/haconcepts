@@ -97,16 +97,70 @@ a[href^="#"] {
   *:hover {
     transition: none !important;
     transform: none !important;
+    animation: none !important;
   }
 
+  /* Deaktiviere alle Animationen auf mobilen Geräten - außer Logo-Scroll */
+  .animate-orbit,
+  .animate-pulse,
+  [class*="animate-"]:not(.animate-scroll-infinite) {
+    animation: none !important;
+  }
+
+  /* Spezielle Motion-Komponenten deaktivieren */
+  [data-framer-motion] *,
+  [class*="motion-"] {
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* Framer Motion Komponenten komplett deaktivieren */
+  div[style*="transform"],
+  motion-div {
+    transform: none !important;
+    transition: none !important;
+  }
   /* Vereinfachte Glassmorphism-Effekte */
-  [class*="bg-gradient-to"] {
+  [class*="bg-gradient-to"]:not([class*="bg-clip-text"]) {
     background: rgba(0, 0, 0, 0.3) !important;
   }
 
   /* Optimierte Border-Effekte */
   [class*="border-white/"] {
     border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+/* Spezielle Regeln für Touch-Geräte - deaktiviert alle Hover- und Motion-Effekte */
+@media (hover: none) and (pointer: coarse) {
+  /* Alle Motion und Transform Effekte deaktivieren - außer Logo-Scroll */
+  *:not(.animate-scroll-infinite),
+  *:not(.animate-scroll-infinite)::before,
+  *:not(.animate-scroll-infinite)::after {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  
+  /* Framer Motion spezifisch */
+  [data-framer-motion],
+  motion-div,
+  motion-h1,
+  motion-h2,
+  motion-p,
+  div[style*="transform"] {
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  /* Hover-Effekte komplett deaktivieren */
+  .group:hover *,
+  *:hover {
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
   }
 }
 

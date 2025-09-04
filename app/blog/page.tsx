@@ -6,7 +6,7 @@ const BlogContent = dynamic(() => import('@/components/BlogContent'));
 const Footer = dynamic(() => import('@/components/Footer'));
 
 export const metadata: Metadata = {
-  title: 'Blog - NextMove Consulting | Insights & Tipps für Finanzberater',
+  title: 'Blog - NextMove Digital | Insights & Tipps für Finanzberater',
   description: 'Entdecken Sie wertvolle Insights, Tipps und Strategien für erfolgreiches digitales Marketing in der Finanzbranche.',
   keywords: 'Marketing Blog, Finanzberater Tipps, Lead-Generierung Strategien, Digital Marketing Insights',
   alternates: {

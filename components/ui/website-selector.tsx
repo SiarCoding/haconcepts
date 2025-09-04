@@ -139,9 +139,9 @@ const InteractiveSelector: React.FC<InteractiveSelectorProps> = ({ options, head
     <div className="relative flex flex-col items-center justify-center min-h-screen bg-black font-sans text-white py-20"> 
       {/* Header Section */}
       <div className="w-full max-w-4xl mx-auto text-center mb-16 px-6">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal text-white animate-fadeInTop delay-300">
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-normal text-white animate-fadeInTop delay-300">
             {headline}
-        </h1>
+        </h2>
         <p className="text-gray-400 text-lg sm:text-xl mt-8 max-w-2xl mx-auto animate-fadeInTop delay-600">
             {subheadline}
         </p>

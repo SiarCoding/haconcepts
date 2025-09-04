@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook, Anchor } from 'lucide-react';
+import { Mail, MapPin, Linkedin, Instagram, Facebook, Anchor } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Logo und Beschreibung */}
           <div className="col-span-1 md:col-span-1">
-            <Image src="/Logonextmove.webp" alt="NextMove Consulting Logo" width={180} height={60} className="mb-6" />
+            <Image src="/Logonextmove.webp" alt="NextMove Digital Logo" width={180} height={60} className="mb-6" />
             <p className="text-gray-400 mb-6">
               Spezialisiert auf Performance Marketing für Finanzberater und Immobilien-Profis.
             </p>
@@ -89,20 +89,14 @@ export default function Footer() {
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 text-[#ff5500] flex-shrink-0 mt-0.5 mr-3" />
                 <span className="text-gray-400">
-                  Kedenburgstraße 44<br />
-                  22043 Hamburg
+                  Papenstraße 23<br />
+                  22089 Hamburg
                 </span>
               </li>
               <li className="flex items-center">
-                <Phone className="w-5 h-5 text-[#ff5500] flex-shrink-0 mr-3" />
-                <Link href="tel:+4930123456789" className="text-gray-400 hover:text-[#ff5500] transition-colors">
-                  +49 30 123 456 789
-                </Link>
-              </li>
-              <li className="flex items-center">
                 <Mail className="w-5 h-5 text-[#ff5500] flex-shrink-0 mr-3" />
-                <Link href="mailto:info@nextmove-consulting.de" className="text-gray-400 hover:text-[#ff5500] transition-colors">
-                  info@nextmove-consulting.de
+                <Link href="mailto:info@nextmove-digital.de" className="text-gray-400 hover:text-[#ff5500] transition-colors">
+                  info@nextmove-digital.de
                 </Link>
               </li>
             </ul>
@@ -112,7 +106,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="pt-8 border-t border-white/10 flex flex-col items-center">
           <p className="text-gray-500 text-sm mb-3">
-            © 2025 NextMove Consulting. Alle Rechte vorbehalten.
+            © 2025 NextMove Digital. Alle Rechte vorbehalten.
           </p>
           <div className="flex items-center text-gray-500 text-sm">
             <span>Designed & Developed in Hamburg</span>

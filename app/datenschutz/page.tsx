@@ -5,11 +5,11 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 
 export const metadata: Metadata = {
-  title: 'Datenschutzerklärung | HAconcepts',
+  title: 'Datenschutzerklärung | NextMove Digital | Lead-Generierung für Finanzberater',
   description:
-    'Datenschutzerklärung von HAconcepts. Hier erfahren Sie, wie wir Ihre personenbezogenen Daten verarbeiten.',
+    'Datenschutzerklärung von NextMove Digital. Hier erfahren Sie, wie wir Ihre personenbezogenen Daten verarbeiten.',
   alternates: {
-    canonical: '/datenschutzerklaerung',
+    canonical: '/datenschutz',
   },
   robots: {
     index: true,
@@ -28,9 +28,9 @@ export default function Datenschutzerklaerung() {
           <section className="mb-6">
             <h2 className="text-xl font-semibold text-white mb-2">1. Einleitung</h2>
             <p className="text-gray-300 mb-4">
-              Im Folgenden informieren wir über die Verarbeitung personenbezogener Daten bei der Nutzung unserer Websiten{' '}
-              <a href="https://www.haconcepts.de" className="text-[#ff5500] hover:underline">
-                www.haconcepts.de
+              Im Folgenden informieren wir über die Verarbeitung personenbezogener Daten bei der Nutzung unserer Website{' '}
+              <a href="https://nextmove-digital.de" className="text-[#ff5500] hover:underline">
+                nextmove-digital.de
               </a>{' '}
               und unserer Profile in Sozialen Medien. Personenbezogene Daten sind alle Daten, die auf eine konkrete natürliche
               Person beziehbar sind, z. B. ihr Name oder ihre IP-Adresse.
@@ -38,15 +38,15 @@ export default function Datenschutzerklaerung() {
 
             <h3 className="text-lg font-medium text-white mt-4 mb-2">1.1. Kontaktdaten</h3>
             <p className="text-gray-300 mb-4">
-              Verantwortlicher gem. Art. 4 Abs. 7 EU-Datenschutz-Grundverordnung (DSGVO) ist HAconcepts
+              Verantwortlicher gem. Art. 4 Abs. 7 EU-Datenschutz-Grundverordnung (DSGVO) ist NextMove Digital
               <br />
               Ali Alizadah
               <br />
-              Kedenburgstraße 44, 22041 Hamburg, Deutschland
+              Papenstraße 23, 22089 Hamburg, Deutschland
               <br />
               E-Mail:{' '}
-              <a href="mailto:info@haconcepts.de" className="text-[#ff5500] hover:underline">
-                info@haconcepts.de
+              <a href="mailto:info@nextmove-digital.de" className="text-[#ff5500] hover:underline">
+                info@nextmove-digital.de
               </a>
               <br />
               Gesetzlich vertreten durch Ali Alizadah.

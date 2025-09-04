@@ -5,8 +5,8 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 
 export const metadata: Metadata = {
-  title: 'Impressum | NextMove Consulting | Lead-Generierung für Finanzberater',
-  description: 'Impressum von NextMove Consulting. Erfahren Sie mehr über den Inhaber Ali Alizadah und die rechtlichen Informationen unseres Unternehmens für Performance Marketing und Lead-Generierung.',
+  title: 'Impressum | NextMove Digital | Lead-Generierung für Finanzberater',
+  description: 'Impressum von NextMove Digital. Erfahren Sie mehr über den Inhaber Ali Alizadah und die rechtlichen Informationen unseres Unternehmens für Performance Marketing und Lead-Generierung.',
   alternates: {
     canonical: '/impressum',
   },
@@ -27,16 +27,16 @@ export default function Impressum() {
           <div className="space-y-6 text-gray-300">
             <section>
               <h2 className="text-xl font-semibold text-white mb-2">Angaben gemäß § 5 TMG</h2>
-              <p>NextMove Consulting</p>
+              <p>NextMove Digital</p>
               <p>Ali Alizadah</p>
-              <p>Kedenburgstraße 44</p>
-              <p>22043 Hamburg</p>
+              <p>Papenstraße 23</p>
+              <p>22089 Hamburg</p>
             </section>
             
             <section>
               <h2 className="text-xl font-semibold text-white mb-2">Kontakt</h2>
-              <p>Telefon: +49 30 123 456 789</p>
-              <p>E-Mail: info@nextmove-consulting.de</p>
+              <p>Telefon: +49 179 5914490</p>
+              <p>E-Mail: info@nextmove-digital.de</p>
             </section>
             
             <section>
@@ -48,8 +48,8 @@ export default function Impressum() {
             <section>
               <h2 className="text-xl font-semibold text-white mb-2">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
               <p>Ali Alizadah</p>
-              <p>Kedenburgstraße 44</p>
-              <p>22043 Hamburg</p>
+              <p>Papenstraße 23</p>
+              <p>22089 Hamburg</p>
             </section>
             
             <section>

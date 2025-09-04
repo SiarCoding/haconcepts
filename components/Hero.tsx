@@ -154,13 +154,13 @@ const Hero = memo(() => {
   ), []);
 
   const GumletVideoPlayer = useMemo(() => (
-    <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl z-40" style={{ position: 'relative', aspectRatio: '16/9' }}>
+    <div className="relative rounded-xl overflow-hidden z-40" style={{ position: 'relative', aspectRatio: '16/9' }}>
       <iframe
         loading="lazy"
         title="Gumlet video player"
         src="https://play.gumlet.io/embed/6894ce948d992eda26b310e5?autoplay=true&muted=true"
         style={{ border: 'none', position: 'absolute', top: 0, left: 0, height: '100%', width: '100%', zIndex: 40 }}
-        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
+        allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
         allowFullScreen
       ></iframe>
     </div>
@@ -179,31 +179,53 @@ const Hero = memo(() => {
         {/* Flexbox Layout für Desktop */}
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 lg:gap-10">
           {/* Linke Spalte - Text-Inhalt */}
-          <div className="flex-1 lg:max-w-[50%] relative z-10 text-center lg:text-left order-1 lg:order-1 w-full">
+          <div className="flex-1 lg:max-w-[50%] relative z-50 text-center lg:text-left order-1 lg:order-1 w-full">
             {/* Haupttitel - kompakter für kleinere Bildschirme */}
             <h1
               ref={titleRef}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-normal text-white"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-normal text-white relative z-50"
               style={{ lineHeight: '1.1' }}
             >
-              {/* Zeile 1 */}
+              {/* Zeile 1 - Mobile: "Mehr Abschlüsse, weniger Akquise:" - Desktop: "Mehr Abschlüsse," */}
               <span className="block">
-                Schluss&nbsp;mit
+                <span className="lg:hidden">Mehr Abschlüsse, </span>
+                <span className="hidden lg:inline">Mehr&nbsp;Abschlüsse,</span>
+                <span className="lg:hidden text-[#ff5500] font-semibold">weniger&nbsp;Akquise:</span>
               </span>
 
-              {/* Zeile 2 – orange */}
-              <span className="block text-[#ff5500] font-semibold">
-                teuren&nbsp;Leads
+              {/* Zeile 2 – Desktop: orange, Mobile: versteckt */}
+              <span className="hidden lg:block text-[#ff5500] font-semibold">
+                weniger&nbsp;Akquise:
               </span>
 
-              {/* Zeile 3 – Marker unter „nicht" */}
+              {/* Zeile 2/3 – Mobile: "Ihr direkter Weg zu vorqualifizierten Kunden." - Desktop: "Ihr direkter Weg zu" */}
               <span className="block">
-                die{' '}
-                <span className="relative inline-block">
-                  nicht
-                  <span className="absolute bottom-[-4px] md:bottom-[-3px] left-0 w-full h-1.5 md:h-2 bg-[#ff5500]" />
-                </span>{' '}
-                konvertieren!
+                <span className="lg:hidden">
+                  Ihr{' '}
+                  <span className="relative inline-block">
+                    direkter
+                    <span className="absolute bottom-[-4px] md:bottom-[-3px] left-0 w-full h-1.5 md:h-2 bg-[#ff5500]" />
+                  </span>{' '}
+                  Weg zu vorqualifizierten Kunden.
+                </span>
+                <span className="hidden lg:inline">
+                  Ihr{' '}
+                  <span className="relative inline-block">
+                    direkter
+                    <span className="absolute bottom-[-4px] md:bottom-[-3px] left-0 w-full h-1.5 md:h-2 bg-[#ff5500]" />
+                  </span>{' '}
+                  Weg zu
+                </span>
+              </span>
+
+              {/* Zeile 4 - nur Desktop */}
+              <span className="hidden lg:block">
+                vorqualifizierten
+              </span>
+
+              {/* Zeile 5 - nur Desktop */}
+              <span className="hidden lg:block">
+                Kunden.
               </span>
             </h1>
 
@@ -296,6 +318,15 @@ const Hero = memo(() => {
               </div>
             </div>
 
+            {/* Additional internal links for SEO - hidden but crawlable */}
+            <div className="sr-only">
+              <a href="/unsere-loesung">Unsere Lösung</a>
+              <a href="/referenzen">Referenzen</a>
+              <a href="/warum-wir">Warum wir</a>
+              <a href="/kontakt">Kontakt</a>
+              <a href="/blog">Blog</a>
+            </div>
+
             {/* Partner Logos - kompakter */}
             <div className="flex flex-wrap justify-center lg:justify-start items-center mt-5 gap-3 relative z-10 order-6 lg:order-5 w-full">
               <Image
@@ -303,28 +334,32 @@ const Hero = memo(() => {
                 alt="Google Partners"
                 width={100}
                 height={50}
-                className="object-contain"
+                className="object-contain h-auto max-h-8"
+                style={{ width: 'auto' }}
               />
               <Image
                 src="/MetaBusinessPartner.svg"
                 alt="Meta Business Partner"
                 width={100}
                 height={50}
-                className="object-contain"
+                className="object-contain h-auto max-h-8"
+                style={{ width: 'auto' }}
               />
               <Image
                 src="/TrustPilot.webp"
                 alt="Trustpilot"
                 width={100}
                 height={50}
-                className="object-contain"
+                className="object-contain h-auto max-h-8"
+                style={{ width: 'auto' }}
               />
               <Image
                 src="/ProvenExpert.svg"
                 alt="ProvenExpert"
                 width={100}
                 height={50}
-                className="object-contain"
+                className="object-contain h-auto max-h-8"
+                style={{ width: 'auto' }}
               />
             </div>
           </div>

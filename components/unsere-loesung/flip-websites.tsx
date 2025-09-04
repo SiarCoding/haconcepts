@@ -192,9 +192,9 @@ const FlipWebsites = () => {
               <span className="text-orange-400 text-xs sm:text-sm font-medium tracking-wide">UNSERE WEBSITES</span>
             </div>
             
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white leading-tight mb-4 sm:mb-6 px-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white leading-tight mb-4 sm:mb-6 px-2">
               <span className="relative inline-block">Mehr <span className="relative z-10 text-[#ff5500]">Anfragen</span><span className="absolute -bottom-1 left-0 right-0 h-1 sm:h-2 md:h-3 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-lg opacity-50"></span><span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span></span> durch unsere individuell selbstentwickelte Webseite
-            </h1>
+            </h2>
             
             <p className="text-sm sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto px-2">
               Mit Features, die gezielt Interessenten für Immobilien gewinnen: verkaufspsychologischer Aufbau, Premium-Design, SEO-Optimierung, responsives Design und ein eigener Chatbot, der nicht nur Fragen beantwortet, sondern auch verkauft und <span className="relative inline-block"><span className="relative z-10 text-white">neue Leads generiert</span><span className="absolute -bottom-1 left-0 right-0 h-1 sm:h-2 md:h-3 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-lg opacity-50"></span><span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span></span>.

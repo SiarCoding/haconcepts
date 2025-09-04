@@ -78,7 +78,7 @@ export function LinkedInOrbiting({
           className="absolute inset-0 w-full h-full"
         >
           <circle
-            className="stroke-[#0a66c2]/30 stroke-[1px]"
+            className="stroke-white/30 stroke-[1px]"
             cx="50%"
             cy="50%"
             r={radius}
@@ -130,7 +130,7 @@ export function LinkedInOrbiting({
           className="absolute inset-0 w-full h-full"
         >
           <circle
-            className="stroke-[#0a66c2]/20 stroke-[1px]"
+            className="stroke-white/20 stroke-[1px]"
             cx="50%"
             cy="50%"
             r={radius / 1.8}

@@ -30,7 +30,7 @@ const timelineSteps: TimelineStep[] = [
             Ihre Situation verstehen
           </h3>
           <p className="text-gray-300 text-sm md:text-base leading-relaxed font-inter">
-            Wir analysieren Ihre aktuellen Vertriebsprozesse und identifizieren versteckte Potentiale für maximalen Erfolg. Durch eine detaillierte Bestandsaufnahme schaffen wir die Grundlage für nachhaltiges Wachstum.
+            Detaillierte Analyse Ihrer aktuellen Marketing- und Vertriebsprozesse. Wir identifizieren Schwachstellen und ungenutzte Chancen für maximalen ROI.
           </p>
         </div>
       </div>
@@ -52,7 +52,7 @@ const timelineSteps: TimelineStep[] = [
             Maßgeschneiderte Lösung
           </h3>
           <p className="text-gray-300 text-sm md:text-base leading-relaxed font-inter">
-            Entwicklung Ihrer individuellen Marketing-Strategie basierend auf Datenanalyse und bewährten Methoden. Wir erstellen einen maßgeschneiderten Plan, der perfekt auf Ihre Zielgruppe abgestimmt ist.
+            Maßgeschneiderte Marketing-Strategie entwickelt aus Ihrer Zielgruppenanalyse und Marktforschung. Klare Roadmap mit messbaren Zielen und definierten Meilensteinen.
           </p>
         </div>
       </div>
@@ -73,7 +73,7 @@ const timelineSteps: TimelineStep[] = [
             Kontinuierliche Verbesserung
           </h3>
           <p className="text-gray-300 text-sm md:text-base leading-relaxed font-inter">
-            Durch A/B-Tests und datenbasierte Anpassungen maximieren wir die Performance Ihrer Kampagnen. Kontinuierliche Analyse für stetig wachsende Conversion-Raten und Effizienz.
+            Performance-Optimierung durch systematische A/B-Tests und datengetriebene Entscheidungen. Kontinuierliche Kampagnen-Verbesserung für höhere Conversion-Raten.
           </p>
         </div>
       </div>
@@ -94,7 +94,7 @@ const timelineSteps: TimelineStep[] = [
             Nachhaltiges Wachstum
           </h3>
           <p className="text-gray-300 text-sm md:text-base leading-relaxed font-inter">
-            Systematische Ausweitung erfolgreicher Kampagnen für nachhaltiges und profitables Geschäftswachstum. Wir skalieren bewährte Strategien und erschließen neue Kanäle.
+            Skalierung bewährter Strategien auf neue Märkte und Zielgruppen. Erschließung zusätzlicher Vertriebskanäle für exponentielles Wachstum.
           </p>
         </div>
       </div>

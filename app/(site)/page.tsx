@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import { Header } from '@/components/Header';
 import Hero from '@/components/Hero';
 import { MovingLogos } from '@/components/ui/moving-cards'
-import Script from 'next/script';
+import { JsonLd, schemas } from '@/components/SEO/JsonLd';
 
 export const preferredRegion = ['fra1', 'dub1', 'arn1', 'cdg1'];
 
@@ -28,62 +28,31 @@ const CaseStudySection = dynamic(() => import('@/components/CaseStudySection'));
 const AdsDesign = dynamic(() => import('@/components/AdsDesign'));
 
 export const metadata: Metadata = {
-  title: 'NextMove Digital | Leads für Finanzberater & Immobilienmakler',
-  description: 'Professionelle Lead-Generierung für Finanzberater und Immobilienmakler. Qualifizierte Kunden durch Performance Marketing und Social Media Ads.',
-  keywords: 'Leads für Finanzberater ohne Google Ads, organische Leads Immobilienmakler, Performance Marketing Finanzbranche, Social Media Leads, Lead-Generierung ohne Werbebudget, Finanzberater Neukundengewinnung, Immobilienmakler Leads organisch',
+  title: 'NextMove Digital | Lead-Generierung für Finanzberater & Immobilienmakler DACH',
+  description: 'Performance Marketing für Finanzberater und Immobilienmakler in Deutschland, Österreich und der Schweiz. Qualifizierte Leads ohne hohe Werbekosten.',
   alternates: {
-    canonical: 'https://www.nextmove-digital.de/',
+    canonical: 'https://nextmove-digital.de',
+    languages: {
+      'de-DE': 'https://nextmove-digital.de/de',
+      'de-AT': 'https://nextmove-digital.de/at',
+      'de-CH': 'https://nextmove-digital.de/ch'
+    }
   },
+  openGraph: {
+    title: 'NextMove Digital | Lead-Generierung DACH',
+    description: 'Performance Marketing für Finanzberater und Immobilienmakler in Deutschland, Österreich und der Schweiz.',
+    url: 'https://nextmove-digital.de',
+    siteName: 'NextMove Digital',
+    locale: 'de_DE',
+    type: 'website'
+  }
 };
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      <Script id="schema-org" type="application/ld+json">
-        {`
-          {
-            "@context": "https://schema.org",
-            "@type": "ProfessionalService",
-            "name": "NextMove Digital",
-            "url": "https://nextmove-digital.de",
-            "logo": "https://nextmove-digital.de/CONSULTING.svg",
-            "description": "Spezialisiert auf Lead-Generierung für Finanzberater und Immobilienmakler ohne Google Ads",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Papenstraße 23",
-              "addressLocality": "Hamburg",
-              "postalCode": "22089",
-              "addressCountry": "DE"
-            },
-            "telephone": "+491795914490",
-            "email": "info@nextmove-digital.de",
-            "priceRange": "€€",
-            "openingHours": "Mo-Fr 09:00-18:00",
-            "sameAs": [
-              "https://www.linkedin.com/company/nextmove-consulting",
-              "https://www.instagram.com/nextmove_consulting",
-              "https://www.facebook.com/nextmove-digital"
-            ],
-            "serviceArea": {
-              "@type": "GeoCircle",
-              "geoMidpoint": {
-                "@type": "GeoCoordinates",
-                "latitude": 53.5511,
-                "longitude": 9.9937
-              },
-              "geoRadius": "1000"
-            },
-            "knowsAbout": [
-              "Lead-Generierung für Finanzberater",
-              "Performance Marketing",
-              "Social Media Ads",
-              "Organische Leads ohne Google Ads",
-              "Digitales Marketing für Finanzbranche"
-            ]
-          }
-        `}
-      </Script>
-
+      <JsonLd data={schemas.organization} id="organization" />
+      
       <Header />
 
       <main className="flex min-h-screen flex-col bg-black overflow-x-hidden max-w-full pt-24 sm:pt-28 lg:pt-32">
@@ -96,12 +65,10 @@ export default function Home() {
         <FailureReasons />
         <BusinessSection />
 
-
         {/* Übergang zwischen PainPoints und Solutions */}
         <div className="relative">
           <PainPoints />
           <TestimonialVideo />
-          {/* Solutions enthält intern ein H1-Element in der Sticky-Überschrift. Das wird durch H2 ersetzt, um nur eine H1 auf der Seite zu haben. */}
           <Solutions />
         </div>
         <AdsDesign />

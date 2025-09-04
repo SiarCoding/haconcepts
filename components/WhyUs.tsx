@@ -118,7 +118,7 @@ export default function WhyUs() {
               Warum <span className="relative">
               <span className="relative z-10 text-[#ff5500]">NextMove</span>
               <OrangeBlurEffect />
-              </span> Consulting ?
+              </span> Digital ?
           </h2>
           <p className="text-gray-400 text-base sm:text-lg mt-5 lg:mt-6 max-w-2xl mx-auto">
               Wir kombinieren Branchenexpertise mit modernster Technologie, um Resultate zu liefern, die traditionelle Agenturen nicht erreichen können.

@@ -82,16 +82,16 @@ export default function ReferenzenVideos() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal text-white font-montserrat">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-normal text-white font-montserrat">
             Unsere <span className="relative">
               <span className="relative z-10 text-[#ff5500]">Erfolgsgeschichten</span>
               <span className="absolute -bottom-2 left-0 right-0 h-2 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-lg opacity-50"></span>
               <span className="absolute -bottom-2 left-0 right-0 h-[1px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span>
             </span>
-          </h1>
+          </h2>
           <p className="text-gray-400 text-lg sm:text-xl mt-6 max-w-3xl mx-auto font-inter leading-relaxed">
             Echte Erfolgsgeschichten von echten Kunden. Erfahren Sie, wie unsere Partner durch die Zusammenarbeit 
-            mit NextMove Consulting ihre Geschäftsziele erreicht und übertroffen haben.
+            mit NextMove Digital ihre Geschäftsziele erreicht und übertroffen haben.
           </p>
         </motion.div>
 
@@ -133,7 +133,7 @@ export default function ReferenzenVideos() {
                             title={`Video Testimonial von ${referenz.name}`}
                             src={referenz.videoSrc}
                             style={{ border: 'none', position: 'absolute', top: 0, left: 0, height: '100%', width: '100%' }}
-                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
+                            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
                             allowFullScreen
                           ></iframe>
                         </div>

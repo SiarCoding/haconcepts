@@ -76,7 +76,7 @@ const ExpertiseHero = () => {
             </div>
             
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight">
               Warum über <span className="relative">
                 <span className="relative z-10 text-transparent bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text">
                   200 Makler
@@ -84,7 +84,7 @@ const ExpertiseHero = () => {
                 <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full"></span>
               </span>
               <br />uns vertrauen
-            </h1>
+            </h2>
             
             {/* Subtitle */}
             <p className="text-xl sm:text-2xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed">

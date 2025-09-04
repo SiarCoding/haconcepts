@@ -6,7 +6,7 @@ import { MoveLeft, MoveRight } from "lucide-react";
 const testimonials = [
   {
     id: 1,
-    testimonial: "Wir generieren täglich qualifizierte Leads mit Nextmove Consulting. Mehr Termine, mehr Abschlüsse und ein signifikantes Wachstum unseres Geschäfts.",
+    testimonial: "Wir generieren täglich qualifizierte Leads mit Nextmove Digital. Mehr Termine, mehr Abschlüsse und ein signifikantes Wachstum unseres Geschäfts.",
     author: "Michael Schürdt",
     avatar: "/P1039493.webp",
     role: "Kapitalanlage-Berater"
@@ -20,7 +20,7 @@ const testimonials = [
   },
   {
     id: 3,
-    testimonial: "Innerhalb der ersten 3 Wochen konnten wir bereits mithilfe von NextMove Consulting über 100 Leads generieren.",
+    testimonial: "Innerhalb der ersten 3 Wochen konnten wir bereits mithilfe von NextMove Digital über 100 Leads generieren.",
     author: "Azim Chowdhury",
     avatar: "/azim.webp",
     role: "CD Immoportfolio GmbH"

@@ -14,7 +14,7 @@ import {
   BsGear
 } from 'react-icons/bs';
 import Image from 'next/image';
-import { LampEffect } from '@/components/ui/lamp-effect';
+import { LampContainer } from '@/components/ui/lamp-effect';
 import dynamic from 'next/dynamic';
 import socialBubbleAnimation from "../public/cZpLSLixLK.json";
 
@@ -50,10 +50,20 @@ const Solutions = () => {
   
   // State für Client-Side Rendering
   const [isClient, setIsClient] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   
   // Nach dem ersten Render setzen wir isClient auf true
   useEffect(() => {
     setIsClient(true);
+    // Check if mobile device - erweiterte Prüfung für Touch-Geräte und schmale Viewports
+    const checkMobile = () => {
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isNarrowViewport = window.innerWidth <= 1024; // Breitere Definition für bessere Performance
+      setIsMobile(isTouchDevice || isNarrowViewport);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
   
   // Memoize solutions data to prevent re-creation on every render
@@ -150,36 +160,49 @@ const Solutions = () => {
 
   return (
     <section id="solutions" ref={containerRef} className="relative bg-black overflow-hidden">
-      {/* Fixed Header Section */}
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center z-10 relative">
-        {/* Lamp Effect - positioned above the text */}
-        <div className="absolute top-10 sm:top-12 md:top-16 w-full h-64 flex items-center justify-center z-0">
-          <LampEffect />
-        </div>
-        
-        <motion.div 
-          className="text-center relative z-50 flex-1 flex flex-col justify-center pb-16 md:pb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal text-white leading-[0.9] tracking-tight px-4">
+      {/* Fixed Header Section with LampContainer */}
+      <div className="sticky top-0 h-screen z-10">
+        <LampContainer>
+          <motion.h2
+            initial={isMobile ? false : { opacity: 0.5, y: 100 }}
+            animate={isMobile ? false : undefined}
+            whileInView={isMobile ? false : { opacity: 1, y: 0 }}
+            transition={isMobile ? false : {
+              delay: 0.3,
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
+            style={isMobile ? { opacity: 1, transform: 'none' } : undefined}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-normal text-white leading-[0.9] tracking-tight text-center"
+          >
             <span className="block">Das bieten wir</span>
-            <div className="relative mt-3 sm:mt-3 inline-block">
-              <span className="relative z-10 bg-gradient-to-r from-[#ff8040] to-[#ff5500] bg-clip-text text-transparent">für Sie</span>
+            <div className="relative mt-2 sm:mt-3 inline-block">
+              <span className="relative inline-block">
+                <span className="relative z-10 text-white font-semibold">für Sie</span>
+                <span className="absolute bottom-[-4px] md:bottom-[-3px] left-0 w-full h-1.5 md:h-2 bg-[#ff5500]" />
+              </span>
               <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-2 sm:h-3 md:h-4 lg:h-5 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-xl opacity-60"></span>
-              <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></span>
             </div>
-          </h2>
-          <p className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed mt-4 sm:mt-4 md:mt-6 font-light px-4">
+          </motion.h2>
+          <motion.p
+            initial={isMobile ? false : { opacity: 0.5, y: 50 }}
+            animate={isMobile ? false : undefined}
+            whileInView={isMobile ? false : { opacity: 1, y: 0 }}
+            transition={isMobile ? false : {
+              delay: 0.5,
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
+            style={isMobile ? { opacity: 1, transform: 'none' } : undefined}
+            className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed mt-8 sm:mt-10 md:mt-12 font-light text-center"
+          >
             Maßgeschneiderte Digital-Marketing-Lösungen, die Ihr Immobiliengeschäft auf das nächste Level bringen
-          </p>
-        </motion.div>
+          </motion.p>
+        </LampContainer>
       </div>
 
       {/* Scrolling Solutions */}
-      <div className="relative z-20 -mt-96 sm:-mt-112 md:-mt-128 lg:-mt-104">
+      <div className="relative z-20 -mt-32 sm:-mt-48 md:-mt-64 lg:-mt-80">
         {solutionsData.map((solution, index) => (
           <SolutionSection 
             key={`solution-${index}`} 
@@ -219,14 +242,14 @@ const SolutionSection: React.FC<SolutionItemProps & { isClient?: boolean }> = Re
   const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.98, 1, 1, 0.98]);
 
   return (
-    <div ref={sectionRef} className="min-h-[85vh] flex items-center justify-center sticky top-0 bg-black py-6 sm:py-8 md:py-6 lg:py-4">
+    <div ref={sectionRef} className="relative min-h-[85vh] flex items-center justify-center sticky top-0 bg-black py-6 sm:py-8 md:py-6 lg:py-4">
       <motion.div 
         className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl"
         style={{ y, opacity, scale }}
       >
         {/* Header Section */}
         <motion.div 
-          className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-8 px-4"
+          className="text-center mb-16 sm:mb-20 md:mb-24 lg:mb-28 px-4"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -266,9 +289,9 @@ const SolutionSection: React.FC<SolutionItemProps & { isClient?: boolean }> = Re
           {/* Card blur effect */}
           <div className="absolute -inset-4 pointer-events-none z-0">
             <svg className="blur-xl md:blur-2xl lg:blur-3xl filter opacity-20 md:opacity-30 w-full h-full" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="150" cy="200" rx="120" ry="160" fill="url(#card-blur-${index})" transform="rotate(${index % 2 === 0 ? '15' : '-15'} 150 200)" />
+              <ellipse cx="150" cy="200" rx="120" ry="160" fill={`url(#card-blur-${index})`} transform={`rotate(${index % 2 === 0 ? '15' : '-15'} 150 200)`} />
               <defs>
-                <linearGradient id="card-blur-${index}" x1="30" y1="40" x2="270" y2="360" gradientUnits="userSpaceOnUse">
+                <linearGradient id={`card-blur-${index}`} x1="30" y1="40" x2="270" y2="360" gradientUnits="userSpaceOnUse">
                   <stop offset="0%" stopColor="#ff8040" />
                   <stop offset="100%" stopColor="#ff5500" />
                 </linearGradient>

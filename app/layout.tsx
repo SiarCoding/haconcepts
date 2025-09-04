@@ -1,7 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import WhatsAppChat from '@/components/WhatsAppChat';
 import { ScrollProgress } from "@/components/magicui/scroll-progress";
 import OrangeCursor from '@/components/OrangeCursor';
 import ScrollPositionManager from '@/components/ScrollPositionManager';
@@ -12,67 +11,14 @@ import Analytics from './analytics';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'NMC | Nextmove Consulting - Leadgenerierung für Immobilienmakler & Finanzberater',
-  description: 'Nextmove Consulting generiert qualifizierte Leads für Immobilienmakler und Finanzberater mit nachweisbarem ROI. KI-gestützte Vertriebsstrategien und digitales Marketing für mehr Kunden und Umsatz. Hamburg & bundesweit.',
-  keywords: [
-    'Leadgenerierung Immobilienmakler',
-    'Leads Finanzberater',
-    'Immobilien Marketing',
-    'KI Vertriebsstrategien',
-    'Digitale Leadgenerierung',
-    'Immobilien Leads',
-    'Qualifizierte Leads Immobilien',
-    'LinkedIn Automation Immobilien',
-    'Facebook Werbung Immobilienmakler',
-    'Digitales Marketing Immobilien',
-    'Immobilienmakler Leads generieren',
-    'Finanzberater Kunden gewinnen',
-    'Nextmove Consulting',
-    'Immobilien Vertrieb optimieren',
-    'Kapitalanleger Leads',
-    'Immobilienmakler Hamburg',
-    'Finanzberater Neukundengewinnung',
-    'Performance Marketing Immobilien',
-    'Immobilien Leads kaufen',
-    'Makler Leads',
-    'Immobilienmakler mehr Kunden',
-    'Finanzberater Leadgenerierung',
-    'ROI Immobilienmarketing',
-    'Immobilienmakler Digitalisierung',
-    'Immobilien Social Media Marketing',
-    'Immobilienmarketing Hamburg',
-    'Immobilienmakler Marketingagentur',
-    'Online Marketing Immobilienmakler',
-    'Immobilienmakler Kunden gewinnen digital',
-    'Lead Akquise Immobilienmakler',
-    // Erweiterte Cluster: Finanz, Performance, Automation, KI, Lokal
-    'Finanzdienstleister Leads',
-    'Finanzberater Leads generieren',
-    'Neukundengewinnung Finanzdienstleister',
-    'Google Ads Finanzberater',
-    'Performance Marketing Finanzbranche',
-    'Vertriebsautomatisierung',
-    'Sales Automation',
-    'CRM Automatisierung',
-    'KI im Vertrieb',
-    'KI im Marketing',
-    'KI Leadgenerierung',
-    'Chatbot Immobilien',
-    'Social Media Agentur Hamburg',
-    'Social Media Marketing Hamburg',
-    'LinkedIn Leads Finanzberater',
-    'Content Marketing Immobilien',
-    'Lead Funnel Immobilien',
-    'Landingpage Immobilien Leads',
-    'B2B Leadgenerierung Finanzberater',
-    'Local SEO Hamburg Immobilien',
-  ],
-  authors: [{ name: 'Ali Alizadah', url: 'https://nextmoveconsulting.de' }],
-  creator: 'Nextmove Consulting',
-  publisher: 'Nextmove Consulting',
-  metadataBase: new URL('https://nextmoveconsulting.de'),
+  title: 'NMC | Nextmove Digital - Leadgenerierung für Immobilienmakler & Finanzberater',
+  description: 'Nextmove Digital generiert qualifizierte Leads für Immobilienmakler und Finanzberater mit nachweisbarem ROI. KI-gestützte Vertriebsstrategien und digitales Marketing für mehr Kunden und Umsatz. Hamburg & bundesweit.',
+  authors: [{ name: 'Ali Alizadah', url: 'https://nextmove-digital.de' }],
+  creator: 'Nextmove Digital',
+  publisher: 'Nextmove Digital',
+  metadataBase: new URL('https://nextmove-digital.de'),
   alternates: {
-    canonical: 'https://nextmoveconsulting.de',
+    canonical: 'https://nextmove-digital.de',
     languages: {
       'de-DE': '/',
     },
@@ -91,25 +37,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'de_DE',
-    url: 'https://nextmoveconsulting.de',
-    title: 'Nextmove Consulting - Leadgenerierung für Immobilienmakler & Finanzberater',
+    url: 'https://nextmove-digital.de',
+    title: 'Nextmove Digital - Leadgenerierung für Immobilienmakler & Finanzberater',
     description: 'Wir generieren qualifizierte Leads für Finanzberater und Immobilien-Profis mit nachweisbarem ROI',
-    siteName: 'Nextmove Consulting',
+    siteName: 'Nextmove Digital',
     images: [
       {
-        url: 'https://nextmoveconsulting.de/Logonextmove.webp',
+        url: 'https://nextmove-digital.de/Logonextmove.webp',
         width: 1200,
         height: 630,
-        alt: 'Nextmove Consulting - Leadgenerierung für Immobilienmakler & Finanzberater'
+        alt: 'Nextmove Digital - Leadgenerierung für Immobilienmakler & Finanzberater'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nextmove Consulting - Leadgenerierung für Immobilienmakler',
+    title: 'Nextmove Digital - Leadgenerierung für Immobilienmakler',
     description: 'Wir generieren qualifizierte Leads für Finanzberater und Immobilien-Profis mit nachweisbarem ROI',
     creator: '@nextmoveconsult',
-    images: ['https://nextmoveconsulting.de/Logonextmove.webp']
+    images: ['https://nextmove-digital.de/Logonextmove.webp']
   },
 };
 
@@ -122,20 +68,21 @@ export default function RootLayout({
     <html lang="de">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/Logo Icon Transparent.webp" type="image/webp" />
-        <link rel="icon" href="/Logo Icon Transparent.webp" sizes="any" />
-        <link rel="apple-touch-icon" href="/Logo Icon Transparent.webp" />
-        <meta name="google-site-verification" content="Ihr-Google-Verifizierungscode" />
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/icon-192x192.png" type="image/png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <meta name="google-site-verification" content="TODO_REPLACE_WITH_ACTUAL_GSC_CODE" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Organization',
-              name: 'Nextmove Consulting',
-              url: 'https://nextmoveconsulting.de',
-              logo: 'https://nextmoveconsulting.de/CONSULTING.svg',
-              description: 'Nextmove Consulting generiert qualifizierte Leads für Immobilienmakler und Finanzberater mit nachweisbarem ROI.',
+              name: 'Nextmove Digital',
+              url: 'https://nextmove-digital.de',
+              logo: 'https://nextmove-digital.de/CONSULTING.svg',
+              description: 'Nextmove Digital generiert qualifizierte Leads für Immobilienmakler und Finanzberater mit nachweisbarem ROI.',
               contactPoint: {
                 '@type': 'ContactPoint',
                 telephone: '+4930123456789',
@@ -151,9 +98,9 @@ export default function RootLayout({
                 addressCountry: 'DE',
               },
               sameAs: [
-                'https://www.facebook.com/nextmoveconsulting',
-                'https://www.instagram.com/nextmoveconsulting',
-                'https://www.linkedin.com/company/nextmoveconsulting',
+                'https://www.facebook.com/nextmove-digital',
+                'https://www.instagram.com/nextmove_digital',
+                'https://www.linkedin.com/company/nextmove-digital',
               ],
             }),
           }}
@@ -167,7 +114,7 @@ export default function RootLayout({
               name: 'Leadgenerierung für Immobilienmakler und Finanzberater',
               provider: {
                 '@type': 'Organization',
-                name: 'Nextmove Consulting'
+                name: 'Nextmove Digital'
               },
               description: 'Qualifizierte Leads für Immobilienmakler und Finanzberater mit nachweisbarem ROI durch KI-gestützte Vertriebsstrategien.',
               areaServed: {
@@ -252,19 +199,19 @@ export default function RootLayout({
                   '@type': 'ListItem',
                   position: 1,
                   name: 'Home',
-                  item: 'https://nextmoveconsulting.de'
+                  item: 'https://nextmove-digital.de'
                 },
                 {
                   '@type': 'ListItem',
                   position: 2,
                   name: 'Unsere Lösung',
-                  item: 'https://nextmoveconsulting.de/unsere-loesung'
+                  item: 'https://nextmove-digital.de/unsere-loesung'
                 },
                 {
                   '@type': 'ListItem',
                   position: 3,
                   name: 'Kontakt',
-                  item: 'https://nextmoveconsulting.de/kontakt'
+                  item: 'https://nextmove-digital.de/kontakt'
                 }
               ]
             }),
@@ -276,10 +223,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'LocalBusiness',
-              name: 'Nextmove Consulting',
-              image: 'https://nextmoveconsulting.de/CONSULTING.svg',
-              '@id': 'https://nextmoveconsulting.de',
-              url: 'https://nextmoveconsulting.de',
+                name: 'Nextmove Digital',
+              image: 'https://nextmove-digital.de/CONSULTING.svg',
+              '@id': 'https://nextmove-digital.de',
+              url: 'https://nextmove-digital.de',
               telephone: '+4930123456789',
               address: {
                 '@type': 'PostalAddress',
@@ -311,7 +258,7 @@ export default function RootLayout({
         />
         <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
       </head>
-      <body className={`${inter.className} overflow-x-hidden`}>
+      <body className={`${inter.className} overflow-x-hidden relative`}>
         <Suspense>
           <Analytics />
         </Suspense>
@@ -325,7 +272,6 @@ export default function RootLayout({
         <div className="overflow-x-hidden max-w-full">
           {children}
         </div>
-        <WhatsAppChat />
       </body>
     </html>
   );

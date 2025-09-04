@@ -1,67 +1,42 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
 
+export const dynamic = 'force-static';
 export const preferredRegion = ['fra1', 'dub1', 'arn1', 'cdg1'];
 
+// City mapping for static generation
+const cities = {
+  de: ['berlin', 'muenchen', 'hamburg'],
+  at: ['wien'],
+  ch: ['zuerich', 'genf']
+} as const;
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://nextmoveconsulting.de';
+  const base = 'https://nextmove-digital.de';
   const now = new Date();
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 1.0,
-    },
-    // Legal
-    {
-      url: `${baseUrl}/impressum`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/datenschutz`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/agb`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    // Main sections
-    {
-      url: `${baseUrl}/unsere-loesung`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/warum-wir`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/referenzen`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/kontakt`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    },
+  const urls: MetadataRoute.Sitemap = [
+    // Main pages
+    { url: `${base}`, lastModified: now, changeFrequency: 'weekly', priority: 1.0 },
+    { url: `${base}/impressum`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${base}/datenschutz`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
+    
+    // Country hubs
+    { url: `${base}/de`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/at`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/ch`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
   ];
+
+  // Add city pages
+  Object.entries(cities).forEach(([country, cityList]) => {
+    cityList.forEach(city => {
+      urls.push({
+        url: `${base}/${country}/${city}`,
+        lastModified: now,
+        changeFrequency: 'monthly',
+        priority: 0.7
+      });
+    });
+  });
+
+  return urls;
 } 

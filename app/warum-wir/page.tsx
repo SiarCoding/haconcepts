@@ -9,9 +9,9 @@ const CTA = dynamic(() => import('@/components/CTA'));
 const Footer = dynamic(() => import('@/components/Footer'));
 
 export const metadata: Metadata = {
-  title: 'Warum wir? - NextMove Consulting | Vertrauensvolle Experten für Immobilien-Marketing',
-  description: 'Erfahren Sie, warum über 50 Makler NextMove Consulting vertrauen. Branchenexpertise seit 2019, persönlicher Service und nachweisbare Erfolge bei jedem Projekt.',
-  keywords: 'NextMove Consulting Expertise, Immobilienmakler Marketing Experten, Vertrauensvolle Agentur, Drohnenaufnahmen Profis, 5 Jahre Erfahrung Immobilien',
+  title: 'Warum wir? - NextMove Digital | Vertrauensvolle Experten für Immobilien-Marketing',
+  description: 'Erfahren Sie, warum über 50 Makler NextMove Digital vertrauen. Branchenexpertise seit 2019, persönlicher Service und nachweisbare Erfolge bei jedem Projekt.',
+  keywords: 'NextMove Digital Expertise, Immobilienmakler Marketing Experten, Vertrauensvolle Agentur, Drohnenaufnahmen Profis, 5 Jahre Erfahrung Immobilien',
   alternates: {
     canonical: '/warum-wir',
   },

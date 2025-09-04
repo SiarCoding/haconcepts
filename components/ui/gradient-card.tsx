@@ -55,13 +55,13 @@ export const GradientCard: React.FC<GradientCardProps> = ({ feature }) => {
           transformStyle: "preserve-3d",
           backgroundColor: "#0e131f",
           boxShadow: "0 -10px 100px 10px rgba(255, 85, 0, 0.15), 0 0 10px 0 rgba(0, 0, 0, 0.5)",
+          perspective: 1000,
         }}
         initial={{ y: 0 }}
         animate={{
           y: isHovered ? -5 : 0,
           rotateX: rotation.x,
           rotateY: rotation.y,
-          perspective: 1000,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
         onMouseEnter={() => setIsHovered(true)}

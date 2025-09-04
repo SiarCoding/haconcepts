@@ -99,7 +99,7 @@ const ObjectMarketingHero = () => {
                   className="space-y-6 mb-10"
                   variants={titleVariants}
                 >
-                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white leading-tight">
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white leading-tight">
                     Von der ersten 
                     <span className="relative inline-block mx-2">
                       <span className="relative z-10 text-[#ff5500]">
@@ -109,7 +109,7 @@ const ObjectMarketingHero = () => {
                       <div className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ff8040] to-[#ff5500]"></div>
                     </span>
                     zum Notartermin
-                  </h1>
+                  </h2>
                   
                   <p className="text-gray-400 text-base sm:text-lg mt-5 lg:mt-6 max-w-3xl mx-auto leading-relaxed">
                     Professionelle Objektinszenierung, die Ihre Immobilien emotional erlebbar macht 

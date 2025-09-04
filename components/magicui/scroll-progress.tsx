@@ -10,7 +10,9 @@ export const ScrollProgress = React.forwardRef<
   HTMLDivElement,
   ScrollProgressProps
 >(({ className, ...props }, ref) => {
-  const { scrollYProgress } = useScroll();
+  const { scrollYProgress } = useScroll({
+    container: typeof window !== "undefined" ? { current: document.body } : undefined
+  });
 
   return (
     <motion.div
