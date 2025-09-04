@@ -124,9 +124,9 @@ const Hero = memo(() => {
     }
   }, []);
 
-  // Memoized components to prevent recreation
+  // Memoized components to prevent recreation - optimized with CSS containment
   const OrangeBlurEffect = useMemo(() => (
-    <div className="absolute inset-0 -translate-y-16 sm:-translate-y-32 pointer-events-none">
+    <div className="absolute inset-0 -translate-y-16 sm:-translate-y-32 pointer-events-none" style={{ contain: 'layout style paint', willChange: 'auto' }}>
       <svg className="blur-xl md:blur-2xl lg:blur-3xl filter opacity-30 md:opacity-40" width="444" height="536" viewBox="0 0 444 536" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M225.919 112.719C343.98 64.6648 389.388 -70.487 437.442 47.574C485.496 165.635 253.266 481.381 135.205 529.435C17.1445 577.488 57.9596 339.654 9.9057 221.593C-38.1482 103.532 107.858 160.773 225.919 112.719Z" fill="url(#c)" />
         <defs>

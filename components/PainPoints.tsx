@@ -42,12 +42,14 @@ const PainPoints = () => {
     window.open('https://lunacal.ai/team/nextmove-digital/meeting', '_blank');
   };
 
+  // Simplified animations for better performance
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15
+        staggerChildren: 0.1,
+        duration: 0.4
       }
     }
   };
@@ -55,15 +57,13 @@ const PainPoints = () => {
   const cardVariants = {
     hidden: { 
       opacity: 0,
-      y: 30,
-      scale: 0.95
+      y: 20
     },
     visible: { 
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.4,
         ease: "easeOut" as const
       }
     }

@@ -1,13 +1,11 @@
 'use client';
 
-import React, { useEffect, useRef, useState, useMemo, useCallback } from "react";
-import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import React, { useEffect, useRef, useState, useMemo, memo, useCallback } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { RiCheckboxCircleFill } from "react-icons/ri";
 import { 
   BsShare, 
   BsLightningFill, 
-  BsPeopleFill, 
-  BsGraphUpArrow, 
   BsWindow, 
   BsCameraVideoFill,
   BsPersonBadgeFill,
@@ -18,11 +16,31 @@ import { LampContainer } from '@/components/ui/lamp-effect';
 import dynamic from 'next/dynamic';
 import socialBubbleAnimation from "../public/cZpLSLixLK.json";
 
-// Dynamischer Import von Lottie und LinkedIn Orbiting mit Loading States
+// Dynamischer Import von Lottie
 const Lottie = dynamic(() => import('lottie-react'), { 
   ssr: false,
   loading: () => <div className="w-full h-64 bg-gray-800/50 animate-pulse rounded-lg" />
 });
+
+// Optimized Lottie Component
+const OptimizedLottie = memo(({ animationData, className }: { animationData: any, className?: string }) => (
+  <div className={className}>
+    <Lottie
+      animationData={animationData}
+      loop={true}
+      autoplay={true}
+      style={{ width: '100%', height: '100%' }}
+      rendererSettings={{
+        preserveAspectRatio: 'xMidYMid meet',
+        progressiveLoad: true,
+        hideOnTransparent: true
+      }}
+    />
+  </div>
+));
+
+OptimizedLottie.displayName = 'OptimizedLottie';
+
 const LinkedInOrbiting = dynamic(() => import('@/components/magicui/linkedin-orbiting').then(mod => ({ default: mod.LinkedInOrbiting })), { 
   ssr: false,
   loading: () => <div className="w-32 h-32 bg-gray-800/50 animate-pulse rounded-full mx-auto" />
@@ -34,39 +52,67 @@ interface SolutionItemProps {
   heading: string;
   description: string;
   features: string[];
-  icon?: React.ElementType; // jetzt optional
+  icon?: React.ElementType;
   reverse?: boolean;
   index?: number;
-  totalCount?: number;
-  animation?: any;
 }
 
-const Solutions = () => {
+// Vereinfachter Blur Effect
+const BlurEffect = memo(({ index }: { index: number }) => (
+  <div className="absolute -inset-4 pointer-events-none z-0 opacity-30">
+    <div className={`w-full h-full bg-gradient-radial from-orange-500/20 to-transparent blur-3xl rounded-full`} />
+  </div>
+));
+
+BlurEffect.displayName = 'BlurEffect';
+
+const Solutions = memo(() => {
   const containerRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-  
-  // State für Client-Side Rendering
   const [isClient, setIsClient] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
   
-  // Nach dem ersten Render setzen wir isClient auf true
+  // Optimierte Mobile Detection
   useEffect(() => {
     setIsClient(true);
-    // Check if mobile device - erweiterte Prüfung für Touch-Geräte und schmale Viewports
     const checkMobile = () => {
-      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-      const isNarrowViewport = window.innerWidth <= 1024; // Breitere Definition für bessere Performance
-      setIsMobile(isTouchDevice || isNarrowViewport);
+      setIsMobile(window.innerWidth <= 1024);
     };
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    
+    // Debounced resize handler
+    let resizeTimer: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(checkMobile, 250);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(resizeTimer);
+    };
+  }, []);
+
+  // Scroll Performance Optimization
+  useEffect(() => {
+    let scrollTimer: NodeJS.Timeout;
+    const handleScroll = () => {
+      setIsScrolling(true);
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        setIsScrolling(false);
+      }, 150);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimer);
+    };
   }, []);
   
-  // Memoize solutions data to prevent re-creation on every render
+  // Memoized solutions data
   const solutionsData: SolutionItemProps[] = useMemo(() => [
     {
       imgUrl: "/meta-leads.webp",
@@ -160,64 +206,64 @@ const Solutions = () => {
 
   return (
     <section id="solutions" ref={containerRef} className="relative bg-black overflow-hidden">
-      {/* Fixed Header Section with LampContainer */}
-      <div className="sticky top-0 h-screen z-10">
+      {/* Header Section - Nicht mehr sticky für bessere Performance */}
+      <div className="relative min-h-screen flex items-center justify-center">
         <LampContainer>
-          <motion.h2
-            initial={isMobile ? false : { opacity: 0.5, y: 100 }}
-            animate={isMobile ? false : undefined}
-            whileInView={isMobile ? false : { opacity: 1, y: 0 }}
-            transition={isMobile ? false : {
-              delay: 0.3,
-              duration: 0.8,
-              ease: "easeInOut",
-            }}
-            style={isMobile ? { opacity: 1, transform: 'none' } : undefined}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-normal text-white leading-[0.9] tracking-tight text-center"
-          >
-            <span className="block">Das bieten wir</span>
-            <div className="relative mt-2 sm:mt-3 inline-block">
-              <span className="relative inline-block">
-                <span className="relative z-10 text-white font-semibold">für Sie</span>
-                <span className="absolute bottom-[-4px] md:bottom-[-3px] left-0 w-full h-1.5 md:h-2 bg-[#ff5500]" />
-              </span>
-              <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-2 sm:h-3 md:h-4 lg:h-5 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-xl opacity-60"></span>
-            </div>
-          </motion.h2>
-          <motion.p
-            initial={isMobile ? false : { opacity: 0.5, y: 50 }}
-            animate={isMobile ? false : undefined}
-            whileInView={isMobile ? false : { opacity: 1, y: 0 }}
-            transition={isMobile ? false : {
-              delay: 0.5,
-              duration: 0.8,
-              ease: "easeInOut",
-            }}
-            style={isMobile ? { opacity: 1, transform: 'none' } : undefined}
-            className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed mt-8 sm:mt-10 md:mt-12 font-light text-center"
-          >
-            Maßgeschneiderte Digital-Marketing-Lösungen, die Ihr Immobiliengeschäft auf das nächste Level bringen
-          </motion.p>
+          <div className="mt-20 sm:mt-24 md:mt-32 lg:mt-36"> {/* Mehr Abstand zum Lamp-Effekt */}
+            <motion.h2
+              initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                ease: "easeOut",
+              }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal text-white leading-tight tracking-tight text-center"
+            >
+              <span className="block">Das bieten wir</span>
+              <div className="relative mt-2 sm:mt-3 inline-block">
+                <span className="relative inline-block">
+                  <span className="relative z-10 text-white font-semibold">für Sie</span>
+                  <span className="absolute bottom-[-4px] md:bottom-[-3px] left-0 w-full h-1.5 md:h-2 bg-[#ff5500]" />
+                </span>
+                <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-2 sm:h-3 md:h-4 lg:h-5 bg-gradient-to-r from-[#ff8040] to-[#ff5500] blur-xl opacity-60"></span>
+              </div>
+            </motion.h2>
+            <motion.p
+              initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: 0.1,
+                ease: "easeOut",
+              }}
+              className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed mt-6 sm:mt-8 md:mt-10 font-light text-center px-4"
+            >
+              Maßgeschneiderte Digital-Marketing-Lösungen, die Ihr Immobiliengeschäft auf das nächste Level bringen
+            </motion.p>
+          </div>
         </LampContainer>
       </div>
 
-      {/* Scrolling Solutions */}
-      <div className="relative z-20 -mt-32 sm:-mt-48 md:-mt-64 lg:-mt-80">
+      {/* Solutions Grid - Vereinfachtes Layout ohne sticky */}
+      <div className="relative z-20 pb-20">
         {solutionsData.map((solution, index) => (
           <SolutionSection 
             key={`solution-${index}`} 
             {...solution} 
             index={index} 
-            totalCount={solutionsData.length} 
             isClient={isClient}
+            isScrolling={isScrolling}
           />
         ))}
       </div>
     </section>
   );
-};
+});
 
-const SolutionSection: React.FC<SolutionItemProps & { isClient?: boolean }> = React.memo(({
+// Optimierte Solution Section ohne komplexe Scroll-Transforms
+const SolutionSection: React.FC<SolutionItemProps & { isClient?: boolean; isScrolling?: boolean }> = React.memo(({
   imgUrl,
   subheading,
   heading,
@@ -226,105 +272,77 @@ const SolutionSection: React.FC<SolutionItemProps & { isClient?: boolean }> = Re
   icon: IconComponent,
   reverse = false,
   index = 0,
-  totalCount = 1,
-  animation,
-  isClient = false
+  isClient = false,
+  isScrolling = false
 }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Optimized transforms with reduced complexity
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.98, 1, 1, 0.98]);
 
   return (
-    <div ref={sectionRef} className="relative min-h-[85vh] flex items-center justify-center sticky top-0 bg-black py-6 sm:py-8 md:py-6 lg:py-4">
+    <div 
+      ref={sectionRef} 
+      className="relative min-h-[70vh] sm:min-h-[80vh] flex items-center justify-center bg-black py-12 sm:py-16 md:py-20"
+    >
       <motion.div 
         className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl"
-        style={{ y, opacity, scale }}
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ 
+          duration: 0.8,
+          ease: "easeOut"
+        }}
       >
         {/* Header Section */}
-        <motion.div 
-          className="text-center mb-16 sm:mb-20 md:mb-24 lg:mb-28 px-4"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          {/* Icon with more dramatic effect */}
-          <div className="mb-3 sm:mb-4 md:mb-6 flex justify-center">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20 px-4">
+          {/* Icon */}
+          <div className="mb-4 sm:mb-6 flex justify-center">
             <div className="relative">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-white/[0.2] to-white/[0.05] backdrop-blur-md border border-white/[0.15] flex items-center justify-center shadow-2xl">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-white/[0.15] to-white/[0.05] backdrop-blur-sm border border-white/[0.1] flex items-center justify-center">
                 {IconComponent && (
                   <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#ff5500]" />
                 )}
               </div>
-              <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-orange-500/30 blur-lg sm:blur-xl opacity-70 animate-pulse"></div>
-              <div className="absolute -inset-1 sm:-inset-2 rounded-xl sm:rounded-2xl bg-gradient-to-r from-orange-500/20 to-red-500/20 blur-xl sm:blur-2xl opacity-50"></div>
+              {/* Vereinfachter Glow-Effekt */}
+              <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-orange-500/20 blur-xl opacity-60"></div>
             </div>
           </div>
           
-          <p className="mb-4 sm:mb-4 md:mb-6 text-center text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl tracking-wider font-semibold text-orange-400 uppercase px-2">
+          <p className="mb-3 sm:mb-4 text-sm sm:text-base md:text-lg tracking-wider font-semibold text-orange-400 uppercase">
             {subheading}
           </p>
-          <h2 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black bg-gradient-to-b from-white via-white to-white/60 bg-clip-text text-transparent leading-[0.9] tracking-tight px-2">
+          <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent">
             {heading}
-          </h2>
-        </motion.div>
+          </h3>
+        </div>
 
-        {/* Content Section */}
-        <motion.div 
-          className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-8 items-center ${reverse ? 'lg:grid-flow-dense' : ''}`}
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-        {/* Content Card */}
-        <div className={`${reverse ? 'lg:col-start-2' : ''} relative group`}>
-          {/* Card blur effect */}
-          <div className="absolute -inset-4 pointer-events-none z-0">
-            <svg className="blur-xl md:blur-2xl lg:blur-3xl filter opacity-20 md:opacity-30 w-full h-full" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="150" cy="200" rx="120" ry="160" fill={`url(#card-blur-${index})`} transform={`rotate(${index % 2 === 0 ? '15' : '-15'} 150 200)`} />
-              <defs>
-                <linearGradient id={`card-blur-${index}`} x1="30" y1="40" x2="270" y2="360" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stopColor="#ff8040" />
-                  <stop offset="100%" stopColor="#ff5500" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-          
-          <div className="relative rounded-2xl p-5 sm:p-6 md:p-7 lg:p-8 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-md backdrop-saturate-150 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(255,85,0,0.1)] hover:shadow-[0_16px_48px_0_rgba(255,85,0,0.15)] hover:scale-[1.02] hover:border-white/[0.12] transition-all duration-500 ease-out overflow-hidden z-10">
-            {/* Inner glow effect */}
-            <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-orange-500/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        {/* Content Grid */}
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${reverse ? 'lg:grid-flow-dense' : ''}`}>
+          {/* Content Card */}
+          <motion.div 
+            className={`${reverse ? 'lg:col-start-2' : ''} relative group`}
+            initial={{ opacity: 0, x: reverse ? 30 : -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {!isScrolling && <BlurEffect index={index} />}
             
-            {/* Shine effect on hover */}
-            <div className="hidden md:block absolute inset-0 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-              <div className="absolute top-0 left-0 w-[2px] h-full bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
-            </div>
-            
-            <div className="relative z-10">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
+            <div className="relative rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-sm border border-white/[0.08] shadow-xl hover:shadow-2xl transition-all duration-300">
+              <h4 className="text-xl sm:text-2xl font-bold text-white mb-4">
                 {heading}
-              </h3>
-              <p className="mb-4 sm:mb-6 text-base sm:text-lg text-white/70 leading-relaxed">
+              </h4>
+              <p className="mb-6 text-base sm:text-lg text-white/70 leading-relaxed">
                 {description}
               </p>
               
               {/* Features */}
-              <div className="mb-6 sm:mb-8">
-                <h4 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Ihre Vorteile:</h4>
-                <ul className="space-y-3 sm:space-y-4">
-                  {features.map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                      <RiCheckboxCircleFill className="w-4 h-4 sm:w-5 sm:h-5 text-[#ff5500] flex-shrink-0 mt-1" />
-                      <span className="ml-3 text-white/80 text-sm sm:text-base hover:text-white transition-colors duration-300">
+              <div className="mb-8">
+                <h5 className="text-lg sm:text-xl font-semibold text-white mb-4">Ihre Vorteile:</h5>
+                <ul className="space-y-3">
+                  {features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <RiCheckboxCircleFill className="w-5 h-5 text-[#ff5500] flex-shrink-0 mt-0.5" />
+                      <span className="ml-3 text-white/80 text-sm sm:text-base">
                         {feature}
                       </span>
                     </li>
@@ -332,182 +350,66 @@ const SolutionSection: React.FC<SolutionItemProps & { isClient?: boolean }> = Re
                 </ul>
               </div>
               
-              {/* CTA Button im Hero-Stil */}
+              {/* CTA Button */}
               <button
                 onClick={() => window.open('https://lunacal.ai/team/nextmove-digital/meeting', '_blank')}
-                style={{
-                  background: 'rgba(255, 85, 0, 0.1)',
-                  color: 'white',
-                  border: '1px solid rgba(255, 85, 0, 0.5)',
-                  borderRadius: '14px',
-                  fontWeight: '600',
-                  fontSize: '12px',
-                  letterSpacing: '1px',
-                  textTransform: 'uppercase',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  transition: 'all 0.3s ease',
-                  boxShadow: '0 0 15px rgba(255, 85, 0, 0.4)',
-                  cursor: 'pointer',
-                  lineHeight: '1.2',
-                }}
-                className="relative px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 btn-orange-glow w-full sm:w-auto text-xs sm:text-sm"
+                className="relative px-6 py-3 w-full sm:w-auto text-sm font-semibold tracking-wider uppercase text-white bg-[#ff5500]/10 border border-[#ff5500]/50 rounded-xl hover:bg-[#ff5500]/20 hover:border-[#ff5500]/70 transition-all duration-300"
               >
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: '0',
-                    background: 'radial-gradient(circle at center, rgba(255, 85, 0, 0.8) 0%, rgba(255, 85, 0, 0.4) 40%, transparent 70%)',
-                    filter: 'blur(12px)',
-                    opacity: '0.6',
-                    zIndex: '-1',
-                    transform: 'scale(1.1)'
-                  }}
-                ></div>
                 Jetzt anfragen
               </button>
             </div>
-          </div>
-          
-          {/* Outer glow effect for cards */}
-          <div className="hidden md:block absolute -inset-1 rounded-3xl bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-lg"></div>
-        </div>
+          </motion.div>
 
-        {/* Image */}
-        <div className={`${reverse ? 'lg:col-start-1' : ''} relative`}>
-          {/* Image blur effect with different shape */}
-          <div className="absolute -inset-6 pointer-events-none z-0">
-            <svg className="blur-xl md:blur-2xl lg:blur-3xl filter opacity-25 md:opacity-35 w-full h-full" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path 
-                d={index % 3 === 0 
-                  ? "M200 50 Q350 100 300 200 Q250 280 100 250 Q50 150 200 50 Z"
-                  : index % 3 === 1
-                  ? "M100 80 Q300 60 320 180 Q280 260 120 280 Q20 200 100 80 Z"
-                  : "M150 30 Q380 80 350 220 Q200 290 50 200 Q80 100 150 30 Z"
-                }
-                fill="url(#image-blur-${index})"
-              />
-              <defs>
-                <linearGradient id="image-blur-${index}" x1="50" y1="50" x2="350" y2="250" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stopColor="#ff8040" />
-                  <stop offset="100%" stopColor="#ff5500" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-          
-          {/* Brand Chart, LinkedIn Orbiting, or Standard Image */}
-          {heading === "Brand Aufbau" ? (
-            <div className="relative w-full max-w-md mx-auto z-10 mt-8 sm:mt-12 md:mt-16 lg:mt-20">
-              <div className="relative h-64 sm:h-72 md:h-80 w-full">
-                {/* Chart Title */}
-                <h3 className="text-white text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-center">
-                  Brand Authority Wachstum
-                </h3>
-                
-                {/* Chart Area */}
-                <div className="relative h-48 sm:h-56 md:h-64 w-full">
-                  {/* Grid Lines */}
-                  <div className="absolute inset-0 grid grid-rows-4 opacity-20">
-                    <div className="border-b border-gray-600"></div>
-                    <div className="border-b border-gray-600"></div>
-                    <div className="border-b border-gray-600"></div>
-                    <div className="border-b border-gray-600"></div>
+          {/* Image */}
+          <motion.div 
+            className={`${reverse ? 'lg:col-start-1' : ''} relative`}
+            initial={{ opacity: 0, x: reverse ? -30 : 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            {/* Special content for specific sections */}
+            {heading === "Brand Aufbau" ? (
+              <div className="relative w-full max-w-md mx-auto">
+                <div className="relative h-64 sm:h-72 md:h-80 w-full">
+                  {/* Brand Chart */}
+                  <h4 className="text-white text-base sm:text-lg font-semibold mb-4 text-center">
+                    Brand Authority Wachstum
+                  </h4>
+                  
+                  <div className="relative h-48 sm:h-56 w-full">
+                    {/* Simple Chart SVG */}
+                    <svg className="w-full h-full" viewBox="0 0 300 200">
+                      <path
+                        d="M 10 180 Q 40 165 70 140 T 120 90 T 170 65 T 220 40 T 280 25"
+                        stroke="#ff5500"
+                        strokeWidth="3"
+                        fill="none"
+                        className="drop-shadow-lg"
+                      />
+                      <path
+                        d="M 10 180 Q 35 170 65 150 T 110 110 T 155 85 T 200 60 T 280 45"
+                        stroke="rgba(255, 255, 255, 0.3)"
+                        strokeWidth="2"
+                        fill="none"
+                      />
+                    </svg>
                   </div>
                   
-                  {/* Y-Axis Labels */}
-                  <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-gray-400 text-xs py-1">
-                    <span>100%</span>
-                    <span>75%</span>
-                    <span>50%</span>
-                    <span>25%</span>
-                    <span>0%</span>
-                  </div>
-                  
-                  {/* Brand Growth Line Chart */}
-                  <svg className="absolute inset-0 w-full h-full ml-6" viewBox="0 0 300 200">
-                    {/* Brand Authority Line */}
-                    <path
-                      d="M 10 180 Q 40 165 70 140 T 120 90 T 170 65 T 220 40 T 280 25"
-                      stroke="#ff5500"
-                      strokeWidth="3"
-                      fill="none"
-                      className="drop-shadow-[0_0_10px_#ff5500]"
-                    />
-                    
-                    {/* Engagement Line */}
-                    <path
-                      d="M 10 180 Q 35 170 65 150 T 110 110 T 155 85 T 200 60 T 280 45"
-                      stroke="rgba(255, 255, 255, 0.5)"
-                      strokeWidth="2.5"
-                      fill="none"
-                    />
-                    
-                    {/* Glow Effect */}
-                    <path
-                      d="M 10 180 Q 40 165 70 140 T 120 90 T 170 65 T 220 40 T 280 25"
-                      stroke="#ff5500"
-                      strokeWidth="6"
-                      fill="none"
-                      opacity="0.4"
-                      className="blur-sm"
-                    />
-                    
-                    {/* Data Points */}
-                    <circle cx="70" cy="140" r="4" fill="#ff5500" className="drop-shadow-[0_0_6px_#ff5500]" />
-                    <circle cx="120" cy="90" r="4" fill="#ff5500" className="drop-shadow-[0_0_6px_#ff5500]" />
-                    <circle cx="170" cy="65" r="4" fill="#ff5500" className="drop-shadow-[0_0_6px_#ff5500]" />
-                    <circle cx="220" cy="40" r="4" fill="#ff5500" className="drop-shadow-[0_0_6px_#ff5500]" />
-                  </svg>
-                  
-                  {/* X-Axis Labels */}
-                  <div className="absolute bottom-0 left-6 right-0 flex justify-between text-gray-400 text-xs">
-                    <span>Start</span>
-                    <span>3 Mon</span>
-                    <span>6 Mon</span>
-                    <span>12 Mon</span>
-                  </div>
-                </div>
-                
-                {/* Legend */}
-                <div className="flex items-center justify-center gap-6 mt-4 text-xs">
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-0.5 bg-[#ff5500] rounded"></div>
-                    <span className="text-gray-300">Brand Autorität</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-0.5 bg-white/50 rounded"></div>
-                    <span className="text-gray-300">Engagement</span>
-                  </div>
+                  {/* Lottie Animation */}
+                  {isClient && !isScrolling && (
+                    <div className="w-full flex justify-center mt-6">
+                      <OptimizedLottie
+                        animationData={socialBubbleAnimation}
+                        className="w-[140px] h-[140px] sm:w-[160px] sm:h-[160px]"
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
-              
-              {/* Lottie Animation direkt unter dem Chart */}
-              {isClient && (
-                <div className="w-full flex justify-center mt-6 sm:mt-8">
-                  <div 
-                    className="w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] md:w-[160px] md:h-[160px] lg:w-[180px] lg:h-[180px]"
-                  >
-                    <Lottie
-                      animationData={socialBubbleAnimation}
-                      loop={true}
-                      autoplay={true}
-                      style={{ width: '100%', height: '100%' }}
-                      rendererSettings={{
-                        preserveAspectRatio: 'xMidYMid meet',
-                        progressiveLoad: true,
-                        hideOnTransparent: true
-                      }}
-                    />
-                  </div>
-                </div>
-              )}
-            </div>
-          ) : heading === "Prozessoptimierte Vertriebsmethoden" ? (
-            /* LinkedIn Orbiting Animation for Prozessoptimierte Vertriebsmethoden */
-            <div className="relative w-full flex items-center justify-center z-10">
-              <div className="relative mx-auto">
-                {isClient && (
+            ) : heading === "Prozessoptimierte Vertriebsmethoden" ? (
+              <div className="relative w-full flex items-center justify-center">
+                {isClient && !isScrolling && (
                   <LinkedInOrbiting
                     className="opacity-90"
                     radius={120}
@@ -518,37 +420,27 @@ const SolutionSection: React.FC<SolutionItemProps & { isClient?: boolean }> = Re
                   />
                 )}
               </div>
-            </div>
-          ) : (
-            /* Standard Image for other solutions */
-            <div className={`relative rounded-2xl overflow-hidden shadow-2xl mx-auto z-10 ${
-              heading === "Digitale Leadgenerierung"
-                ? "max-w-[280px] sm:max-w-[320px] md:max-w-[280px]"
-                : heading === "Webdesign & Landingpages" 
-                ? "max-w-sm sm:max-w-md md:max-w-lg" 
-                : "max-w-xs sm:max-w-sm"
-            }`}>
-              <Image
-                src={imgUrl}
-                alt={heading}
-                width={500}
-                height={350}
-                className="w-full h-auto object-cover"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
-                priority={index < 2}
-                loading={index < 2 ? "eager" : "lazy"}
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-            </div>
-          )}
+            ) : (
+              /* Standard Image */
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl mx-auto max-w-md">
+                <Image
+                  src={imgUrl}
+                  alt={heading}
+                  width={500}
+                  height={350}
+                  className="w-full h-auto object-cover"
+                  loading="lazy"
+                />
+              </div>
+            )}
+          </motion.div>
         </div>
-        </motion.div>
-        
       </motion.div>
     </div>
   );
 });
+
+Solutions.displayName = 'Solutions';
+SolutionSection.displayName = 'SolutionSection';
 
 export default Solutions;

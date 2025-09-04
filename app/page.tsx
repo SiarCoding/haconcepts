@@ -7,16 +7,38 @@ import Script from 'next/script';
 
 export const preferredRegion = ['fra1', 'dub1', 'arn1', 'cdg1'];
 
-// Dynamisches Laden für Komponenten "below the fold"
-const PainPoints = dynamic(() => import('@/components/PainPoints'));
-const Solutions = dynamic(() => import('@/components/Solutions'));
-const FlipWebsites = dynamic(() => import('@/components/unsere-loesung/flip-websites'));
-const SocialMediaContent = dynamic(() => import('@/components/SocialMediaContent'));
-const FailureReasons = dynamic(() => import('@/components/FailureReasons'));
+// Optimized Dynamic Imports with preload hints
+const PainPoints = dynamic(() => import('@/components/PainPoints'), { 
+  loading: () => <div className="w-full h-96 bg-black animate-pulse" />
+});
+
+const Solutions = dynamic(() => import('@/components/Solutions'), { 
+  loading: () => <div className="w-full h-screen bg-black animate-pulse" />
+});
+
+const FlipWebsites = dynamic(() => import('@/components/unsere-loesung/flip-websites'), { 
+  loading: () => <div className="w-full h-screen bg-black animate-pulse" />
+});
+
+const FailureReasons = dynamic(() => import('@/components/FailureReasons'), { 
+  loading: () => <div className="w-full h-96 bg-black animate-pulse" />
+});
+
+const TestimonialVideo = dynamic(() => import('@/components/TestimonialVideo'), { 
+  loading: () => <div className="w-full h-96 bg-black animate-pulse" />
+});
+
+const AdsDesign = dynamic(() => import('@/components/AdsDesign'), { 
+  loading: () => <div className="w-full h-96 bg-black animate-pulse" />
+});
+
+const CaseStudySection = dynamic(() => import('@/components/CaseStudySection'), { 
+  loading: () => <div className="w-full h-96 bg-white animate-pulse" />
+});
+
+// Further delayed components
 const Team = dynamic(() => import('@/components/Team'));
 const Timeline = dynamic(() => import('@/components/Timeline'));
-const Testimonials = dynamic(() => import('@/components/Testimonials'));
-const TestimonialVideo = dynamic(() => import('@/components/TestimonialVideo'));
 const WhyUs = dynamic(() => import('@/components/WhyUs'));
 const CTA = dynamic(() => import('@/components/CTA'));
 const CalendlyWidget = dynamic(() => import('@/components/CalendlyWidget'));
@@ -24,8 +46,6 @@ const Questions = dynamic(() => import('@/components/Questions'));
 const Footer = dynamic(() => import('@/components/Footer'));
 const NextMove = dynamic(() => import('@/components/NextMove'));
 const BusinessSection = dynamic(() => import('@/components/BusinessSection'));
-const CaseStudySection = dynamic(() => import('@/components/CaseStudySection'));
-const AdsDesign = dynamic(() => import('@/components/AdsDesign'));
 
 export const metadata: Metadata = {
   title: 'NextMove Digital | Leads für Finanzberater & Immobilienmakler',

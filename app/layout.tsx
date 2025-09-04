@@ -81,21 +81,20 @@ export default function RootLayout({
               '@type': 'Organization',
               name: 'Nextmove Digital',
               url: 'https://nextmove-digital.de',
-              logo: 'https://nextmove-digital.de/CONSULTING.svg',
+              logo: 'https://nextmove-digital.de/Logonextmove.webp',
               description: 'Nextmove Digital generiert qualifizierte Leads für Immobilienmakler und Finanzberater mit nachweisbarem ROI.',
               contactPoint: {
                 '@type': 'ContactPoint',
-                telephone: '+4930123456789',
                 contactType: 'customer service',
-                areaServed: 'DE',
-                availableLanguage: ['German', 'English'],
+                areaServed: ['DE', 'AT', 'CH'],
+                availableLanguage: ['German'],
               },
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: 'Kedenburger Straße 44',
+                streetAddress: 'Papenstraße 23',
                 addressLocality: 'Hamburg',
-                postalCode: '22043',
-                addressCountry: 'DE',
+                postalCode: '22089',
+                addressCountry: 'DE'
               },
               sameAs: [
                 'https://www.facebook.com/nextmove-digital',
@@ -224,15 +223,14 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'LocalBusiness',
                 name: 'Nextmove Digital',
-              image: 'https://nextmove-digital.de/CONSULTING.svg',
+              image: 'https://nextmove-digital.de/Logonextmove.webp',
               '@id': 'https://nextmove-digital.de',
               url: 'https://nextmove-digital.de',
-              telephone: '+4930123456789',
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: 'Kedenburger Straße 44',
+                streetAddress: 'Papenstraße 23',
                 addressLocality: 'Hamburg',
-                postalCode: '22043',
+                postalCode: '22089',
                 addressCountry: 'DE'
               },
               geo: {

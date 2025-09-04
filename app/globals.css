@@ -21,6 +21,13 @@ body {
 /* Performance Optimierungen */
 * {
   box-sizing: border-box;
+  /* CSS Containment für bessere Performance */
+  contain: layout style;
+}
+
+/* Containment exceptions für wichtige Layout-Elemente */
+body, html, main, section {
+  contain: none;
 }
 
 /* Optimiertes Scrolling für mobile Geräte */
@@ -43,10 +50,39 @@ a[href^="#"] {
   scroll-behavior: smooth;
 }
 
+/* Flip-Websites Exception - Allow Framer Motion */
+.flip-websites {
+  contain: none !important;
+}
+
+.flip-websites * {
+  will-change: auto !important;
+}
+
+.flip-websites motion-div,
+.flip-websites [data-framer-motion] {
+  animation: initial !important;
+  transition: initial !important;
+  transform: initial !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: initial !important;
+  will-change: transform !important;
+}
+
+.flip-websites img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
 /* Mobile Performance Optimierungen */
 @media (max-width: 768px) {
-  /* GPU-beschleunigte Transformationen für bessere Performance */
-  * {
+  /* GPU-beschleunigte Transformationen nur für notwendige Elemente */
+  .gpu-accelerated, motion-div, [data-framer-motion] {
     -webkit-transform: translateZ(0);
     -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);
@@ -56,10 +92,7 @@ a[href^="#"] {
     -moz-backface-visibility: hidden;
     -ms-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    -moz-perspective: 1000;
-    -ms-perspective: 1000;
-    perspective: 1000;
+    will-change: transform, opacity;
   }
 
   /* Reduzierte Animationen auf mobilen Geräten */
@@ -92,9 +125,9 @@ a[href^="#"] {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
   }
 
-  /* Deaktiviere hover-Effekte auf Touch-Geräten */
-  .group:hover *,
-  *:hover {
+  /* Deaktiviere hover-Effekte auf Touch-Geräten - außer flip-websites */
+  .group:hover *:not(.flip-websites *),
+  *:hover:not(.flip-websites *) {
     transition: none !important;
     transform: none !important;
     animation: none !important;
@@ -107,17 +140,26 @@ a[href^="#"] {
     animation: none !important;
   }
 
-  /* Spezielle Motion-Komponenten deaktivieren */
-  [data-framer-motion] *,
-  [class*="motion-"] {
+  /* Spezielle Motion-Komponenten deaktivieren - außer flip-websites */
+  [data-framer-motion]:not(.flip-websites *),
+  [class*="motion-"]:not(.flip-websites *) {
     transform: none !important;
     transition: none !important;
     animation: none !important;
   }
+  
+  /* Explizite Ausnahme für flip-websites */
+  .flip-websites [data-framer-motion],
+  .flip-websites [class*="motion-"],
+  .flip-websites motion-div {
+    transform: initial !important;
+    transition: initial !important;
+    animation: initial !important;
+  }
 
-  /* Framer Motion Komponenten komplett deaktivieren */
-  div[style*="transform"],
-  motion-div {
+  /* Framer Motion Komponenten komplett deaktivieren - außer flip-websites */
+  div[style*="transform"]:not(.flip-websites *),
+  motion-div:not(.flip-websites *) {
     transform: none !important;
     transition: none !important;
   }
@@ -134,30 +176,30 @@ a[href^="#"] {
 
 /* Spezielle Regeln für Touch-Geräte - deaktiviert alle Hover- und Motion-Effekte */
 @media (hover: none) and (pointer: coarse) {
-  /* Alle Motion und Transform Effekte deaktivieren - außer Logo-Scroll */
-  *:not(.animate-scroll-infinite),
-  *:not(.animate-scroll-infinite)::before,
-  *:not(.animate-scroll-infinite)::after {
+  /* Alle Motion und Transform Effekte deaktivieren - außer Logo-Scroll und flip-websites */
+  *:not(.animate-scroll-infinite):not(.flip-websites *),
+  *:not(.animate-scroll-infinite):not(.flip-websites *)::before,
+  *:not(.animate-scroll-infinite):not(.flip-websites *)::after {
     animation: none !important;
     transition: none !important;
     transform: none !important;
   }
   
-  /* Framer Motion spezifisch */
-  [data-framer-motion],
-  motion-div,
-  motion-h1,
-  motion-h2,
-  motion-p,
-  div[style*="transform"] {
+  /* Framer Motion spezifisch - außer flip-websites */
+  [data-framer-motion]:not(.flip-websites *),
+  motion-div:not(.flip-websites *),
+  motion-h1:not(.flip-websites *),
+  motion-h2:not(.flip-websites *),
+  motion-p:not(.flip-websites *),
+  div[style*="transform"]:not(.flip-websites *) {
     transform: none !important;
     animation: none !important;
     transition: none !important;
   }
   
-  /* Hover-Effekte komplett deaktivieren */
-  .group:hover *,
-  *:hover {
+  /* Hover-Effekte komplett deaktivieren - außer flip-websites */
+  .group:hover *:not(.flip-websites *),
+  *:hover:not(.flip-websites *) {
     transform: none !important;
     transition: none !important;
     animation: none !important;

@@ -31,6 +31,30 @@ const videoTestimonials = [
   },
 ];
 
+// Optimized iframe component for better performance
+const OptimizedVideoIframe = React.memo(({ src, title }: { src: string, title: string }) => (
+  <div style={{position: 'relative', aspectRatio: '16/9'}}>
+    <iframe
+      loading="lazy"
+      title={title}
+      src={src}
+      style={{ 
+        border: 'none', 
+        position: 'absolute', 
+        top: 0, 
+        left: 0, 
+        height: '100%', 
+        width: '100%',
+        contain: 'layout style paint'
+      }}
+      allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+      allowFullScreen
+    />
+  </div>
+));
+
+OptimizedVideoIframe.displayName = 'OptimizedVideoIframe';
+
 export default function TestimonialVideo() {
   return (
     <section id="testimonials" className="relative bg-black py-20 sm:py-24 overflow-hidden">
@@ -97,16 +121,10 @@ export default function TestimonialVideo() {
               transition={{ duration: 0.7, delay: index * 0.2 }}
             >
               <div className="relative rounded-2xl p-4 sm:p-6 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-md border border-white/[0.08] shadow-[0_8px_32px_0_rgba(255,85,0,0.1)] hover:shadow-[0_16px_48px_0_rgba(255,85,0,0.15)] hover:scale-[1.02] hover:border-white/[0.12] transition-all duration-500 ease-out">
-                <div style={{position: 'relative', aspectRatio: '16/9'}}>
-                  <iframe
-                    loading="lazy"
-                    title="Gumlet video player"
-                    src={testimonial.videoSrc}
-                    style={{ border: 'none', position: 'absolute', top: 0, left: 0, height: '100%', width: '100%' }}
-                    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-                    allowFullScreen
-                  ></iframe>
-                </div>
+                <OptimizedVideoIframe 
+                  src={testimonial.videoSrc}
+                  title={`${testimonial.name} - ${testimonial.company} Testimonial`}
+                />
                 <div className="mt-4 text-center">
                   <h3 className="text-lg font-semibold text-white">{testimonial.name}</h3>
                   <p className="text-sm text-gray-400">{testimonial.company}</p>
