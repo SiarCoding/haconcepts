@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Temporarily removing standalone to fix CSS build error
+  output: 'standalone',  // Add for faster boot on Scalingo
   reactStrictMode: false,
   trailingSlash: false,
   images: {
