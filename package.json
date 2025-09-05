@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && node copy-assets.js",
-    "start": "node server.js",
+    "start": "node .next/standalone/server.js",
     "lint": "next lint",
     "reinstall-spline": "npm uninstall @splinetool/react-spline && npm install @splinetool/react-spline@2.2.6 --legacy-peer-deps",
     "vercel-build": "npm install --legacy-peer-deps && next build"
