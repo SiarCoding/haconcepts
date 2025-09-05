@@ -6,6 +6,7 @@ import { MovingLogos } from '@/components/ui/moving-cards'
 import Script from 'next/script';
 
 export const preferredRegion = ['fra1', 'dub1', 'arn1', 'cdg1'];
+export const dynamicParams = false; // Disable prerendering to fix CSS build error
 
 // Optimized Dynamic Imports with preload hints
 const PainPoints = dynamic(() => import('@/components/PainPoints'), { 

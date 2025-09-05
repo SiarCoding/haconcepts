@@ -215,9 +215,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { country: string; city: string };
+  params: Promise<{ country: string; city: string }>;
 }): Promise<Metadata> {
-  const { country, city } = params;
+  const { country, city } = await params;
   
   if (!cityData[country as Country]) {
     return {
@@ -255,12 +255,12 @@ export async function generateMetadata({
   };
 }
 
-export default function CityPage({
+export default async function CityPage({
   params,
 }: {
-  params: { country: string; city: string };
+  params: Promise<{ country: string; city: string }>;
 }) {
-  const { country, city } = params;
+  const { country, city } = await params;
   
   if (!cityData[country as Country]) {
     notFound();
