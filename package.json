@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start -p $PORT",
+    "build": "next build && node copy-assets.js",
+    "start": "node server.js",
     "lint": "next lint",
     "reinstall-spline": "npm uninstall @splinetool/react-spline && npm install @splinetool/react-spline@2.2.6 --legacy-peer-deps",
     "vercel-build": "npm install --legacy-peer-deps && next build"
