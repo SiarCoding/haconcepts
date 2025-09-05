@@ -11,29 +11,57 @@ import Analytics from './analytics';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'NMC | Nextmove Digital - Leadgenerierung für Immobilienmakler & Finanzberater',
-  description: 'Nextmove Digital generiert qualifizierte Leads für Immobilienmakler und Finanzberater mit nachweisbarem ROI. KI-gestützte Vertriebsstrategien und digitales Marketing für mehr Kunden und Umsatz. Hamburg & bundesweit.',
-  authors: [{ name: 'Ali Alizadah', url: 'https://nextmove-digital.de' }],
+  title: {
+    template: '%s | Nextmove Digital - Leadgenerierung DACH-Raum',
+    default: 'Nextmove Digital - Leadgenerierung für Immobilienmakler & Finanzberater DACH',
+  },
+  description: 'Nextmove Digital generiert qualifizierte Leads für Immobilienmakler und Finanzberater im DACH-Raum mit nachweisbarem ROI. KI-gestützte Vertriebsstrategien und digitales Marketing für mehr Kunden und Umsatz.',
+  keywords: [
+    'Leadgenerierung Immobilien',
+    'Immobilienmakler Leads',
+    'Finanzberater Leads', 
+    'Leadgenerierung DACH',
+    'Immobilien Leads Deutschland',
+    'Immobilien Leads Österreich',
+    'Immobilien Leads Schweiz',
+    'Social Media Marketing Immobilien',
+    'Digitales Marketing Immobilienmakler',
+    'Qualifizierte Leads Finanzdienstleister'
+  ],
+  authors: [{ name: 'Ali Alizadah', url: 'https://nextmove-digital.de/team/ali-alizadah' }],
   creator: 'Nextmove Digital',
   publisher: 'Nextmove Digital',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   metadataBase: new URL('https://nextmove-digital.de'),
   alternates: {
     canonical: 'https://nextmove-digital.de',
     languages: {
-      'de-DE': '/',
+      'de-DE': 'https://nextmove-digital.de/de',
+      'de-AT': 'https://nextmove-digital.de/at',
+      'de-CH': 'https://nextmove-digital.de/ch',
     },
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: 'TODO_REPLACE_WITH_ACTUAL_GSC_CODE',
+  },
+  category: 'Digital Marketing',
   openGraph: {
     type: 'website',
     locale: 'de_DE',

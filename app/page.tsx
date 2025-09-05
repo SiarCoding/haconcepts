@@ -4,6 +4,7 @@ import { Header } from '@/components/Header';
 import Hero from '@/components/Hero';
 import { MovingLogos } from '@/components/ui/moving-cards'
 import Script from 'next/script';
+import { JsonLd, schemas } from '@/components/SEO/JsonLd';
 
 export const preferredRegion = ['fra1', 'dub1', 'arn1', 'cdg1'];
 
@@ -48,17 +49,53 @@ const NextMove = dynamic(() => import('@/components/NextMove'));
 const BusinessSection = dynamic(() => import('@/components/BusinessSection'));
 
 export const metadata: Metadata = {
-  title: 'NextMove Digital | Leads für Finanzberater & Immobilienmakler',
-  description: 'Professionelle Lead-Generierung für Finanzberater und Immobilienmakler. Qualifizierte Kunden durch Performance Marketing und Social Media Ads.',
-  keywords: 'Leads für Finanzberater ohne Google Ads, organische Leads Immobilienmakler, Performance Marketing Finanzbranche, Social Media Leads, Lead-Generierung ohne Werbebudget, Finanzberater Neukundengewinnung, Immobilienmakler Leads organisch',
+  title: 'Leadgenerierung DACH | Immobilienmakler & Finanzberater Leads',
+  description: 'Qualifizierte Leadgenerierung für Immobilienmakler und Finanzberater im DACH-Raum. Performance Marketing mit nachweisbarem ROI. Über 500 zufriedene Kunden in Deutschland, Österreich und der Schweiz.',
+  keywords: [
+    'Leadgenerierung Immobilien',
+    'Immobilienmakler Leads',
+    'Finanzberater Leads',
+    'Leadgenerierung DACH',
+    'Immobilien Leads Deutschland',
+    'Immobilien Leads Österreich',
+    'Immobilien Leads Schweiz',
+    'Social Media Marketing Immobilien',
+    'Performance Marketing Immobilienmakler',
+    'Qualifizierte Leads Finanzdienstleister',
+    'Objektakquise Leads',
+    'Kaufinteressenten Leads'
+  ],
   alternates: {
-    canonical: 'https://www.nextmove-digital.de/',
+    canonical: 'https://nextmove-digital.de/',
+    languages: {
+      'de-DE': 'https://nextmove-digital.de/de',
+      'de-AT': 'https://nextmove-digital.de/at',
+      'de-CH': 'https://nextmove-digital.de/ch'
+    }
   },
+  openGraph: {
+    title: 'Leadgenerierung DACH - Immobilienmakler & Finanzberater',
+    description: 'Qualifizierte Leadgenerierung im DACH-Raum mit nachweisbarem ROI. Performance Marketing für Immobilienmakler und Finanzberater.',
+    url: 'https://nextmove-digital.de',
+    siteName: 'NextMove Digital',
+    locale: 'de_DE',
+    type: 'website',
+    images: [
+      {
+        url: 'https://nextmove-digital.de/og-image-home.webp',
+        width: 1200,
+        height: 630,
+        alt: 'NextMove Digital - Leadgenerierung DACH-Raum'
+      }
+    ]
+  }
 };
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={schemas.enhancedFaqPage()} id="faq-page" />
+      
       <Script id="schema-org" type="application/ld+json">
         {`
           {

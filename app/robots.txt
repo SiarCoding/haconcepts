@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /api/
-Disallow: /admin
-Disallow: /private
-Disallow: /drafts
-
-Sitemap: https://nextmove-digital.de/sitemap.xml

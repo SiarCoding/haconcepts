@@ -5,8 +5,17 @@ import Footer from '@/components/Footer';
 import { JsonLd, schemas } from '@/components/SEO/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'NextMove Digital Österreich | Lead-Generierung für Finanzberater & Immobilienmakler',
-  description: 'Performance Marketing und Lead-Generierung für Finanzberater und Immobilienmakler in Österreich. Spezialisiert auf Wien und österreichische Märkte.',
+  title: 'Leadgenerierung Österreich | Immobilienmakler & Finanzberater Leads',
+  description: 'Qualifizierte Leadgenerierung für Immobilienmakler und Finanzberater in Österreich. Performance Marketing mit nachweisbarem ROI in Wien, Salzburg, Innsbruck und weiteren österreichischen Städten.',
+  keywords: [
+    'Leadgenerierung Österreich',
+    'Immobilienmakler Leads Österreich',
+    'Finanzberater Leads Österreich',
+    'Immobilien Leads Wien',
+    'Immobilien Leads Salzburg',
+    'Performance Marketing Österreich',
+    'Social Media Marketing Immobilien Österreich'
+  ],
   alternates: {
     canonical: 'https://nextmove-digital.de/at',
     languages: {

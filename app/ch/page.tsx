@@ -5,8 +5,18 @@ import Footer from '@/components/Footer';
 import { JsonLd, schemas } from '@/components/SEO/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'NextMove Digital Schweiz | Lead-Generierung für Finanzberater & Immobilienmakler',
-  description: 'Performance Marketing und Lead-Generierung für Finanzberater und Immobilienmakler in der Schweiz. Spezialisiert auf Zürich, Genf und Schweizer Märkte.',
+  title: 'Leadgenerierung Schweiz | Immobilienmakler & Finanzberater Leads',
+  description: 'Qualifizierte Leadgenerierung für Immobilienmakler und Finanzberater in der Schweiz. Performance Marketing mit nachweisbarem ROI in Zürich, Genf, Basel und weiteren schweizer Städten.',
+  keywords: [
+    'Leadgenerierung Schweiz',
+    'Immobilienmakler Leads Schweiz',
+    'Finanzberater Leads Schweiz',
+    'Immobilien Leads Zürich',
+    'Immobilien Leads Genf',
+    'Immobilien Leads Basel',
+    'Performance Marketing Schweiz',
+    'Social Media Marketing Immobilien Schweiz'
+  ],
   alternates: {
     canonical: 'https://nextmove-digital.de/ch',
     languages: {

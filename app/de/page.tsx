@@ -5,8 +5,18 @@ import Footer from '@/components/Footer';
 import { JsonLd, schemas } from '@/components/SEO/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'NextMove Digital Deutschland | Lead-Generierung für Finanzberater & Immobilienmakler',
-  description: 'Performance Marketing und Lead-Generierung für Finanzberater und Immobilienmakler in Deutschland. Spezialisiert auf Berlin, München, Hamburg.',
+  title: 'Leadgenerierung Deutschland | Immobilienmakler & Finanzberater Leads',
+  description: 'Qualifizierte Leadgenerierung für Immobilienmakler und Finanzberater in Deutschland. Performance Marketing mit nachweisbarem ROI in Berlin, München, Hamburg und weiteren deutschen Städten.',
+  keywords: [
+    'Leadgenerierung Deutschland',
+    'Immobilienmakler Leads Deutschland',
+    'Finanzberater Leads Deutschland',
+    'Immobilien Leads Berlin',
+    'Immobilien Leads München',
+    'Immobilien Leads Hamburg',
+    'Performance Marketing Deutschland',
+    'Social Media Marketing Immobilien Deutschland'
+  ],
   alternates: {
     canonical: 'https://nextmove-digital.de/de',
     languages: {
