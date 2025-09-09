@@ -186,13 +186,48 @@ const Hero = memo(() => {
               className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-normal text-white relative z-50"
               style={{ lineHeight: '1.1' }}
             >
-              Leadgenerierung für <span className="text-[#ff5500] font-semibold">Immobilienmakler & Finanzberater</span> im DACH-Raum
-            </h1>
+              {/* Zeile 1 - Mobile: "Mehr Abschlüsse, weniger Akquise:" - Desktop: "Mehr Abschlüsse," */}
+              <span className="block">
+                <span className="lg:hidden">Mehr Abschlüsse, </span>
+                <span className="hidden lg:inline">Mehr&nbsp;Abschlüsse,</span>
+                <span className="lg:hidden text-[#ff5500] font-semibold">weniger&nbsp;Akquise:</span>
+              </span>
 
-            {/* Untertitel */}
-            <div ref={subtitleRef} className="mt-4 lg:mt-6 text-lg sm:text-xl lg:text-2xl text-gray-300 relative z-50">
-              Mehr Abschlüsse, weniger Akquise: Ihr direkter Weg zu vorqualifizierten Kunden.
-            </div>
+              {/* Zeile 2 – Desktop: orange, Mobile: versteckt */}
+              <span className="hidden lg:block text-[#ff5500] font-semibold">
+                weniger&nbsp;Akquise:
+              </span>
+
+              {/* Zeile 2/3 – Mobile: "Ihr direkter Weg zu vorqualifizierten Kunden." - Desktop: "Ihr direkter Weg zu" */}
+              <span className="block">
+                <span className="lg:hidden">
+                  Ihr{' '}
+                  <span className="relative inline-block">
+                    direkter
+                    <span className="absolute bottom-[-2px] md:bottom-[-1px] left-0 w-full h-1 md:h-[2px] bg-[#ff5500]" />
+                  </span>{' '}
+                  Weg zu vorqualifizierten Kunden.
+                </span>
+                <span className="hidden lg:inline">
+                  Ihr{' '}
+                  <span className="relative inline-block">
+                    direkter
+                    <span className="absolute bottom-[-2px] md:bottom-[-1px] left-0 w-full h-1 md:h-[2px] bg-[#ff5500]" />
+                  </span>{' '}
+                  Weg zu
+                </span>
+              </span>
+
+              {/* Zeile 4 - nur Desktop */}
+              <span className="hidden lg:block">
+                vorqualifizierten
+              </span>
+
+              {/* Zeile 5 - nur Desktop */}
+              <span className="hidden lg:block">
+                Kunden.
+              </span>
+            </h1>
 
             {/* Video nur in mobiler Ansicht nach H1 */}
             <div className="mt-5 lg:hidden relative mx-auto max-w-2xl order-2 w-full">
