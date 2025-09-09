@@ -29,7 +29,7 @@ const Hero = memo(() => {
   const ctaRef = useRef<HTMLDivElement>(null);
 
   // Memoized constants to prevent recreation
-  const flipWords = useMemo(() => ['Umsatz', 'Reichweite', 'Mitarbeiter'], []);
+  const flipWords = useMemo(() => ['Umsatz', 'Reichweite', 'Notartermine'], []);
 
   const teamMembers = useMemo(() => [
     {
@@ -115,7 +115,7 @@ const Hero = memo(() => {
     const websiteLinks = {
       'Umsatz': 'https://freyer.immo',
       'Reichweite': 'https://cd-immo.de',
-      'Mitarbeiter': 'https://hmsfinance.de'
+      'Notartermine': 'https://hmsfinance.de'
     };
     
     const url = websiteLinks[word as keyof typeof websiteLinks];
@@ -186,48 +186,13 @@ const Hero = memo(() => {
               className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-normal text-white relative z-50"
               style={{ lineHeight: '1.1' }}
             >
-              {/* Zeile 1 - Mobile: "Mehr Abschlüsse, weniger Akquise:" - Desktop: "Mehr Abschlüsse," */}
-              <span className="block">
-                <span className="lg:hidden">Mehr Abschlüsse, </span>
-                <span className="hidden lg:inline">Mehr&nbsp;Abschlüsse,</span>
-                <span className="lg:hidden text-[#ff5500] font-semibold">weniger&nbsp;Akquise:</span>
-              </span>
-
-              {/* Zeile 2 – Desktop: orange, Mobile: versteckt */}
-              <span className="hidden lg:block text-[#ff5500] font-semibold">
-                weniger&nbsp;Akquise:
-              </span>
-
-              {/* Zeile 2/3 – Mobile: "Ihr direkter Weg zu vorqualifizierten Kunden." - Desktop: "Ihr direkter Weg zu" */}
-              <span className="block">
-                <span className="lg:hidden">
-                  Ihr{' '}
-                  <span className="relative inline-block">
-                    direkter
-                    <span className="absolute bottom-[-4px] md:bottom-[-3px] left-0 w-full h-1.5 md:h-2 bg-[#ff5500]" />
-                  </span>{' '}
-                  Weg zu vorqualifizierten Kunden.
-                </span>
-                <span className="hidden lg:inline">
-                  Ihr{' '}
-                  <span className="relative inline-block">
-                    direkter
-                    <span className="absolute bottom-[-4px] md:bottom-[-3px] left-0 w-full h-1.5 md:h-2 bg-[#ff5500]" />
-                  </span>{' '}
-                  Weg zu
-                </span>
-              </span>
-
-              {/* Zeile 4 - nur Desktop */}
-              <span className="hidden lg:block">
-                vorqualifizierten
-              </span>
-
-              {/* Zeile 5 - nur Desktop */}
-              <span className="hidden lg:block">
-                Kunden.
-              </span>
+              Leadgenerierung für <span className="text-[#ff5500] font-semibold">Immobilienmakler & Finanzberater</span> im DACH-Raum
             </h1>
+
+            {/* Untertitel */}
+            <div ref={subtitleRef} className="mt-4 lg:mt-6 text-lg sm:text-xl lg:text-2xl text-gray-300 relative z-50">
+              Mehr Abschlüsse, weniger Akquise: Ihr direkter Weg zu vorqualifizierten Kunden.
+            </div>
 
             {/* Video nur in mobiler Ansicht nach H1 */}
             <div className="mt-5 lg:hidden relative mx-auto max-w-2xl order-2 w-full">
@@ -279,9 +244,9 @@ const Hero = memo(() => {
             {/* Testimonials Section - kompakter auf Mobile */}
             <div className="mt-5 sm:mt-8 relative z-10 order-4 lg:order-3 lg:hidden w-full flex flex-col items-center">
               <p className="text-base sm:text-lg font-normal text-white text-center">
-                Bereits <span className="relative inline-block">
-                  +50 zufriedene Partner
-                  <span className="absolute bottom-[-2px] left-0 w-full h-1 bg-[#ff5500]"></span>
+                <span className="relative inline-block">
+                  <span className="relative z-10">+50 zufriedene Partner</span>
+                  <span className="absolute bottom-[1px] left-0 w-full h-1 bg-[#ff5500]"></span>
                 </span>
               </p>
               <div className="flex flex-col md:flex-row items-center mt-3 justify-center">
@@ -379,7 +344,10 @@ const Hero = memo(() => {
             {/* Testimonials Section - kompakter auf Desktop */}
             <div className="mt-12 relative z-10 flex flex-col items-center">
               <p className="text-base lg:text-lg font-normal text-white text-center mb-2">
-                Bereits <span className="inline-block">+50 zufriedene Partner</span>
+                <span className="relative inline-block">
+                  <span className="relative z-10">+50 zufriedene Partner</span>
+                  <span className="absolute bottom-[1px] left-0 w-full h-1 bg-[#ff5500]"></span>
+                </span>
               </p>
               <div className="flex flex-col items-center mt-0">
                 <div className="scale-90 lg:scale-100 flex-shrink-0">

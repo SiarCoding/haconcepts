@@ -205,7 +205,7 @@ const BusinessSection = () => {
                     <div className="flex items-baseline space-x-2">
                       <span className="text-2xl lg:text-3xl font-bold text-white">€</span>
                       <CountUp
-                        to={12890}
+                        to={27412}
                         duration={3}
                         className="text-2xl lg:text-3xl font-bold text-white"
                         separator="."

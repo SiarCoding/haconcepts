@@ -8,7 +8,7 @@ import { Users, TrendingUp, BarChart3 } from 'lucide-react';
 const wordIcons = {
   Umsatz: BarChart3,
   Reichweite: TrendingUp,
-  Mitarbeiter: Users,
+  Notartermine: Users,
 };
 
 export const FlipWords = ({

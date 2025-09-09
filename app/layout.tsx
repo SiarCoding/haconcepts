@@ -5,6 +5,7 @@ import { ScrollProgress } from "@/components/magicui/scroll-progress";
 import OrangeCursor from '@/components/OrangeCursor';
 import ScrollPositionManager from '@/components/ScrollPositionManager';
 import MobileScrollOptimizer from '@/components/MobileScrollOptimizer';
+import CookieBanner from '@/components/CookieBanner';
 import { Suspense } from 'react';
 import Analytics from './analytics';
 
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'TODO_REPLACE_WITH_ACTUAL_GSC_CODE',
+    google: 'Mt8Tg_hyITdx1MhHvUCpn9LkbE7bkgun0nZo3y9rzwY',
   },
   category: 'Digital Marketing',
   openGraph: {
@@ -100,7 +101,7 @@ export default function RootLayout({
         <link rel="icon" href="/icon-192x192.png" type="image/png" sizes="192x192" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
-        <meta name="google-site-verification" content="TODO_REPLACE_WITH_ACTUAL_GSC_CODE" />
+        <meta name="google-site-verification" content="Mt8Tg_hyITdx1MhHvUCpn9LkbE7bkgun0nZo3y9rzwY" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -298,6 +299,8 @@ export default function RootLayout({
         <div className="overflow-x-hidden max-w-full">
           {children}
         </div>
+        {/* Cookie Banner */}
+        <CookieBanner />
       </body>
     </html>
   );

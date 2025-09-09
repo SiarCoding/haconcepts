@@ -8,7 +8,7 @@ const CTA = dynamic(() => import('@/components/CTA'));
 const Footer = dynamic(() => import('@/components/Footer'));
 
 export const metadata: Metadata = {
-  title: 'Referenzen & Portfolio - NextMove Consulting | Erfolgreiche Objektvermarktung',
+  title: 'Referenzen & Portfolio - NextMove Digital | Erfolgreiche Objektvermarktung',
   description: 'Sehen Sie unsere erfolgreichen Projekte: Drohnenaufnahmen, Objektfotografie und Virtual Tours für über 50 zufriedene Immobilienmakler deutschlandweit.',
   keywords: 'NextMove Portfolio, Drohnenaufnahmen Referenzen, Immobilien Fotografie Beispiele, Virtual Tours Portfolio, Makler Testimonials, Objektvermarktung Erfolge',
   alternates: {
